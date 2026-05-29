@@ -216,3 +216,22 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Базы данных (локальные) – ваши специфические
+*.db
+*.sqlite
+*.sqlite3
+
+# Логи
+*.log
+logs/
+
+# Файлы IDE (шаблон их игнорирует только частично, убедимся)
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Файлы macOS и Windows
+.DS_Store
+Thumbs.db
