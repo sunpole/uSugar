@@ -1,0 +1,45 @@
+flowchart TB
+    User[Пользователь] -->|фото/сообщение| TG[Telegram]
+    TG --> Dispatcher[aiogram Dispatcher]
+    
+    subgraph Handlers
+        PhotoHandler[Хендлер фото]
+        CmdHandler[Хендлер команд]
+        FoodHandler[Хендлер фраз про еду]
+        FSMHandler[Хендлеры состояний]
+    end
+    
+    subgraph OCR_Engine["Гибридный OCR (OpenCV + 3 движка)"]
+        Preprocess[OpenCV: серый, бинаризация, обрезка] --> OCR1[PaddleOCR]
+        Preprocess --> OCR2[EasyOCR]
+        Preprocess --> OCR3[Tesseract]
+        OCR1 --> ResultAgg[Агрегатор результатов]
+        OCR2 --> ResultAgg
+        OCR3 --> ResultAgg
+        ResultAgg -->|проверка согласованности| FinalValue{Надёжное значение?}
+        FinalValue -->|да| FormulaService
+        FinalValue -->|нет| FailMessage[Сообщение о расхождении<br>+ запрос ручного ввода]
+    end
+    
+    subgraph Services
+        FormulaService[Расчёт доз:
+            - ISF (утро/день/вечер)
+            - I:C ratio
+            - Добавки на приёмы
+            - Целевой сахар]
+        JournalService[Журнал: запись / выборка]
+        ReminderService[APScheduler + БД]
+        ProfileService[Настройки профиля]
+    end
+    
+    subgraph Database
+        DB[(SQLite / PostgreSQL)]
+    end
+    
+    Dispatcher --> Handlers
+    PhotoHandler --> OCR_Engine
+    CmdHandler --> Services
+    FoodHandler --> FormulaService
+    FSMHandler --> ProfileService
+    Services --> DB
+    ReminderService --> Dispatcher
