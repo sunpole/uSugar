@@ -22,11 +22,11 @@ flowchart TB
     end
     
     subgraph Services
-        FormulaService[Расчёт доз:
+        FormulaService["Расчёт доз:
             - ISF (утро/день/вечер)
             - I:C ratio
             - Добавки на приёмы
-            - Целевой сахар]
+            - Целевой сахар"]
         JournalService[Журнал: запись / выборка]
         ReminderService[APScheduler + БД]
         ProfileService[Настройки профиля]
