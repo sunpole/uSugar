@@ -1,5 +1,5 @@
 aiogram==3.13.0
-paddlepaddle==2.6.0
+paddlepaddle==3.3.1
 paddleocr==2.7.0.2
 easyocr==1.7.1
 opencv-python-headless==4.10.0.84
