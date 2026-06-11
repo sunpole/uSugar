@@ -1,7 +1,7 @@
 # AI_CONTEXT - uSugar Documentation Navigator
 
 Дата аудита документации: 2026-06-11
-Текущая версия проекта по активной документации: `1.0.39`
+Текущая версия проекта по активной документации: `1.1.0`
 
 Этот файл является навигатором по уже существующей документации uSugar. Он не заменяет `README.MD`, `PROJECT_STATUS.md`, `RUNBOOK.md` или `ROADMAP.md`, а помогает человеку или ИИ-агенту понять, какие документы читать первыми и каким документам доверять как актуальным.
 
@@ -36,13 +36,14 @@ uSugar - локальный Telegram-бот для семейной поддер
 
 По активным документам реализованы:
 
-- Telegram-команды `/start`, `/help`, `/version`, `/health`, `/backup`, `/setname`, `/whoami`, `/sugar`, `/status`, `/settings`, `/story`, `/insulin`, `/food`, `/log`, `/formula`, `/ocr`, `/ocrlog`, `/reminders`;
+- Telegram-команды `/start`, `/help`, `/version`, `/health`, `/backup`, `/setname`, `/whoami`, `/sugar`, `/status`, `/settings`, `/story`, `/undo`, `/insulin`, `/food`, `/log`, `/formula`, `/ocr`, `/ocrlog`, `/reminders`;
 - ручной ввод сахара;
 - запись короткого и длинного инсулина;
 - расчет еды и дозы по пользовательскому протоколу;
 - журнал сахара и инсулина;
 - SQLite-хранение пользователей, протокола, журналов, OCR-попыток и напоминаний;
 - Telegram WebApp настройки через `settings.html`;
+- prefill WebApp настроек из текущего сохранённого протокола через `/settings`;
 - ZIP backup через `/backup`;
 - локальный health check;
 - локальный Libre2 OCR/CV-путь с подтверждением результата;
@@ -53,6 +54,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - напоминания о базальном инсулине;
 - trusted-contact alert по Telegram ID;
 - follow-up после короткого инсулина;
+- удаление последней ошибочной записи сахара или инсулина через `/undo` с подтверждением;
 - стабильные локальные архивы;
 - интерактивный исторический лендинг `story.html`;
 - генерация `docs/history/story_data.js` из `docs/history/SCREENSHOT_STORY.md`;
@@ -70,8 +72,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - импорт CSV/JSON обратно в базу;
 - полноценный поиск по журналам;
 - расширенная фильтрация журналов;
-- редактирование и удаление ошибочных записей;
-- загрузка текущего протокола обратно в WebApp перед редактированием;
+- редактирование старых записей и выборочное удаление не только последней записи;
 - админ-панель и роли;
 - полноценный consent-flow для доверенного лица;
 - DeepSeek/LLM слой;
@@ -94,6 +95,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `DOCS_INDEX.md` - краткая карта документации.
 - `BOT_BRAIN.md` - поведение бота, реакции и roadmap напоминаний.
 - `DATA_SOURCES.md` - внешние источники данных и границы безопасности.
+- `FUTURE_BACKLOG.md` - осознанно отложенные задачи после версии `1.1.0`.
 - `SECRETS.md` - правила секретов и `.env`.
 - `VERSIONING.md` - правила версионирования.
 - `STABLE_ARCHIVES.md` - правила локальных стабильных архивов.
@@ -213,6 +215,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 
 - `PROJECT_STATUS.md`;
 - `PROJECT_AUDIT.md`;
+- `FUTURE_BACKLOG.md`.
 - `CHANGELOG.md`;
 - `README.MD`.
 
@@ -259,6 +262,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `CHANGELOG.md` - что изменилось и в какой версии;
 - `PROJECT_STATUS.md` - текущее состояние проекта;
 - `ROADMAP.md` - что стало done, что осталось future;
+- `FUTURE_BACKLOG.md` - если задача сознательно отложена за пределы стабильной версии;
 - `RUNBOOK.md` - если изменились запуск, переменные `.env`, ngrok, backup, OCR, reminders;
 - `README.MD` - если изменились ключевые возможности или команды;
 - `TELEGRAM_SMOKE_TEST.md` - если изменилась ручная проверка в Telegram;
@@ -282,6 +286,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `CHANGELOG.md` - что было сделано по версиям.
 - `BOT_BRAIN.md` - правила поведения бота и напоминаний.
 - `DATA_SOURCES.md` - внешние данные, LLM и safety boundaries.
+- `FUTURE_BACKLOG.md` - отложенные задачи, которые не должны смешиваться с текущим стабильным scope.
 - `SECRETS.md` - секреты и `.env`.
 - `TELEGRAM_SMOKE_TEST.md` - ручной Telegram smoke test.
 - `docs/history/SCREENSHOT_STORY.md` - source of truth для исторического лендинга.
