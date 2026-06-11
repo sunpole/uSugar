@@ -63,6 +63,7 @@ After each major stage:
 | `2026-06-06_followup_settings_v1_0_37_working.png` | Post-bolus follow-up settings | Settings page opened locally on port `8001`, showing the new control reminder after short insulin, enabled by default at 120 minutes. | "uSugarBot v1.0.37 starts remembering actions: after short insulin, the assistant can schedule a one-time control check." |
 | `2026-06-06_mobile_settings_compact_v1_0_38_working.png` | Mobile WebApp compacting | Mobile viewport screenshot of the settings page after compact grid layout, collapsible advanced sections, and corrected radio/checkbox sizing. | "uSugarBot v1.0.38 turns the setup form from a long wall of fields into a mobile-first protocol editor." |
 | `2026-06-11_story_landing_v1_0_39_working.png` | Interactive project story | Local `story.html` page showing the generated project-history landing, version filters, and screenshot timeline metrics. | "uSugarBot v1.0.39 turns the build process itself into a living presentation generated from the project history file." |
+| `2026-06-11_stability_release_v1_1_0_working.png` | Stability release workbench | A real desktop capture with Codex, Telegram Web, and the running project story visible while the `1.1.0` milestone is being documented. The frame shows the release work, the bot conversation, and the story pipeline together instead of inventing a clean promo shot. | "uSugarBot 1.1.0 is captured as a living working session, with the release story already feeding the history pipeline." |
 
 ## Future Screenshot Slots
 
@@ -71,7 +72,6 @@ Add new screenshots for these moments:
 | Planned File | Moment | Notes |
 | --- | --- | --- |
 | `TODO_SCREENSHOT_2026-06-05_libre2_cv_8_2` | Libre2 OCR 8.2 milestone | TODO_SCREENSHOT: Telegram Web showing a real Libre2 capture with the bot returning the `8.2` candidate and the manual confirmation flow. Keep the phone screenshot visible, but hide any private chat list or personal notifications. |
-| `TODO_SCREENSHOT_2026-06-11_stability_release_1_1_0` | Stability release 1.1.0 | TODO_SCREENSHOT: public-facing proof of `uSugarBot v1.1.0` with the stable daily-use surface visible: `/version`, `/settings`, `/undo`, and one successful test result. Keep `.env`, tokens, and database paths hidden. |
 | `TODO_SCREENSHOT_2026-06-11_ai_context` | AI_CONTEXT milestone | TODO_SCREENSHOT: editor or browser view where `docs/AI_CONTEXT.md` is open and the headings make the project's memory easy to scan. No secrets, no raw token values. |
 | `TODO_SCREENSHOT_2026-06-11_future_backlog` | FUTURE_BACKLOG milestone | TODO_SCREENSHOT: `FUTURE_BACKLOG.md` open in an editor or preview with the category layout visible. Keep the stable release context in frame if possible. |
 | `TODO_SCREENSHOT_2026-06-11_project_audit` | PROJECT_AUDIT milestone | TODO_SCREENSHOT: `PROJECT_AUDIT.md` visible in a clean editor or preview view, ideally with the headings and summary sections readable. |

@@ -1,0 +1,239 @@
+window.USUGAR_STORY_DATA = {
+  "title": "uSugar Project Story",
+  "source": "docs/history/SCREENSHOT_STORY.md",
+  "count": 29,
+  "items": [
+    {
+      "file": "2026-06-04_initial_state.png",
+      "image": "docs/history/2026-06-04_initial_state.png",
+      "role": "Beginning",
+      "description": "First local state snapshot after finding the project folder.",
+      "caption": "The project started as a living folder with code, notes, copies, and a local database.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_before_docs_and_secret_cleanup.png",
+      "image": "docs/history/2026-06-04_before_docs_and_secret_cleanup.png",
+      "role": "Before cleanup",
+      "description": "State before consolidating GitHub docs and reducing token exposure risk.",
+      "caption": "Before documentation consolidation and secret cleanup.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_after_docs_and_secret_cleanup.png",
+      "image": "docs/history/2026-06-04_after_docs_and_secret_cleanup.png",
+      "role": "Documentation consolidation",
+      "description": "GitHub docs copied locally and token risk reduced.",
+      "caption": "Public docs and local working files begin to meet in one place.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_organized_baseline.png",
+      "image": "docs/history/2026-06-04_organized_baseline.png",
+      "role": "Clean baseline",
+      "description": "Root cleaned, docs grouped, archive created.",
+      "caption": "The first stable local baseline: one project, one direction.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_process_root_tree.png",
+      "image": "docs/history/2026-06-04_process_root_tree.png",
+      "role": "Working structure",
+      "description": "Current root tree after cleanup and first implementation steps.",
+      "caption": "The working project tree after organizing the code and documentation.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_process_docs_tree.png",
+      "image": "docs/history/2026-06-04_process_docs_tree.png",
+      "role": "Documentation structure",
+      "description": "`docs/` folders: GitHub original, legacy local, history.",
+      "caption": "Documentation split into source history, legacy notes, and visual story.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_process_git_log.png",
+      "image": "docs/history/2026-06-04_process_git_log.png",
+      "role": "Version control",
+      "description": "Local git commits created during cleanup and implementation.",
+      "caption": "Local commits become the project memory.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_process_health_check.png",
+      "image": "docs/history/2026-06-04_process_health_check.png",
+      "role": "Safety check",
+      "description": "Health check before adding ngrok availability detection.",
+      "caption": "The first local safety check for files, ports, and environment.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_process_health_check_ngrok.png",
+      "image": "docs/history/2026-06-04_process_health_check_ngrok.png",
+      "role": "Runtime readiness",
+      "description": "Health check with ngrok detection and port status.",
+      "caption": "uSugar is ready for a safe local Telegram/WebApp test beside uChurch.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_process_codex_screen.png",
+      "image": "docs/history/2026-06-04_process_codex_screen.png",
+      "role": "Work process",
+      "description": "Codex working in the project with checklist and changes visible.",
+      "caption": "The assistant working inside the project, turning notes into a runnable baseline.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-04_process_settings_page_screen.png",
+      "image": "docs/history/2026-06-04_process_settings_page_screen.png",
+      "role": "First visible UI",
+      "description": "Local settings page opened in browser through `localhost:8001`.",
+      "caption": "The first local WebApp settings screen running beside uChurch.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-05_runtime_telegram_bot_version_public.png",
+      "image": "docs/history/2026-06-05_runtime_telegram_bot_version_public.png",
+      "role": "First live Telegram proof",
+      "description": "Cropped Telegram Web chat showing uSugarBot responding with version `1.0.10` and help/manual-input flow.",
+      "caption": "The bot is alive: uSugarBot answers in Telegram with the new managed version.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-05_runtime_telegram_formula_reference_public.png",
+      "image": "docs/history/2026-06-05_runtime_telegram_formula_reference_public.png",
+      "role": "Formula reference in Telegram",
+      "description": "Cropped Telegram Web chat showing the `/formula` reference command and the current protocol example.",
+      "caption": "The bot explains how the calculation works before the runtime health check is added.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-05_runtime_telegram_health_public.png",
+      "image": "docs/history/2026-06-05_runtime_telegram_health_public.png",
+      "role": "Runtime status in Telegram",
+      "description": "Cropped Telegram Web chat showing `/health` on uSugarBot `1.0.11` with no secrets exposed.",
+      "caption": "The bot can now report its own runtime status safely inside Telegram.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-05_runtime_telegram_backup_public.png",
+      "image": "docs/history/2026-06-05_runtime_telegram_backup_public.png",
+      "role": "Telegram backup export",
+      "description": "Cropped Telegram Web chat showing `/backup` sending a ZIP and `/help` listing the new command in version `1.0.12`.",
+      "caption": "uSugar gains its first user-controlled export: a private ZIP backup with protocol and logs.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-05_runtime_telegram_backup_help_showcase_public.png",
+      "image": "docs/history/2026-06-05_runtime_telegram_backup_help_showcase_public.png",
+      "role": "Telegram feature showcase",
+      "description": "Wider Telegram crop showing the journal, `/health`, `/backup`, and `/help` together.",
+      "caption": "A compact view of the live bot feature set after the first export command.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-05_process_codex_telegram_backup_side_by_side_public.png",
+      "image": "docs/history/2026-06-05_process_codex_telegram_backup_side_by_side_public.png",
+      "role": "Development process",
+      "description": "Side-by-side screenshot with Codex work on the left and Telegram Web testing on the right.",
+      "caption": "The project being built and tested in real time: implementation notes beside the running bot.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-05_process_codex_telegram_ocr_intake_side_by_side_public.png",
+      "image": "docs/history/2026-06-05_process_codex_telegram_ocr_intake_side_by_side_public.png",
+      "role": "First OCR intake step",
+      "description": "Side-by-side screenshot showing Codex work and Telegram `/ocr` response on uSugarBot `1.0.17`.",
+      "caption": "The OCR roadmap becomes a live Telegram surface: safe photo intake before recognition and dose calculation.",
+      "version": ""
+    },
+    {
+      "file": "2026-06-05_ocr_pipeline_v1_0_23_running.png",
+      "image": "docs/history/2026-06-05_ocr_pipeline_v1_0_23_running.png",
+      "role": "OCR pipeline implementation",
+      "description": "Side-by-side screenshot showing Codex implementing OCR and Telegram holding the Libre2 screenshot test.",
+      "caption": "The photo OCR pipeline becomes code: variants, engine status, and Telegram confirmation are now part of the bot.",
+      "version": "1.0.23"
+    },
+    {
+      "file": "2026-06-05_bot_brain_v1_0_29_working.png",
+      "image": "docs/history/2026-06-05_bot_brain_v1_0_29_working.png",
+      "role": "First bot brain layer",
+      "description": "Codex implementing behavior reactions while Telegram shows fast Libre2 OCR and saved glucose tests.",
+      "caption": "The bot begins to respond like an assistant, not just a recorder: OCR, trend metadata, and the first behavior layer come together.",
+      "version": "1.0.29"
+    },
+    {
+      "file": "2026-06-05_reminder_engine_v1_0_30_working.png",
+      "image": "docs/history/2026-06-05_reminder_engine_v1_0_30_working.png",
+      "role": "Reminder engine checkpoint",
+      "description": "Codex recovering after an internet break, with Telegram Web beside the work and uSugarBot running locally.",
+      "caption": "The project moves from one-time replies toward a schedule-aware assistant: v1.0.30 introduces the reminder state engine.",
+      "version": "1.0.30"
+    },
+    {
+      "file": "2026-06-05_background_reminders_v1_0_31_working.png",
+      "image": "docs/history/2026-06-05_background_reminders_v1_0_31_working.png",
+      "role": "Background reminders enabled",
+      "description": "Codex after adding one-shot background reminders, with Telegram Web kept visible but redacted for public history.",
+      "caption": "uSugarBot v1.0.31 starts checking the day by itself: first and second missed-measurement reminders can now be sent in the background.",
+      "version": "1.0.31"
+    },
+    {
+      "file": "2026-06-05_basal_reminders_v1_0_33_working.png",
+      "image": "docs/history/2026-06-05_basal_reminders_v1_0_33_working.png",
+      "role": "Basal reminder layer",
+      "description": "Codex after adding long-insulin reminder checks, with Telegram Web visible but redacted for public history.",
+      "caption": "uSugarBot v1.0.33 learns the nightly long-insulin checkpoint: reminders now cover both measurements and basal schedule awareness.",
+      "version": "1.0.33"
+    },
+    {
+      "file": "2026-06-05_webapp_reminder_settings_section_v1_0_34_working.png",
+      "image": "docs/history/2026-06-05_webapp_reminder_settings_section_v1_0_34_working.png",
+      "role": "WebApp reminder settings",
+      "description": "Settings page opened locally on port `8001`, showing measurement windows, reminder delays, basal reminder timing, and trusted-alert threshold controls.",
+      "caption": "uSugarBot v1.0.34 makes reminders configurable: the assistant's schedule moves from code defaults into the user's protocol.",
+      "version": "1.0.34"
+    },
+    {
+      "file": "2026-06-06_trusted_contact_settings_v1_0_35_working.png",
+      "image": "docs/history/2026-06-06_trusted_contact_settings_v1_0_35_working.png",
+      "role": "Trusted contact settings",
+      "description": "WebApp reminder settings showing the new Telegram ID field for a trusted contact, with no real ID entered.",
+      "caption": "uSugarBot v1.0.35 begins the trusted-person path: long missing-measurement alerts can now leave the user's chat.",
+      "version": "1.0.35"
+    },
+    {
+      "file": "2026-06-06_followup_settings_v1_0_37_working.png",
+      "image": "docs/history/2026-06-06_followup_settings_v1_0_37_working.png",
+      "role": "Post-bolus follow-up settings",
+      "description": "Settings page opened locally on port `8001`, showing the new control reminder after short insulin, enabled by default at 120 minutes.",
+      "caption": "uSugarBot v1.0.37 starts remembering actions: after short insulin, the assistant can schedule a one-time control check.",
+      "version": "1.0.37"
+    },
+    {
+      "file": "2026-06-06_mobile_settings_compact_v1_0_38_working.png",
+      "image": "docs/history/2026-06-06_mobile_settings_compact_v1_0_38_working.png",
+      "role": "Mobile WebApp compacting",
+      "description": "Mobile viewport screenshot of the settings page after compact grid layout, collapsible advanced sections, and corrected radio/checkbox sizing.",
+      "caption": "uSugarBot v1.0.38 turns the setup form from a long wall of fields into a mobile-first protocol editor.",
+      "version": "1.0.38"
+    },
+    {
+      "file": "2026-06-11_story_landing_v1_0_39_working.png",
+      "image": "docs/history/2026-06-11_story_landing_v1_0_39_working.png",
+      "role": "Interactive project story",
+      "description": "Local `story.html` page showing the generated project-history landing, version filters, and screenshot timeline metrics.",
+      "caption": "uSugarBot v1.0.39 turns the build process itself into a living presentation generated from the project history file.",
+      "version": "1.0.39"
+    },
+    {
+      "file": "2026-06-11_stability_release_v1_1_0_working.png",
+      "image": "docs/history/2026-06-11_stability_release_v1_1_0_working.png",
+      "role": "Stability release workbench",
+      "description": "A real desktop capture with Codex, Telegram Web, and the running project story visible while the `1.1.0` milestone is being documented. The frame shows the release work, the bot conversation, and the story pipeline together instead of inventing a clean promo shot.",
+      "caption": "uSugarBot 1.1.0 is captured as a living working session, with the release story already feeding the history pipeline.",
+      "version": "1.1.0"
+    }
+  ]
+};
