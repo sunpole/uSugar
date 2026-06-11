@@ -15,6 +15,7 @@
 - Make database path and web settings URL fully configurable. (Done.)
 - Add a small health/check command for local diagnostics. (Done in `1.0.11` with `/health`.)
 - Add confirmed deletion for the last mistaken glucose or insulin entry. (Done in `1.1.0` with `/undo`.)
+- Make the core Telegram UX clearer before large refactoring: grouped `/help`, distinct `/health`/`/status`/`/reminders`, safer `/undo`, and shorter OCR prompts. (Done in `1.1.1`.)
 - Replace manual batch setup with documented dependency installation.
 
 ## Phase 2 - Settings WebApp
@@ -60,7 +61,7 @@
 - Add a safe knowledge module for explanations and UX hints.
 - Add DeepSeek as a bounded helper layer only after prompt and privacy boundaries are documented.
 
-Deferred work after `1.1.0` is tracked in `FUTURE_BACKLOG.md` so the roadmap stays focused on phase direction rather than every parked idea.
+Deferred work after `1.1.0` is tracked in `FUTURE_BACKLOG.md` so the roadmap stays focused on phase direction rather than every parked idea. Version `1.1.1` did not pull deferred functionality back into scope; it only cleaned the existing UX.
 
 ## Phase 6 - Project Story And Presentation
 

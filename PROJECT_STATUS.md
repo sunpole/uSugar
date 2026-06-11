@@ -6,7 +6,7 @@ Date: 2026-06-11
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.1.0` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, and WebApp settings prefill are now implemented and tested.
+The current working code identifies itself as version `1.1.1` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, and the first UX cleanup pass are now implemented and tested.
 
 ## Comparison Summary
 
@@ -59,7 +59,7 @@ Manual input helpers and food-dose calculation logic were moved into `usugar_log
 
 The static settings page was smoke-tested locally through `http://127.0.0.1:8001/settings.html`; it returned HTTP 200.
 
-Live Telegram Web testing confirmed that uSugarBot answers with current versions. Historical screenshots are indexed in `docs/history/SCREENSHOT_STORY.md`; public-history screenshots are redacted where Telegram values should not be shown. Version `1.0.39` added `story.html`, an interactive page generated from that screenshot history. Version `1.1.0` focuses on stability rather than large new features.
+Live Telegram Web testing confirmed that uSugarBot answers with current versions. Historical screenshots are indexed in `docs/history/SCREENSHOT_STORY.md`; public-history screenshots are redacted where Telegram values should not be shown. Version `1.0.39` added `story.html`, an interactive page generated from that screenshot history. Version `1.1.0` focused on stability rather than large new features; version `1.1.1` keeps the same scope and cleans up the daily Telegram UX.
 
 ## Current Implementation Focus
 
@@ -68,6 +68,7 @@ Live Telegram Web testing confirmed that uSugarBot answers with current versions
 - Keep reminders useful but non-spammy: reminder delivery keys prevent duplicate background messages.
 - Keep reminder configuration in the WebApp so the user can tune windows, basal reminders, trusted-contact alerts, and short-insulin follow-ups without editing `.env`.
 - Keep mistaken-record deletion narrow: `/undo` deletes only the current user's latest sugar or insulin record after confirmation.
+- Keep UX surfaces short and distinct: `/health` is technical runtime status, `/status` is the user's latest glucose record, and `/reminders` is schedule/reminder state.
 - Use `PROJECT_AUDIT.md` and `DATA_SOURCES.md` to keep debts, placeholders, and external-source decisions visible.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
 - Keep `story.html` generated from `SCREENSHOT_STORY.md` so the public development history grows automatically with new screenshots.

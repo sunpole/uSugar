@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.1.1 - 2026-06-11
+
+- UX cleanup release without new product scope, LLM, PostgreSQL, or architecture changes.
+- Reworked `/help` into short task-based groups while keeping the full command surface visible.
+- Clarified the difference between `/health`, `/status`, and `/reminders`.
+- Made `/undo` safer to read by showing the exact record type, value, time, and deletion consequence before confirmation.
+- Shortened OCR low-confidence and no-result messages into a consistent "result/action" structure.
+- Simplified user-facing prompts for `/food`, `/insulin`, and `/settings`.
+
 ## 1.1.0 - 2026-06-11
 
 - Stabilized the daily family-use surface without adding LLM or production deployment work.

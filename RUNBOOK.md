@@ -114,15 +114,17 @@ When the bot is running, Telegram also has a lightweight runtime check:
 
 This command shows the bot version, database file name, settings-page configuration status, and a reminder that secrets are hidden. It does not print the Telegram token, `.env` contents, full database path, or current ngrok URL.
 
+Use `/status` for the current user's latest glucose record. Use `/reminders` for measurement, basal, and follow-up reminder state. This separation is intentional since `1.1.1`.
+
 ## Settings WebApp
 
-Use `/settings` in Telegram before changing the protocol. Since `1.1.0`, the bot replies with the current saved protocol and a WebApp URL that includes the current values for prefill. `settings.html` also keeps the last submitted protocol in local browser storage as a fallback for local testing.
+Use `/settings` in Telegram before changing the protocol. Since `1.1.0`, the bot replies with the current saved protocol and a WebApp URL that includes the current values for prefill. Since `1.1.1`, the message explicitly asks the user to review current values before editing. `settings.html` also keeps the last submitted protocol in local browser storage as a fallback for local testing.
 
 The main keyboard WebApp button still uses the static `WEBAPP_URL` from `.env`; for the most reliable prefill during testing, open settings through `/settings`.
 
 ## Undo Mistaken Records
 
-Use `/undo` to delete the latest mistaken entry. The bot shows the last glucose record and the last insulin record for the current Telegram user, asks which one to delete, and requires explicit confirmation before deletion.
+Use `/undo` to delete the latest mistaken entry. The bot shows the last glucose record and the last insulin record for the current Telegram user, asks which one to delete, and requires explicit confirmation before deletion. Since `1.1.1`, the confirmation text repeats the exact type, value, time, and consequence before the user presses delete.
 
 The command only deletes rows that match the current `user_id`; it does not edit older records or delete other users' data.
 
@@ -203,6 +205,8 @@ Version 1.0.35 adds trusted-contact delivery by Telegram ID. The trusted person 
 Version 1.0.37 adds one-time follow-up reminders after logged short insulin. The WebApp reminder section controls whether this is enabled and how many minutes after the short-insulin log the control message is sent. The default is 120 minutes. Follow-ups are stored in `followup_reminders`, marked as sent after delivery, and are separate from hourly measurement reminders.
 
 Version 1.1.0 stabilizes daily-use behavior: OCR disabled mode skips heavy recognition, reminder/OCR user messages are readable in Russian, `/undo` can remove the latest mistaken sugar or insulin entry with confirmation, and `/settings` shows/prefills the current protocol before editing.
+
+Version 1.1.1 is a UX cleanup release: `/help` is grouped by task, `/health`/`/status`/`/reminders` are explained as different screens, `/undo` is harder to misread, and low-confidence OCR replies use shorter result/action wording.
 
 ## Important Caution
 

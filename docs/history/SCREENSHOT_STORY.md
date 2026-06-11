@@ -64,6 +64,7 @@ After each major stage:
 | `2026-06-06_mobile_settings_compact_v1_0_38_working.png` | Mobile WebApp compacting | Mobile viewport screenshot of the settings page after compact grid layout, collapsible advanced sections, and corrected radio/checkbox sizing. | "uSugarBot v1.0.38 turns the setup form from a long wall of fields into a mobile-first protocol editor." |
 | `2026-06-11_story_landing_v1_0_39_working.png` | Interactive project story | Local `story.html` page showing the generated project-history landing, version filters, and screenshot timeline metrics. | "uSugarBot v1.0.39 turns the build process itself into a living presentation generated from the project history file." |
 | `2026-06-11_stability_release_v1_1_0_working.png` | Stability release workbench | A real desktop capture with Codex, Telegram Web, and the running project story visible while the `1.1.0` milestone is being documented. The frame shows the release work, the bot conversation, and the story pipeline together instead of inventing a clean promo shot. | "uSugarBot 1.1.0 is captured as a living working session, with the release story already feeding the history pipeline." |
+| `2026-06-11_runtime_telegram_version_v1_1_0_public.png` | Live version fix proof | Cropped Telegram Web chat showing the stale `1.0.39` answer, then the corrected `/version` and `/health` responses from the restarted runtime with `1.1.0`. | "The live Telegram bot finally matches the local 1.1.0 release after replacing the stale runtime." |
 
 ## Future Screenshot Slots
 

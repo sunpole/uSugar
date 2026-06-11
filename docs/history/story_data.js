@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 29,
+  "count": 30,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -233,6 +233,14 @@ window.USUGAR_STORY_DATA = {
       "role": "Stability release workbench",
       "description": "A real desktop capture with Codex, Telegram Web, and the running project story visible while the `1.1.0` milestone is being documented. The frame shows the release work, the bot conversation, and the story pipeline together instead of inventing a clean promo shot.",
       "caption": "uSugarBot 1.1.0 is captured as a living working session, with the release story already feeding the history pipeline.",
+      "version": "1.1.0"
+    },
+    {
+      "file": "2026-06-11_runtime_telegram_version_v1_1_0_public.png",
+      "image": "docs/history/2026-06-11_runtime_telegram_version_v1_1_0_public.png",
+      "role": "Live version fix proof",
+      "description": "Cropped Telegram Web chat showing the stale `1.0.39` answer, then the corrected `/version` and `/health` responses from the restarted runtime with `1.1.0`.",
+      "caption": "The live Telegram bot finally matches the local 1.1.0 release after replacing the stale runtime.",
       "version": "1.1.0"
     }
   ]
