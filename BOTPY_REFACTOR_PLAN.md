@@ -1,18 +1,21 @@
 # BOTPY_REFACTOR_PLAN - uSugar
 
-Дата анализа: 2026-06-11  
-Состояние проекта: `1.1.0`
+Дата анализа: 2026-06-12
+Состояние проекта: `1.2.0`
 
 Этот план описывает безопасное разделение `bot.py` без изменения поведения, без переноса функций прямо сейчас и без коммита. Цель - подготовить маршрут, который можно выполнять маленькими шагами и не сломать рабочий runtime.
 
 ## 1. Текущая структура `bot.py`
 
-Текущий `bot.py`:
+Текущий `bot.py` после первого безопасного шага `1.2.0`:
 
-- размер: `65,168` байт;
-- длина: `1,243` строки;
-- функций и классов: `59`;
-- зарегистрированных обработчиков Telegram: `50` декораторов `@dp.message(...)` / `@dp.callback_query(...)`.
+- длина до шага: `1,276` строк;
+- длина после шага: `1,122` строки;
+- вынесено: `154` строки из `bot.py`;
+- функций и классов в `bot.py`: `50`;
+- системных функций/регистраторов в `handlers/system.py`: `11`;
+- зарегистрированных обработчиков Telegram в `bot.py`: `42` маркера `@dp.message(...)`, `@dp.callback_query(...)` или `dp.*.register(...)`;
+- системные команды теперь регистрируются явно через `register_system_handlers(dp)`.
 
 ### Основные зоны внутри файла
 
@@ -22,8 +25,8 @@
 | Вспомогательные helper-функции | 42-190 | `clear_command_state`, `with_version`, URL builders, protocol summary, timestamp formatting, saved sugar text, follow-up text |
 | FSM и общие расчётные wrapper-helpers | 161-196 | `UserState`, `get_isf`, `get_ic_ratio`, `get_meal_bonus`, `round_to_step`, `filter_name` |
 | Глобальные перехваты и обработка "просто текста" | 196-343 | HI/LOW/HELP shortcuts, number parsing, multi-number flow, number confirmation |
-| Системные команды | 343-405 | `/version`, `/health`, `/backup`, `/story`, `/start` |
-| Help / formula / profile | 462-567 | `/help`, `/formula`, `/ocr`, `/ocrlog`, `/setname`, `/whoami` |
+| Системные команды | `handlers/system.py` | `/version`, `/health`, `/backup`, `/story`, `/start`, `/help`, unknown slash commands |
+| Help / formula / profile | 333-410 | `/formula`, `/ocr`, `/ocrlog`, `/setname`, `/whoami`; `/help` уже вынесен |
 | Sugar / status / settings / webapp / undo | 566-766 | `/sugar`, `/status`, `/settings`, `web_app_data`, `/undo` |
 | Insulin / food / logs | 766-1003 | `/insulin`, `/food`, `/log`, журналные FSM-переходы |
 | OCR intake and confirmation | 1002-1177 | `photo_intake`, OCR callback, save/manual confirmation |
@@ -44,6 +47,8 @@
 - `usugar_vision.py` - photo intake, OCR captions, runtime image paths;
 - `usugar_export.py` - ZIP backup;
 - `keyboards.py` - reply/inline keyboards.
+- `handlers/system.py` - system command handlers and unknown slash-command handler registration.
+- `common/text.py` - shared `with_version()` and `build_story_url()`.
 
 ## 2. Карта зависимостей
 
@@ -116,7 +121,9 @@ common/
 
 ### Шаг 1. Системные команды и статичный текст
 
-Выносить первыми:
+Статус: выполнено в `1.2.0`.
+
+Вынесено:
 
 - `/version`
 - `/health`
@@ -334,15 +341,15 @@ common/
 - startup/polling composition changes;
 - любые попытки одновременно менять `bot.py`, OCR и reminder logic.
 
-## 8. Что делать до версии 1.2.0
+## 8. Что делать после версии 1.2.0
 
-До `1.2.0` стоит добиться такого состояния:
+После `1.2.0` стоит двигаться к такому состоянию маленькими проверяемыми шагами:
 
-- `bot.py` почти пустой как бизнес-логика и в основном собирает приложение;
-- system/profile/glucose/settings/logs уже живут в отдельных modules;
-- OCR flow вынесен отдельно, но поведение не изменено;
-- reminder loop вынесен отдельно и продолжает использовать тот же `db` и `usugar_reminders`;
-- все 64 теста остаются зелёными;
+- `bot.py` постепенно становится composition root и в основном собирает приложение;
+- profile/glucose/settings/logs переезжают в отдельные handler modules;
+- OCR flow выносится отдельно, но поведение не меняется;
+- reminder loop выносится отдельно и продолжает использовать тот же `db` и `usugar_reminders`;
+- все 66 тестов остаются зелёными;
 - текстовые поверхности не меняются неожиданно;
 - никакого нового функционала в процессе распила не добавляется.
 
@@ -375,4 +382,3 @@ common/
 ## 11. Краткий вывод
 
 `bot.py` уже не "всё в одном" по смыслу, но всё ещё "всё в одном" по поверхности. Самый безопасный путь - разрезать его на handler modules вокруг уже существующих сервисов, оставить `bot.py` как композиционный корень и не трогать OCR/reminder/db internals до тех пор, пока command surface и tests полностью не подтвердят стабильность.
-

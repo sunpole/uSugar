@@ -2,6 +2,14 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.0 - 2026-06-12
+
+- Phase 1 `bot.py` refactor: moved low-risk system handlers into `handlers/system.py`.
+- Extracted shared `with_version()` and `build_story_url()` into `common/text.py`.
+- Preserved command behavior for `/start`, `/help`, `/version`, `/health`, `/story`, `/backup`, and unknown slash commands.
+- Kept `bot.py` as the composition root for `Bot`, `Dispatcher`, handler registration, startup, polling, version sync, and reminder loop startup.
+- Did not touch OCR, reminders, database schema, protocol parsing, food/insulin/undo flows, or production deployment.
+
 ## 1.1.1 - 2026-06-11
 
 - UX cleanup release without new product scope, LLM, PostgreSQL, or architecture changes.

@@ -10,7 +10,7 @@
 
 ## Phase 1 - Stabilize MVP
 
-- Split the large `bot.py` into feature modules.
+- Split the large `bot.py` into feature modules. (Started in `1.2.0` with low-risk system handlers in `handlers/system.py`.)
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
 - Add a small health/check command for local diagnostics. (Done in `1.0.11` with `/health`.)

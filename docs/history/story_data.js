@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 30,
+  "count": 31,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -242,6 +242,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Cropped Telegram Web chat showing the stale `1.0.39` answer, then the corrected `/version` and `/health` responses from the restarted runtime with `1.1.0`.",
       "caption": "The live Telegram bot finally matches the local 1.1.0 release after replacing the stale runtime.",
       "version": "1.1.0"
+    },
+    {
+      "file": "2026-06-12_system_handlers_refactor_v1_2_0_working.png",
+      "image": "docs/history/2026-06-12_system_handlers_refactor_v1_2_0_working.png",
+      "role": "Phase 1 bot.py refactor",
+      "description": "Cropped Telegram Web chat showing the extracted system handlers still responding in uSugarBot `1.2.0`: `/help`, `/health`, `/story`, and `/backup`.",
+      "caption": "uSugarBot 1.2.0 proves the first safe bot.py split in the live chat: system handlers moved out, behavior stayed familiar.",
+      "version": "1.2.0"
     }
   ]
 };
