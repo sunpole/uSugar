@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.2 - 2026-06-12
+
+- Phase 3 `bot.py` refactor: moved basic glucose handlers into `handlers/glucose.py`.
+- Preserved command behavior for `/sugar` and `/status`.
+- Left ordinary glucose value input, HI/LOW/help shortcuts, multi-number flow, OCR, reminders, settings, food/insulin/undo, database schema, startup, and polling unchanged.
+- Kept `build_saved_sugar_text()` in `bot.py` because it is still shared by shortcuts, `/sugar` value processing, and OCR save flows.
+
 ## 1.2.1 - 2026-06-12
 
 - Phase 2 `bot.py` refactor: moved profile handlers into `handlers/profile.py`.
