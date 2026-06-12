@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.3 - 2026-06-12
+
+- Phase 4 `bot.py` refactor: moved glucose text flow into `handlers/glucose.py`.
+- Moved `process_sugar`, HI/LOW/help shortcuts, ordinary numeric text intake, multi-number flow, number-context choice, and saved-glucose feedback helper.
+- Kept command behavior and user-facing texts unchanged except for the module boundary.
+- Left OCR photo intake/callbacks, reminders, settings/WebApp, food/insulin/undo, logs, database schema, startup, and polling unchanged.
+
 ## 1.2.2 - 2026-06-12
 
 - Phase 3 `bot.py` refactor: moved basic glucose handlers into `handlers/glucose.py`.

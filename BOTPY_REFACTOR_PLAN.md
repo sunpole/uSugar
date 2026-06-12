@@ -1,38 +1,39 @@
 # BOTPY_REFACTOR_PLAN - uSugar
 
 Дата анализа: 2026-06-12
-Состояние проекта: `1.2.2`
+Состояние проекта: `1.2.3`
 
 Этот план описывает безопасное разделение `bot.py` без изменения поведения, без переноса функций прямо сейчас и без коммита. Цель - подготовить маршрут, который можно выполнять маленькими шагами и не сломать рабочий runtime.
 
 ## 1. Текущая структура `bot.py`
 
-Текущий `bot.py` после третьего безопасного шага `1.2.2`:
+Текущий `bot.py` после четвёртого безопасного шага `1.2.3`:
 
 - длина до шага: `1,276` строк;
 - длина после `1.2.0`: `1,122` строки;
 - длина после `1.2.1`: `1,140` физических строк;
 - длина после `1.2.2`: `1,107` физических строк;
-- вынесено за шаг `1.2.2`: `33` физические строки из `bot.py`;
-- функций и классов в `bot.py`: `40`;
+- длина после `1.2.3`: `912` физических строк;
+- вынесено за шаг `1.2.3`: `195` физических строк из `bot.py`;
+- функций и классов в `bot.py`: `33`;
 - системных функций/регистраторов в `handlers/system.py`: `10`;
 - профильных функций/регистраторов в `handlers/profile.py`: `6`;
 - информационных функций/регистраторов в `handlers/info.py`: `4`;
-- glucose функций/регистраторов в `handlers/glucose.py`: `4`;
-- зарегистрированных обработчиков Telegram в `bot.py`: `29` маркеров `@dp.message(...)`, `@dp.callback_query(...)` или `dp.*.register(...)`;
-- системные, профильные, информационные и базовые glucose-команды теперь регистрируются явно через `register_system_handlers(dp)`, `register_info_handlers(dp)`, `register_profile_handlers(dp, UserState)` и `register_glucose_handlers(dp, UserState)`.
+- glucose функций/регистраторов в `handlers/glucose.py`: `10`;
+- зарегистрированных обработчиков Telegram в `bot.py`: `24` маркера `@dp.message(...)`, `@dp.callback_query(...)` или `dp.*.register(...)`;
+- системные, профильные, информационные и glucose-команды/text flow теперь регистрируются явно через `register_system_handlers(dp)`, `register_info_handlers(dp)`, `register_profile_handlers(dp, UserState)` и `register_glucose_handlers(dp, UserState)`.
 
 ### Основные зоны внутри файла
 
 | Зона | Примерные строки | Что лежит внутри |
 | --- | --- | --- |
 | Импорты и runtime globals | 1-40 | `aiogram`, `config`, `db`, `usugar_*`, `Dispatcher`, `MemoryStorage`, `logging` |
-| Вспомогательные helper-функции | 42-190 | URL builders, protocol summary, timestamp formatting, saved sugar text, follow-up text |
+| Вспомогательные helper-функции | 42-110 | URL builders, protocol summary, timestamp formatting, follow-up text |
 | FSM и общие расчётные wrapper-helpers | 161-196 | `UserState`, `get_isf`, `get_ic_ratio`, `get_meal_bonus`, `round_to_step` |
-| Глобальные перехваты и обработка "просто текста" | 196-343 | HI/LOW/HELP shortcuts, number parsing, multi-number flow, number confirmation |
+| Глобальные перехваты и обработка "просто текста" | `handlers/glucose.py` | HI/LOW/HELP shortcuts, number parsing, multi-number flow, number confirmation |
 | Системные команды | `handlers/system.py` | `/version`, `/health`, `/backup`, `/story`, `/start`, `/help`, unknown slash commands |
 | Profile / info commands | `handlers/profile.py`, `handlers/info.py` | `/setname`, `/whoami`, `/formula`, `/ocr`, `/ocrlog`; OCR photo intake/callbacks не тронуты |
-| Sugar / status / settings / webapp / undo | 566-766 | `/sugar` starter и `/status` уже в `handlers/glucose.py`; `process_sugar`, `/settings`, `web_app_data`, `/undo` остаются в `bot.py` |
+| Sugar / status / settings / webapp / undo | 180-510 | `/sugar`, `/status`, `process_sugar`, HI/LOW/help, number parsing and multi-number flow уже в `handlers/glucose.py`; `/settings`, `web_app_data`, `/undo` остаются в `bot.py` |
 | Insulin / food / logs | 766-1003 | `/insulin`, `/food`, `/log`, журналные FSM-переходы |
 | OCR intake and confirmation | 1002-1177 | `photo_intake`, OCR callback, save/manual confirmation |
 | Reminders and reminder loop | 1175-1283 | `/reminders`, `send_due_reminders`, `reminder_loop` |
@@ -55,7 +56,7 @@
 - `handlers/system.py` - system command handlers and unknown slash-command handler registration.
 - `handlers/profile.py` - `/setname`, `/whoami`, `process_name`, `filter_name`.
 - `handlers/info.py` - `/formula`, `/ocr`, `/ocrlog`.
-- `handlers/glucose.py` - `/sugar` starter and `/status`.
+- `handlers/glucose.py` - `/sugar`, `/status`, manual sugar input, HI/LOW/help shortcuts, multi-number flow, number-context choice, and saved sugar feedback text.
 - `common/text.py` - shared `with_version()` and `build_story_url()`.
 - `common/fsm.py` - shared `clear_command_state()`.
 
@@ -186,14 +187,14 @@ common/
 
 ### Шаг 3. Глюкоза и простые реакции
 
-Статус: частично выполнено в `1.2.2`.
+Статус: выполнено в `1.2.3`.
 
 В `1.2.2` вынесено:
 
 - `/sugar`
 - `/status`
 
-Оставлено в `bot.py` без изменений:
+В `1.2.3` дополнительно вынесено:
 
 - `global_hilo_help`
 - `number_or_text_handler`
@@ -202,10 +203,20 @@ common/
 - `process_sugar`
 - `build_saved_sugar_text`
 
+Оставлено в `bot.py` без изменений:
+
+- OCR photo intake/callbacks/manual OCR flow;
+- settings/WebApp;
+- food/insulin/undo;
+- logs;
+- reminders;
+- database schema;
+- startup/main/polling.
+
 Почему:
 
 - это центральный пользовательский сценарий, но он уже опирается на готовые pure helpers;
-- можно оставить db-save внутри handler и только разнести код по файлам.
+- db-save остался внутри glucose handler module, без изменения пользовательского поведения.
 
 Риск:
 
@@ -213,13 +224,12 @@ common/
 - сдвиг текста high/low/help;
 - тесты `test_usugar_logic.py` и `test_command_surface.py`.
 
-### Шаг 4. `/settings`, `/status`, `/log`
+### Шаг 4. `/settings`, `/log`
 
 Выносить:
 
 - `/settings`
 - `handle_webapp_data`
-- `/status`
 - `/log`
 - `build_protocol_summary`
 
@@ -367,19 +377,19 @@ common/
 - startup/polling composition changes;
 - любые попытки одновременно менять `bot.py`, OCR и reminder logic.
 
-## 8. Что делать после версии 1.2.2
+## 8. Что делать после версии 1.2.3
 
-После `1.2.2` стоит двигаться к такому состоянию маленькими проверяемыми шагами:
+После `1.2.3` стоит двигаться к такому состоянию маленькими проверяемыми шагами:
 
 - `bot.py` постепенно становится composition root и в основном собирает приложение;
-- оставшаяся glucose FSM-логика/settings/logs переезжают в отдельные handler modules;
+- settings/logs переезжают в отдельные handler modules;
 - OCR flow выносится отдельно, но поведение не меняется;
 - reminder loop выносится отдельно и продолжает использовать тот же `db` и `usugar_reminders`;
 - все 66 тестов остаются зелёными;
 - текстовые поверхности не меняются неожиданно;
 - никакого нового функционала в процессе распила не добавляется.
 
-## 9. Что отложить после 1.2.2
+## 9. Что отложить после 1.2.3
 
 Лучше не лезть до стабильного разделения:
 

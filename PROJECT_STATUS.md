@@ -6,7 +6,7 @@ Date: 2026-06-12
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.2.2` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, and the first three safe `bot.py` split phases are now implemented and tested.
+The current working code identifies itself as version `1.2.3` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, and the first four safe `bot.py` split phases are now implemented and tested.
 
 ## Comparison Summary
 
@@ -59,7 +59,7 @@ Manual input helpers and food-dose calculation logic were moved into `usugar_log
 
 The static settings page was smoke-tested locally through `http://127.0.0.1:8001/settings.html`; it returned HTTP 200.
 
-Live Telegram Web testing confirmed earlier versions. Historical screenshots are indexed in `docs/history/SCREENSHOT_STORY.md`; public-history screenshots are redacted where Telegram values should not be shown. Version `1.0.39` added `story.html`, an interactive page generated from that screenshot history. Version `1.1.0` focused on stability rather than large new features; version `1.1.1` kept the same scope and cleaned up the daily Telegram UX. Version `1.2.0` started the safe `bot.py` split by moving only system handlers; version `1.2.1` continued it with profile and info/OCR-status handlers; version `1.2.2` moved only the basic `/sugar` starter and `/status` into `handlers/glucose.py`.
+Live Telegram Web testing confirmed earlier versions. Historical screenshots are indexed in `docs/history/SCREENSHOT_STORY.md`; public-history screenshots are redacted where Telegram values should not be shown. Version `1.0.39` added `story.html`, an interactive page generated from that screenshot history. Version `1.1.0` focused on stability rather than large new features; version `1.1.1` kept the same scope and cleaned up the daily Telegram UX. Version `1.2.0` started the safe `bot.py` split by moving only system handlers; version `1.2.1` continued it with profile and info/OCR-status handlers; version `1.2.2` moved the basic `/sugar` starter and `/status` into `handlers/glucose.py`; version `1.2.3` moved the remaining glucose text flow into the same module.
 
 ## Current Implementation Focus
 
@@ -72,4 +72,4 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Use `PROJECT_AUDIT.md` and `DATA_SOURCES.md` to keep debts, placeholders, and external-source decisions visible.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
 - Keep `story.html` generated from `SCREENSHOT_STORY.md` so the public development history grows automatically with new screenshots.
-- Continue splitting the large `bot.py` into modules in small phases. After `1.2.2`, system handlers live in `handlers/system.py`, profile handlers in `handlers/profile.py`, formula/OCR-status handlers in `handlers/info.py`, and basic glucose command handlers in `handlers/glucose.py`; ordinary glucose value input, OCR photo intake/callbacks, reminders, database schema, protocol parsing, food/insulin/undo, and startup remain unchanged.
+- Continue splitting the large `bot.py` into modules in small phases. After `1.2.3`, system handlers live in `handlers/system.py`, profile handlers in `handlers/profile.py`, formula/OCR-status handlers in `handlers/info.py`, and glucose command/text handlers live in `handlers/glucose.py`; OCR photo intake/callbacks, reminders, database schema, protocol parsing, food/insulin/undo, logs, and startup remain unchanged.
