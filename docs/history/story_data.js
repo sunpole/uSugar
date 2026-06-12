@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 34,
+  "count": 35,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -274,6 +274,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.2.5` after moving `/log` and journal CSV export into `handlers/logs.py`; `/log`, `/help`, `/health`, and `/status` still answer normally.",
       "caption": "uSugarBot 1.2.5 proves the journal split: log handlers move out of bot.py while the live Telegram flow stays familiar.",
       "version": "1.2.5"
+    },
+    {
+      "file": "2026-06-12_therapy_handlers_refactor_v1_2_6_working.png",
+      "image": "docs/history/2026-06-12_therapy_handlers_refactor_v1_2_6_working.png",
+      "role": "Phase 7 bot.py refactor",
+      "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.2.6` after moving `/food`, `/insulin`, `/undo`, food/insulin FSM, undo confirmation, and short-insulin follow-up scheduling into `handlers/therapy.py`; smoke commands are handled without creating new test records.",
+      "caption": "uSugarBot 1.2.6 pulls therapy flows out of bot.py while the live chat keeps the food, insulin, undo, health, and status surfaces working.",
+      "version": "1.2.6"
     }
   ]
 };

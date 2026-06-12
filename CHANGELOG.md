@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.6 - 2026-06-12
+
+- Phase 7 `bot.py` refactor: moved therapy handlers into `handlers/therapy.py`.
+- Moved `/food`, `/insulin`, `/undo`, their FSM handlers, undo confirmation, and the short-insulin follow-up scheduling helper.
+- Preserved user-facing behavior and texts except for the module boundary.
+- Left OCR, reminders loop, settings/WebApp, logs, glucose handlers, database schema, startup, and polling unchanged.
+
 ## 1.2.5 - 2026-06-12
 
 - Phase 6 `bot.py` refactor: moved log handlers into `handlers/logs.py`.
