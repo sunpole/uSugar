@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 32,
+  "count": 33,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -258,6 +258,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Cropped Telegram Web chat showing uSugarBot `1.2.1` after moving profile and info/OCR-status handlers out of `bot.py`; `/ocrlog`, `/help`, and `/health` still answer normally.",
       "caption": "uSugarBot 1.2.1 keeps the daily chat familiar while profile and information handlers move into their own modules.",
       "version": "1.2.1"
+    },
+    {
+      "file": "2026-06-12_settings_handlers_refactor_v1_2_4_working.png",
+      "image": "docs/history/2026-06-12_settings_handlers_refactor_v1_2_4_working.png",
+      "role": "Phase 5 bot.py refactor",
+      "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing the 1.2.4 settings/WebApp handler split work and live `/health` plus `/version` answers from uSugarBot `1.2.4`.",
+      "caption": "uSugarBot 1.2.4 moves settings into its own handler module while the live Telegram bot keeps answering with the current release version.",
+      "version": "1.2.4"
     }
   ]
 };

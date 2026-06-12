@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.4 - 2026-06-12
+
+- Phase 5 `bot.py` refactor: moved settings/WebApp handlers into `handlers/settings.py`.
+- Moved `/settings`, `web_app_data`, `build_settings_url()`, and `build_protocol_summary()`.
+- Preserved command behavior and user-facing texts except for the module boundary.
+- Left OCR, reminders loop, food/insulin/undo, logs, database schema, startup, and polling unchanged.
+
 ## 1.2.3 - 2026-06-12
 
 - Phase 4 `bot.py` refactor: moved glucose text flow into `handlers/glucose.py`.

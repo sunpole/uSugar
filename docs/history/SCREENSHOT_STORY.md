@@ -67,6 +67,7 @@ After each major stage:
 | `2026-06-11_runtime_telegram_version_v1_1_0_public.png` | Live version fix proof | Cropped Telegram Web chat showing the stale `1.0.39` answer, then the corrected `/version` and `/health` responses from the restarted runtime with `1.1.0`. | "The live Telegram bot finally matches the local 1.1.0 release after replacing the stale runtime." |
 | `2026-06-12_system_handlers_refactor_v1_2_0_working.png` | Phase 1 bot.py refactor | Cropped Telegram Web chat showing the extracted system handlers still responding in uSugarBot `1.2.0`: `/help`, `/health`, `/story`, and `/backup`. | "uSugarBot 1.2.0 proves the first safe bot.py split in the live chat: system handlers moved out, behavior stayed familiar." |
 | `2026-06-12_profile_info_refactor_v1_2_1_working.png` | Phase 2 bot.py refactor | Cropped Telegram Web chat showing uSugarBot `1.2.1` after moving profile and info/OCR-status handlers out of `bot.py`; `/ocrlog`, `/help`, and `/health` still answer normally. | "uSugarBot 1.2.1 keeps the daily chat familiar while profile and information handlers move into their own modules." |
+| `2026-06-12_settings_handlers_refactor_v1_2_4_working.png` | Phase 5 bot.py refactor | Real desktop capture with Codex on the left and Telegram Web on the right, showing the 1.2.4 settings/WebApp handler split work and live `/health` plus `/version` answers from uSugarBot `1.2.4`. | "uSugarBot 1.2.4 moves settings into its own handler module while the live Telegram bot keeps answering with the current release version." |
 
 ## Future Screenshot Slots
 
