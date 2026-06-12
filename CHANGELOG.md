@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.3.1 - 2026-06-12
+
+- Added `LARGE_FILES_AUDIT.md` after closing the `bot.py` composition-root refactor.
+- Scanned active Python, HTML, and JS files for large-file risks and documented future split points.
+- Identified `settings.html`, `usugar_ocr.py`, `db.py`, `usugar_reminders.py`, `handlers/therapy.py`, `story.html`, and generated `docs/history/story_data.js` as the main large-file watchlist.
+- Kept runtime, business logic, OCR behavior, reminders, database schema, and Telegram handlers unchanged.
+
 ## 1.3.0 - 2026-06-12
 
 - Finalized `bot.py` as the composition root after the 1.2.x handler split.

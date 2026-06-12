@@ -1,7 +1,7 @@
 # AI_CONTEXT - uSugar Documentation Navigator
 
 Дата аудита документации: 2026-06-11
-Текущая версия проекта по активной документации: `1.3.0`
+Текущая версия проекта по активной документации: `1.3.1`
 
 Этот файл является навигатором по уже существующей документации uSugar. Он не заменяет `README.MD`, `PROJECT_STATUS.md`, `RUNBOOK.md` или `ROADMAP.md`, а помогает человеку или ИИ-агенту понять, какие документы читать первыми и каким документам доверять как актуальным.
 
@@ -28,7 +28,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `RUNBOOK.md`;
 - `CHANGELOG.md`.
 
-На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули и релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root.
+На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, а также `1.3.1` large-files audit для планирования следующих мини-модулей.
 
 Важно: публичная GitHub-документация в `docs/github_original/` полезна как исходная концепция, но не является точным описанием текущей локальной реализации.
 
@@ -101,6 +101,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `README.MD` - краткий обзор проекта, запуск, команды, текущий состав.
 - `PROJECT_STATUS.md` - актуальный статус проекта и что уже сделано.
 - `PROJECT_AUDIT.md` - подробный аудит структуры, функций, долгов и архитектуры.
+- `LARGE_FILES_AUDIT.md` - план дальнейшего разделения больших файлов после завершения `bot.py` refactor.
 - `RUNBOOK.md` - практические инструкции запуска, проверки, ngrok, OCR, backup.
 - `ROADMAP.md` - план развития по фазам.
 - `CHANGELOG.md` - история версий и изменений.
@@ -187,14 +188,15 @@ uSugar - локальный Telegram-бот для семейной поддер
 1. `docs/AI_CONTEXT.md` - текущий навигатор и границы доверия к документации.
 2. `PROJECT_STATUS.md` - актуальное состояние.
 3. `PROJECT_AUDIT.md` - подробный аудит проекта.
-4. `README.MD` - краткая рабочая картина.
-5. `RUNBOOK.md` - запуск, ngrok, OCR, backup, runtime.
-6. `ROADMAP.md` - план работ.
-7. `BOT_BRAIN.md` - поведение, напоминания, UX-правила.
-8. `DATA_SOURCES.md` - LLM/data safety.
-9. `TELEGRAM_SMOKE_TEST.md` - ручная проверка через пользователя.
-10. `docs/history/SCREENSHOT_STORY.md` - как обновлять историю и story page.
-11. `CHANGELOG.md`, `VERSIONING.md`, `STABLE_ARCHIVES.md` - версии, архивы, история изменений.
+4. `LARGE_FILES_AUDIT.md` - следующий архитектурный ориентир после `bot.py`, если задача касается распила файлов.
+5. `README.MD` - краткая рабочая картина.
+6. `RUNBOOK.md` - запуск, ngrok, OCR, backup, runtime.
+7. `ROADMAP.md` - план работ.
+8. `BOT_BRAIN.md` - поведение, напоминания, UX-правила.
+9. `DATA_SOURCES.md` - LLM/data safety.
+10. `TELEGRAM_SMOKE_TEST.md` - ручная проверка через пользователя.
+11. `docs/history/SCREENSHOT_STORY.md` - как обновлять историю и story page.
+12. `CHANGELOG.md`, `VERSIONING.md`, `STABLE_ARCHIVES.md` - версии, архивы, история изменений.
 
 ИИ-агенту не рекомендуется начинать с `docs/github_original/` или `docs/legacy_local/`, потому что там много старых целей, не равных текущему коду.
 
@@ -202,7 +204,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 
 ### Архитектура
 
-- Актуально: `PROJECT_AUDIT.md`, `README.MD`, `PROJECT_STATUS.md`.
+- Актуально: `PROJECT_AUDIT.md`, `LARGE_FILES_AUDIT.md`, `README.MD`, `PROJECT_STATUS.md`.
 - Практический запуск: `RUNBOOK.md`.
 - Историческая/плановая архитектура: `docs/github_original/NOTE_1.0.2.MD`, `docs/legacy_local/NOTE_1.0.2.MD`.
 
@@ -293,6 +295,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `README.MD` - общий рабочий обзор.
 - `PROJECT_STATUS.md` - актуальное состояние.
 - `PROJECT_AUDIT.md` - подробная карта структуры и долгов.
+- `LARGE_FILES_AUDIT.md` - карта следующих безопасных мини-рефакторингов после `bot.py`.
 - `RUNBOOK.md` - как запускать и проверять.
 - `ROADMAP.md` - куда развивать.
 - `CHANGELOG.md` - что было сделано по версиям.

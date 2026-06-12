@@ -6,7 +6,7 @@ Date: 2026-06-12
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.3.0` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, and the 1.3.0 composition-root cleanup are now implemented and tested.
+The current working code identifies itself as version `1.3.1` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, and the 1.3.1 large-file audit are now implemented and tested.
 
 ## Comparison Summary
 
@@ -70,7 +70,7 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Keep reminder configuration in the WebApp so the user can tune windows, basal reminders, trusted-contact alerts, and short-insulin follow-ups without editing `.env`.
 - Keep mistaken-record deletion narrow: `/undo` deletes only the current user's latest sugar or insulin record after confirmation.
 - Keep UX surfaces short and distinct: `/health` is technical runtime status, `/status` is the user's latest glucose record, and `/reminders` is schedule/reminder state.
-- Use `PROJECT_AUDIT.md` and `DATA_SOURCES.md` to keep debts, placeholders, and external-source decisions visible.
+- Use `PROJECT_AUDIT.md`, `LARGE_FILES_AUDIT.md`, and `DATA_SOURCES.md` to keep debts, future split points, placeholders, and external-source decisions visible.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
 - Keep `story.html` generated from `SCREENSHOT_STORY.md` so the public development history grows automatically with new screenshots.
 - Continue keeping `bot.py` as the composition root. After `1.3.0`, system handlers live in `handlers/system.py`, profile handlers in `handlers/profile.py`, formula/OCR-status handlers in `handlers/info.py`, glucose command/text handlers live in `handlers/glucose.py`, settings/WebApp handlers live in `handlers/settings.py`, log handlers live in `handlers/logs.py`, therapy handlers live in `handlers/therapy.py`, OCR photo/callback/manual flows live in `handlers/ocr.py`, reminder command/background runtime lives in `runtime/reminders.py`, and startup version sync lives in `runtime/startup.py`; database schema, medical logic, polling, and production deployment remain unchanged.
