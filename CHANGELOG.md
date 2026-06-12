@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.7 - 2026-06-12
+
+- Phase 8 `bot.py` refactor: moved OCR handlers into `handlers/ocr.py`.
+- Moved photo intake, OCR callbacks, confirmation flow, manual OCR value flow, and OCR-only helper wiring.
+- Preserved OCR behavior and user-facing texts except for the module boundary.
+- Left reminders loop, database schema, startup, polling, and glucose/settings/logs/therapy logic unchanged.
+
 ## 1.2.6 - 2026-06-12
 
 - Phase 7 `bot.py` refactor: moved therapy handlers into `handlers/therapy.py`.

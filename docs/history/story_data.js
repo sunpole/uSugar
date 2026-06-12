@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 35,
+  "count": 36,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -282,6 +282,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.2.6` after moving `/food`, `/insulin`, `/undo`, food/insulin FSM, undo confirmation, and short-insulin follow-up scheduling into `handlers/therapy.py`; smoke commands are handled without creating new test records.",
       "caption": "uSugarBot 1.2.6 pulls therapy flows out of bot.py while the live chat keeps the food, insulin, undo, health, and status surfaces working.",
       "version": "1.2.6"
+    },
+    {
+      "file": "2026-06-12_ocr_handlers_refactor_v1_2_7_working.png",
+      "image": "docs/history/2026-06-12_ocr_handlers_refactor_v1_2_7_working.png",
+      "role": "Phase 8 bot.py refactor",
+      "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.2.7` after moving photo intake, OCR callbacks, OCR confirmation, and manual OCR value flow into `handlers/ocr.py`; the smoke frame includes OCR log, help, health, and status responses without creating new OCR or glucose records.",
+      "caption": "uSugarBot 1.2.7 moves the OCR conversation out of bot.py while the live chat still reports the OCR journal and runtime health at the new version.",
+      "version": "1.2.7"
     }
   ]
 };
