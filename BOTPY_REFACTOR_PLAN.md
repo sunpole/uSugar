@@ -1,13 +1,13 @@
 # BOTPY_REFACTOR_PLAN - uSugar
 
 Дата анализа: 2026-06-12
-Состояние проекта: `1.2.7`
+Состояние проекта: `1.2.8`
 
 Этот план описывает безопасное разделение `bot.py` без изменения поведения, без переноса функций прямо сейчас и без коммита. Цель - подготовить маршрут, который можно выполнять маленькими шагами и не сломать рабочий runtime.
 
 ## 1. Текущая структура `bot.py`
 
-Текущий `bot.py` после восьмого безопасного шага `1.2.7`:
+Текущий `bot.py` после девятого безопасного шага `1.2.8`:
 
 - длина до шага: `1,276` строк;
 - длина после `1.2.0`: `1,122` строки;
@@ -18,8 +18,9 @@
 - длина после `1.2.5`: `714` физических строк;
 - длина после `1.2.6`: `433` физические строки;
 - длина после `1.2.7`: `256` физических строк;
-- вынесено за шаг `1.2.7`: `178` физических строк из `bot.py`;
-- функций и классов в `bot.py`: `6`;
+- длина после `1.2.8`: `143` физических строки;
+- вынесено за шаг `1.2.8`: `112` физических строк из `bot.py`;
+- функций и классов в `bot.py`: `3`;
 - системных функций/регистраторов в `handlers/system.py`: `10`;
 - профильных функций/регистраторов в `handlers/profile.py`: `6`;
 - информационных функций/регистраторов в `handlers/info.py`: `4`;
@@ -28,8 +29,9 @@
 - logs функций/регистраторов в `handlers/logs.py`: `4`;
 - therapy функций/регистраторов в `handlers/therapy.py`: `12`;
 - OCR функций/регистраторов в `handlers/ocr.py`: `5`;
-- зарегистрированных обработчиков Telegram в `bot.py`: `3` маркера `@dp.message(...)`, `@dp.callback_query(...)` или `dp.*.register(...)`;
-- системные, профильные, информационные, glucose-команды/text flow, settings/WebApp handlers, journal handlers, therapy handlers и OCR flow теперь регистрируются явно через `register_system_handlers(dp)`, `register_info_handlers(dp)`, `register_profile_handlers(dp, UserState)`, `register_glucose_handlers(dp, UserState)`, `register_settings_handlers(dp, UserState)`, `register_logs_handlers(dp, UserState)`, `register_therapy_handlers(dp, UserState)` и `register_ocr_handlers(dp, UserState)`.
+- reminder runtime функций/регистраторов в `runtime/reminders.py`: `4`;
+- зарегистрированных обработчиков Telegram в `bot.py`: `1` маркер `@dp.message(...)`, `@dp.callback_query(...)` или `dp.*.register(...)`;
+- системные, профильные, информационные, glucose-команды/text flow, settings/WebApp handlers, journal handlers, therapy handlers, OCR flow и reminder runtime теперь регистрируются явно через `register_system_handlers(dp)`, `register_info_handlers(dp)`, `register_profile_handlers(dp, UserState)`, `register_glucose_handlers(dp, UserState)`, `register_settings_handlers(dp, UserState)`, `register_logs_handlers(dp, UserState)`, `register_therapy_handlers(dp, UserState)`, `register_ocr_handlers(dp, UserState)` и `register_reminder_handlers(dp)`.
 
 ### Основные зоны внутри файла
 
@@ -44,9 +46,9 @@
 | Sugar / status / settings / webapp / undo | `handlers/glucose.py`, `handlers/settings.py`, `handlers/therapy.py` | `/sugar`, `/status`, glucose text flow, `/settings`, `web_app_data`, `/undo` |
 | Insulin / food / logs | `handlers/therapy.py`, `handlers/logs.py` | `/insulin`, `/food`, `/log`, journal FSM, therapy FSM |
 | OCR intake and confirmation | `handlers/ocr.py` | `photo_intake`, OCR callback, save/manual confirmation |
-| Reminders and reminder loop | 88-174 | `/reminders`, `send_due_reminders`, `reminder_loop` |
-| Unknown commands and random replies | 176-197 | unknown command handler registration and random friendly replies |
-| Startup and polling loop | 199-256 | `update_version_in_html`, `main`, `asyncio.run(main())` |
+| Reminders and reminder loop | `runtime/reminders.py` | `/reminders`, `send_due_reminders`, `reminder_loop` |
+| Unknown commands and random replies | 80-101 | unknown command handler registration and random friendly replies |
+| Startup and polling loop | 103-143 | `update_version_in_html`, `main`, `asyncio.run(main())` |
 
 ### Что уже вынесено из `bot.py`
 
@@ -69,6 +71,7 @@
 - `handlers/logs.py` - `/log`, journal FSM, and CSV export used by long journal responses.
 - `handlers/therapy.py` - `/food`, `/insulin`, `/undo`, food/insulin FSM, undo confirmation, and short-insulin follow-up scheduling.
 - `handlers/ocr.py` - photo intake, OCR callback handlers, OCR confirmation, and manual OCR value flow.
+- `runtime/reminders.py` - `/reminders`, due reminder delivery, and background reminder loop.
 - `common/text.py` - shared `with_version()` and `build_story_url()`.
 - `common/fsm.py` - shared `clear_command_state()`.
 
@@ -78,11 +81,10 @@
 
 `bot.py` напрямую зависит от:
 
-- `config` - версии, feature flags, default protocol, reminder constants;
-- `db` - все записи, чтение, удаление, reminder events;
-- `usugar_protocol` - reminder settings used by the reminder status/loop;
-- `usugar_reminders` - reminder state, keys, texts, due calculations;
-- `keyboards` - reminder and random-reply keyboards still used by remaining runtime code.
+- `config` - bot token, version, random-reply synonym lists;
+- `db` - startup database initialization;
+- handler/runtime modules - explicit registration and `reminder_loop`;
+- `aiogram` - `Bot`, `Dispatcher`, `MemoryStorage`, FSM state class, polling.
 
 ### Наиболее связные цепочки
 
@@ -93,7 +95,7 @@
 | `/settings`, `web_app_data` | `handlers/settings.py`, `db`, `usugar_protocol`, `keyboards` | вынесено, формирование и сохранение протокола |
 | `/insulin`, `/food`, `/undo`, `/log` | `handlers/therapy.py`, `handlers/logs.py`, `db`, `usugar_logic`, `usugar_reminders`, `csv`, `io`, `FSInputFile` | вынесено, много текста и несколько FSM-состояний |
 | OCR photo intake | `handlers/ocr.py`, `usugar_vision`, `usugar_ocr`, `db`, `keyboards`, `bot.download_file` | вынесено, самый тяжелый пользовательский handler-flow |
-| Reminders loop | `db`, `usugar_reminders`, `usugar_protocol`, `TelegramAPIError` | фоновые уведомления и дедупликация |
+| Reminders loop | `runtime/reminders.py`, `db`, `usugar_reminders`, `usugar_protocol`, `TelegramAPIError` | вынесено, фоновые уведомления и дедупликация |
 | Startup | `db.init_db()`, `update_version_in_html()`, `dp.start_polling()` | composition root и side effects |
 
 ### Дублирующиеся или уже готовые к выносу швы
@@ -106,7 +108,7 @@
 - `build_saved_sugar_text()` - одно место для feedback after save;
 - `schedule_insulin_followup_text()` - стык `db` + `usugar_reminders`;
 - `update_version_in_html()` - отдельный startup side effect;
-- `send_due_reminders()` - уже почти готовый runtime service;
+- `send_due_reminders()` - вынесен в `runtime/reminders.py`;
 - `photo_intake()` - вынесен в `handlers/ocr.py`;
 - `process_ocr_callback()`, `process_ocr_confirmation()`, `process_ocr_manual_value()` - вынесены как единый OCR flow.
 
@@ -312,16 +314,26 @@ common/
 
 ### Шаг 7. Reminders runtime
 
-Выносить:
+Статус: выполнено в `1.2.8`.
+
+Вынесено:
 
 - `reminders_status`
 - `send_due_reminders`
 - `reminder_loop`
+- `register_reminder_handlers`
 
-Почему последним:
+Почему это был последний крупный runtime-блок:
 
 - это фоновые уведомления, которые живут вокруг всего проекта;
 - здесь важны дедупликация и стабильность доставки.
+
+Оставлено в `bot.py` без изменений:
+
+- Bot/Dispatcher/MemoryStorage;
+- handler registration order;
+- `main()`, polling, retry loop, and reminder task startup;
+- database schema and startup side effects.
 
 Риск:
 
@@ -402,17 +414,19 @@ common/
 - startup/polling composition changes;
 - любые попытки одновременно менять `bot.py`, OCR и reminder logic.
 
-## 8. Что делать после версии 1.2.7
+## 8. Что делать после версии 1.2.8
 
-После `1.2.7` стоит двигаться к такому состоянию маленькими проверяемыми шагами:
+После `1.2.8` проект уже близок к такому состоянию:
 
-- `bot.py` постепенно становится composition root и в основном собирает приложение;
-- reminder status/loop выносится отдельно и продолжает использовать тот же `db` и `usugar_reminders`;
+- `bot.py` стал composition root и в основном собирает приложение;
+- reminder status/loop вынесен отдельно и продолжает использовать тот же `db` и `usugar_reminders`;
 - все 66 тестов остаются зелёными;
 - текстовые поверхности не меняются неожиданно;
 - никакого нового функционала в процессе распила не добавляется.
 
-## 9. Что отложить после 1.2.7
+Следующие шаги должны быть осторожнее обычного: если выносить startup, делать это только отдельным маленьким патчем и не менять polling/retry semantics.
+
+## 9. Что отложить после 1.2.8
 
 Лучше не лезть до стабильного разделения:
 
@@ -440,4 +454,4 @@ common/
 
 ## 11. Краткий вывод
 
-`bot.py` уже стал в основном composition root plus runtime loop: основные пользовательские command/FSM/OCR flows живут в handler modules. Самый безопасный следующий шаг - вынести reminder runtime отдельно, оставить запуск/polling в `bot.py` и не трогать database schema, OCR engines or startup side effects до полного подтверждения стабильности.
+`bot.py` уже стал composition root: основные пользовательские command/FSM/OCR flows живут в handler modules, а reminder command/background runtime живёт в `runtime/reminders.py`. Самый безопасный следующий шаг - стабилизировать это состояние и не трогать database schema, OCR engines or startup side effects до полного подтверждения стабильности.

@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.8 - 2026-06-12
+
+- Phase 9 `bot.py` refactor: moved reminders runtime into `runtime/reminders.py`.
+- Moved `/reminders`, `send_due_reminders()`, `reminder_loop()`, and reminder-only runtime wiring.
+- Preserved reminder behavior and user-facing texts except for the module boundary.
+- Left OCR, glucose, therapy, logs, settings, database schema, startup, polling, and production deployment unchanged.
+
 ## 1.2.7 - 2026-06-12
 
 - Phase 8 `bot.py` refactor: moved OCR handlers into `handlers/ocr.py`.

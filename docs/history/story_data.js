@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 36,
+  "count": 37,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -290,6 +290,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.2.7` after moving photo intake, OCR callbacks, OCR confirmation, and manual OCR value flow into `handlers/ocr.py`; the smoke frame includes OCR log, help, health, and status responses without creating new OCR or glucose records.",
       "caption": "uSugarBot 1.2.7 moves the OCR conversation out of bot.py while the live chat still reports the OCR journal and runtime health at the new version.",
       "version": "1.2.7"
+    },
+    {
+      "file": "2026-06-12_reminders_runtime_refactor_v1_2_8_working.png",
+      "image": "docs/history/2026-06-12_reminders_runtime_refactor_v1_2_8_working.png",
+      "role": "Phase 9 bot.py refactor",
+      "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.2.8` after moving `/reminders`, due-reminder delivery, and the background reminder loop into `runtime/reminders.py`; the smoke frame includes reminders, help, health, and status responses.",
+      "caption": "uSugarBot 1.2.8 pulls the reminder runtime out of bot.py, leaving the main file as a clean composition root while Telegram keeps the schedule status visible.",
+      "version": "1.2.8"
     }
   ]
 };
