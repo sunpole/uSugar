@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 31,
+  "count": 32,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -250,6 +250,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Cropped Telegram Web chat showing the extracted system handlers still responding in uSugarBot `1.2.0`: `/help`, `/health`, `/story`, and `/backup`.",
       "caption": "uSugarBot 1.2.0 proves the first safe bot.py split in the live chat: system handlers moved out, behavior stayed familiar.",
       "version": "1.2.0"
+    },
+    {
+      "file": "2026-06-12_profile_info_refactor_v1_2_1_working.png",
+      "image": "docs/history/2026-06-12_profile_info_refactor_v1_2_1_working.png",
+      "role": "Phase 2 bot.py refactor",
+      "description": "Cropped Telegram Web chat showing uSugarBot `1.2.1` after moving profile and info/OCR-status handlers out of `bot.py`; `/ocrlog`, `/help`, and `/health` still answer normally.",
+      "caption": "uSugarBot 1.2.1 keeps the daily chat familiar while profile and information handlers move into their own modules.",
+      "version": "1.2.1"
     }
   ]
 };

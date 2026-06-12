@@ -2,6 +2,14 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.1 - 2026-06-12
+
+- Phase 2 `bot.py` refactor: moved profile handlers into `handlers/profile.py`.
+- Moved info/OCR status handlers into `handlers/info.py`: `/formula`, `/ocr`, and `/ocrlog`.
+- Extracted shared FSM command-state clearing into `common/fsm.py`.
+- Preserved command behavior for `/setname`, `/whoami`, `/formula`, `/ocr`, and `/ocrlog`.
+- Did not touch OCR photo intake, OCR callbacks, manual OCR flow, reminders, database schema, food/insulin/undo flows, startup, or polling.
+
 ## 1.2.0 - 2026-06-12
 
 - Phase 1 `bot.py` refactor: moved low-risk system handlers into `handlers/system.py`.

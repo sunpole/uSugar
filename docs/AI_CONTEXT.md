@@ -1,7 +1,7 @@
 # AI_CONTEXT - uSugar Documentation Navigator
 
 Дата аудита документации: 2026-06-11
-Текущая версия проекта по активной документации: `1.2.0`
+Текущая версия проекта по активной документации: `1.2.1`
 
 Этот файл является навигатором по уже существующей документации uSugar. Он не заменяет `README.MD`, `PROJECT_STATUS.md`, `RUNBOOK.md` или `ROADMAP.md`, а помогает человеку или ИИ-агенту понять, какие документы читать первыми и каким документам доверять как актуальным.
 
@@ -28,7 +28,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `RUNBOOK.md`;
 - `CHANGELOG.md`.
 
-На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1` и первый безопасный этап разделения `bot.py` в `1.2.0`.
+На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, первый безопасный этап разделения `bot.py` в `1.2.0` и второй маленький этап `1.2.1` с profile/info handlers.
 
 Важно: публичная GitHub-документация в `docs/github_original/` полезна как исходная концепция, но не является точным описанием текущей локальной реализации.
 
@@ -59,8 +59,10 @@ uSugar - локальный Telegram-бот для семейной поддер
 - стабильные локальные архивы;
 - интерактивный исторический лендинг `story.html`;
 - генерация `docs/history/story_data.js` из `docs/history/SCREENSHOT_STORY.md`;
-- первый handler-модуль `handlers/system.py` для `/start`, `/help`, `/version`, `/health`, `/story`, `/backup` и unknown slash commands;
-- общий текстовый helper-модуль `common/text.py`;
+- handler-модуль `handlers/system.py` для `/start`, `/help`, `/version`, `/health`, `/story`, `/backup` и unknown slash commands;
+- handler-модуль `handlers/profile.py` для `/setname`, `/whoami` и FSM обработки имени;
+- handler-модуль `handlers/info.py` для `/formula`, `/ocr` и `/ocrlog`;
+- общие helper-модули `common/text.py` и `common/fsm.py`;
 - набор unit tests в `tests/`.
 
 ## 4. Незавершенные функции
@@ -83,7 +85,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - миграции SQLite;
 - CI/CD;
 - production deployment;
-- дальнейшее разбиение крупного `bot.py` на handlers/services после первого system-handler шага.
+- дальнейшее разбиение крупного `bot.py` на handlers/services после system/profile/info handler шагов.
 
 ## 5. Основные документы
 

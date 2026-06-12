@@ -6,7 +6,7 @@ Date: 2026-06-12
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.2.0` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, and the first safe `bot.py` split are now implemented and tested.
+The current working code identifies itself as version `1.2.1` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, and the first two safe `bot.py` split phases are now implemented and tested.
 
 ## Comparison Summary
 
@@ -14,7 +14,7 @@ The current working code identifies itself as version `1.2.0` through `VERSION.j
 - Local is code-first and newer for implementation.
 - Local had many manual backup copies and legacy setup scripts; these were moved to `_archive/2026-06-04_initial_cleanup`.
 - `LICENSE` was copied from GitHub into the local project.
-- The active local runtime files are now the root `bot.py`, `config.py`, `db.py`, `keyboards.py`, `settings.html`, `.env`, `usugar.db`, the helper modules `usugar_logic.py`, `usugar_export.py`, `usugar_ocr.py`, `usugar_vision.py`, `usugar_brain.py`, `usugar_reminders.py`, `usugar_protocol.py`, and the first handler/common modules `handlers/system.py` and `common/text.py`.
+- The active local runtime files are now the root `bot.py`, `config.py`, `db.py`, `keyboards.py`, `settings.html`, `.env`, `usugar.db`, the helper modules `usugar_logic.py`, `usugar_export.py`, `usugar_ocr.py`, `usugar_vision.py`, `usugar_brain.py`, `usugar_reminders.py`, `usugar_protocol.py`, the handler modules `handlers/system.py`, `handlers/profile.py`, `handlers/info.py`, and the common modules `common/text.py`, `common/fsm.py`.
 
 ## Security Notes
 
@@ -53,13 +53,13 @@ Use `DOCS_INDEX.md` as the local documentation entry point.
 
 ## Logic Stabilization
 
-Manual input helpers and food-dose calculation logic were moved into `usugar_logic.py` and covered by unit tests in `tests/test_usugar_logic.py`. OCR aggregation, backup export, version handling, database persistence, command-surface sync, glucose feedback, protocol parsing, reminder state, follow-up reminder storage, settings prefill, undo deletion, and the first system-handler split now also have tests or command-surface coverage.
+Manual input helpers and food-dose calculation logic were moved into `usugar_logic.py` and covered by unit tests in `tests/test_usugar_logic.py`. OCR aggregation, backup export, version handling, database persistence, command-surface sync, glucose feedback, protocol parsing, reminder state, follow-up reminder storage, settings prefill, undo deletion, and the first profile/info handler split phases now also have tests or command-surface coverage.
 
 `health_check.py` now also checks that `ngrok` is available before a WebApp tunnel test.
 
 The static settings page was smoke-tested locally through `http://127.0.0.1:8001/settings.html`; it returned HTTP 200.
 
-Live Telegram Web testing confirmed earlier versions. Historical screenshots are indexed in `docs/history/SCREENSHOT_STORY.md`; public-history screenshots are redacted where Telegram values should not be shown. Version `1.0.39` added `story.html`, an interactive page generated from that screenshot history. Version `1.1.0` focused on stability rather than large new features; version `1.1.1` kept the same scope and cleaned up the daily Telegram UX. Version `1.2.0` starts the safe `bot.py` split by moving only system handlers.
+Live Telegram Web testing confirmed earlier versions. Historical screenshots are indexed in `docs/history/SCREENSHOT_STORY.md`; public-history screenshots are redacted where Telegram values should not be shown. Version `1.0.39` added `story.html`, an interactive page generated from that screenshot history. Version `1.1.0` focused on stability rather than large new features; version `1.1.1` kept the same scope and cleaned up the daily Telegram UX. Version `1.2.0` started the safe `bot.py` split by moving only system handlers; version `1.2.1` continues it with profile and info/OCR-status handlers.
 
 ## Current Implementation Focus
 
@@ -72,4 +72,4 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Use `PROJECT_AUDIT.md` and `DATA_SOURCES.md` to keep debts, placeholders, and external-source decisions visible.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
 - Keep `story.html` generated from `SCREENSHOT_STORY.md` so the public development history grows automatically with new screenshots.
-- Continue splitting the large `bot.py` into modules in small phases. After `1.2.0`, system handlers live in `handlers/system.py`; OCR, reminders, database schema, protocol parsing, food/insulin/undo, and startup remain unchanged.
+- Continue splitting the large `bot.py` into modules in small phases. After `1.2.1`, system handlers live in `handlers/system.py`, profile handlers in `handlers/profile.py`, and formula/OCR-status handlers in `handlers/info.py`; OCR photo intake/callbacks, reminders, database schema, protocol parsing, food/insulin/undo, and startup remain unchanged.

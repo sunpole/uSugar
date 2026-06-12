@@ -1,32 +1,35 @@
 # BOTPY_REFACTOR_PLAN - uSugar
 
 Дата анализа: 2026-06-12
-Состояние проекта: `1.2.0`
+Состояние проекта: `1.2.1`
 
 Этот план описывает безопасное разделение `bot.py` без изменения поведения, без переноса функций прямо сейчас и без коммита. Цель - подготовить маршрут, который можно выполнять маленькими шагами и не сломать рабочий runtime.
 
 ## 1. Текущая структура `bot.py`
 
-Текущий `bot.py` после первого безопасного шага `1.2.0`:
+Текущий `bot.py` после второго безопасного шага `1.2.1`:
 
 - длина до шага: `1,276` строк;
-- длина после шага: `1,122` строки;
-- вынесено: `154` строки из `bot.py`;
-- функций и классов в `bot.py`: `50`;
-- системных функций/регистраторов в `handlers/system.py`: `11`;
-- зарегистрированных обработчиков Telegram в `bot.py`: `42` маркера `@dp.message(...)`, `@dp.callback_query(...)` или `dp.*.register(...)`;
-- системные команды теперь регистрируются явно через `register_system_handlers(dp)`.
+- длина после `1.2.0`: `1,122` строки;
+- длина после `1.2.1`: `1,050` строк;
+- вынесено за шаг `1.2.1`: `72` строки из `bot.py`;
+- функций и классов в `bot.py`: `42`;
+- системных функций/регистраторов в `handlers/system.py`: `10`;
+- профильных функций/регистраторов в `handlers/profile.py`: `6`;
+- информационных функций/регистраторов в `handlers/info.py`: `4`;
+- зарегистрированных обработчиков Telegram в `bot.py`: `33` маркера `@dp.message(...)`, `@dp.callback_query(...)` или `dp.*.register(...)`;
+- системные, профильные и информационные команды теперь регистрируются явно через `register_system_handlers(dp)`, `register_info_handlers(dp)` и `register_profile_handlers(dp, UserState)`.
 
 ### Основные зоны внутри файла
 
 | Зона | Примерные строки | Что лежит внутри |
 | --- | --- | --- |
 | Импорты и runtime globals | 1-40 | `aiogram`, `config`, `db`, `usugar_*`, `Dispatcher`, `MemoryStorage`, `logging` |
-| Вспомогательные helper-функции | 42-190 | `clear_command_state`, `with_version`, URL builders, protocol summary, timestamp formatting, saved sugar text, follow-up text |
-| FSM и общие расчётные wrapper-helpers | 161-196 | `UserState`, `get_isf`, `get_ic_ratio`, `get_meal_bonus`, `round_to_step`, `filter_name` |
+| Вспомогательные helper-функции | 42-190 | URL builders, protocol summary, timestamp formatting, saved sugar text, follow-up text |
+| FSM и общие расчётные wrapper-helpers | 161-196 | `UserState`, `get_isf`, `get_ic_ratio`, `get_meal_bonus`, `round_to_step` |
 | Глобальные перехваты и обработка "просто текста" | 196-343 | HI/LOW/HELP shortcuts, number parsing, multi-number flow, number confirmation |
 | Системные команды | `handlers/system.py` | `/version`, `/health`, `/backup`, `/story`, `/start`, `/help`, unknown slash commands |
-| Help / formula / profile | 333-410 | `/formula`, `/ocr`, `/ocrlog`, `/setname`, `/whoami`; `/help` уже вынесен |
+| Profile / info commands | `handlers/profile.py`, `handlers/info.py` | `/setname`, `/whoami`, `/formula`, `/ocr`, `/ocrlog`; OCR photo intake/callbacks не тронуты |
 | Sugar / status / settings / webapp / undo | 566-766 | `/sugar`, `/status`, `/settings`, `web_app_data`, `/undo` |
 | Insulin / food / logs | 766-1003 | `/insulin`, `/food`, `/log`, журналные FSM-переходы |
 | OCR intake and confirmation | 1002-1177 | `photo_intake`, OCR callback, save/manual confirmation |
@@ -48,7 +51,10 @@
 - `usugar_export.py` - ZIP backup;
 - `keyboards.py` - reply/inline keyboards.
 - `handlers/system.py` - system command handlers and unknown slash-command handler registration.
+- `handlers/profile.py` - `/setname`, `/whoami`, `process_name`, `filter_name`.
+- `handlers/info.py` - `/formula`, `/ocr`, `/ocrlog`.
 - `common/text.py` - shared `with_version()` and `build_story_url()`.
+- `common/fsm.py` - shared `clear_command_state()`.
 
 ## 2. Карта зависимостей
 
@@ -148,12 +154,22 @@ common/
 
 ### Шаг 2. Профиль и базовые user-data flow
 
-Выносить:
+Статус: выполнено в `1.2.1`.
+
+Вынесено:
 
 - `/setname`
 - `/whoami`
 - `filter_name`
 - `process_name`
+
+Также в `1.2.1` вынесены информационные команды:
+
+- `/formula`
+- `/ocr`
+- `/ocrlog`
+
+Важно: OCR photo intake, OCR callbacks and manual OCR flow остались в `bot.py` и не менялись.
 
 Почему:
 
@@ -341,19 +357,19 @@ common/
 - startup/polling composition changes;
 - любые попытки одновременно менять `bot.py`, OCR и reminder logic.
 
-## 8. Что делать после версии 1.2.0
+## 8. Что делать после версии 1.2.1
 
-После `1.2.0` стоит двигаться к такому состоянию маленькими проверяемыми шагами:
+После `1.2.1` стоит двигаться к такому состоянию маленькими проверяемыми шагами:
 
 - `bot.py` постепенно становится composition root и в основном собирает приложение;
-- profile/glucose/settings/logs переезжают в отдельные handler modules;
+- glucose/settings/logs переезжают в отдельные handler modules;
 - OCR flow выносится отдельно, но поведение не меняется;
 - reminder loop выносится отдельно и продолжает использовать тот же `db` и `usugar_reminders`;
 - все 66 тестов остаются зелёными;
 - текстовые поверхности не меняются неожиданно;
 - никакого нового функционала в процессе распила не добавляется.
 
-## 9. Что отложить после 1.2.0
+## 9. Что отложить после 1.2.1
 
 Лучше не лезть до стабильного разделения:
 
