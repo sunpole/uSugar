@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.2.5 - 2026-06-12
+
+- Phase 6 `bot.py` refactor: moved log handlers into `handlers/logs.py`.
+- Moved `/log`, journal FSM handling, and CSV export helper code used only by the journal flow.
+- Preserved journal behavior and user-facing texts except for the module boundary.
+- Left OCR, reminders, food/insulin/undo, settings/WebApp, database schema, startup, and polling unchanged.
+
 ## 1.2.4 - 2026-06-12
 
 - Phase 5 `bot.py` refactor: moved settings/WebApp handlers into `handlers/settings.py`.

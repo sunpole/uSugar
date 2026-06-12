@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 33,
+  "count": 34,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -266,6 +266,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing the 1.2.4 settings/WebApp handler split work and live `/health` plus `/version` answers from uSugarBot `1.2.4`.",
       "caption": "uSugarBot 1.2.4 moves settings into its own handler module while the live Telegram bot keeps answering with the current release version.",
       "version": "1.2.4"
+    },
+    {
+      "file": "2026-06-12_logs_handlers_refactor_v1_2_5_working.png",
+      "image": "docs/history/2026-06-12_logs_handlers_refactor_v1_2_5_working.png",
+      "role": "Phase 6 bot.py refactor",
+      "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.2.5` after moving `/log` and journal CSV export into `handlers/logs.py`; `/log`, `/help`, `/health`, and `/status` still answer normally.",
+      "caption": "uSugarBot 1.2.5 proves the journal split: log handlers move out of bot.py while the live Telegram flow stays familiar.",
+      "version": "1.2.5"
     }
   ]
 };
