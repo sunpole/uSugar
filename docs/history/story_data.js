@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 37,
+  "count": 38,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -298,6 +298,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.2.8` after moving `/reminders`, due-reminder delivery, and the background reminder loop into `runtime/reminders.py`; the smoke frame includes reminders, help, health, and status responses.",
       "caption": "uSugarBot 1.2.8 pulls the reminder runtime out of bot.py, leaving the main file as a clean composition root while Telegram keeps the schedule status visible.",
       "version": "1.2.8"
+    },
+    {
+      "file": "2026-06-12_composition_root_v1_3_0_working.png",
+      "image": "docs/history/2026-06-12_composition_root_v1_3_0_working.png",
+      "role": "Final composition root cleanup",
+      "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.3.0` after moving startup version sync into `runtime/startup.py`; the fresh `/help` response includes `/start` and `/help` and confirms the current version.",
+      "caption": "uSugarBot 1.3.0 closes the bot.py split: the main file now composes the runtime while Telegram shows the full command surface at the new version.",
+      "version": "1.3.0"
     }
   ]
 };

@@ -1,7 +1,7 @@
 # AI_CONTEXT - uSugar Documentation Navigator
 
 Дата аудита документации: 2026-06-11
-Текущая версия проекта по активной документации: `1.2.8`
+Текущая версия проекта по активной документации: `1.3.0`
 
 Этот файл является навигатором по уже существующей документации uSugar. Он не заменяет `README.MD`, `PROJECT_STATUS.md`, `RUNBOOK.md` или `ROADMAP.md`, а помогает человеку или ИИ-агенту понять, какие документы читать первыми и каким документам доверять как актуальным.
 
@@ -28,7 +28,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `RUNBOOK.md`;
 - `CHANGELOG.md`.
 
-На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, первый безопасный этап разделения `bot.py` в `1.2.0`, второй маленький этап `1.2.1` с profile/info handlers, третий маленький этап `1.2.2` с basic glucose handlers, четвёртый этап `1.2.3` с glucose text flow, пятый этап `1.2.4` с settings/WebApp handlers, шестой этап `1.2.5` с log handlers, седьмой этап `1.2.6` с therapy handlers, восьмой этап `1.2.7` с OCR flow handlers и девятый этап `1.2.8` с reminders runtime.
+На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули и релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root.
 
 Важно: публичная GitHub-документация в `docs/github_original/` полезна как исходная концепция, но не является точным описанием текущей локальной реализации.
 
@@ -68,6 +68,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - handler-модуль `handlers/therapy.py` для `/food`, `/insulin`, `/undo`, food/insulin FSM, undo confirmation и short-insulin follow-up scheduling;
 - handler-модуль `handlers/ocr.py` для photo intake, OCR callbacks, OCR confirmation flow и manual OCR value flow;
 - runtime-модуль `runtime/reminders.py` для `/reminders`, due-reminder delivery и background reminder loop;
+- runtime-модуль `runtime/startup.py` для startup-only синхронизации версии в `settings.html`;
 - общие helper-модули `common/text.py` и `common/fsm.py`;
 - набор unit tests в `tests/`.
 
@@ -91,7 +92,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - миграции SQLite;
 - CI/CD;
 - production deployment;
-- дальнейшее разбиение startup/composition root после system/profile/info/glucose/settings/logs/therapy/OCR/reminders шагов.
+- дальнейшая production-подготовка без расширения `bot.py` новыми пользовательскими flows.
 
 ## 5. Основные документы
 

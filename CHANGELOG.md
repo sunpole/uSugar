@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.3.0 - 2026-06-12
+
+- Finalized `bot.py` as the composition root after the 1.2.x handler split.
+- Moved the startup-only `update_version_in_html()` helper into `runtime/startup.py`.
+- Kept `main()`, polling, retry behavior, handler registration order, OCR, reminders, database schema, and medical logic unchanged.
+- Updated `/help` so the visible command surface includes `/start` and `/help`.
+- Diagnosed OCR as disabled by configuration/default when `USUGAR_OCR_ENABLED` is not enabled locally.
+- Diagnosed GitHub Pages as build/artifact successful but deploy job failed with a generic GitHub Pages deployment error visible in public Actions logs.
+
 ## 1.2.8 - 2026-06-12
 
 - Phase 9 `bot.py` refactor: moved reminders runtime into `runtime/reminders.py`.
