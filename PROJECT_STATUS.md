@@ -6,7 +6,7 @@ Date: 2026-06-12
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.3.1` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, and the 1.3.1 large-file audit are now implemented and tested.
+The current working code identifies itself as version `1.3.2` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, and the 1.3.2 local runtime/OCR verification pass are now implemented and tested.
 
 ## Comparison Summary
 
@@ -65,7 +65,7 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 
 - Keep OCR fast and safe: Libre2 CV is the current reliable local path; Tesseract is optional and EasyOCR remains disabled by default on this Windows runtime.
 - Keep `USUGAR_OCR_ENABLED=false` as a real safety switch: disabled OCR accepts the photo metadata but does not download or run recognition.
-- To enable local Libre2 OCR testing, set `USUGAR_OCR_ENABLED=true` in `.env` and restart the bot runtime; keep `.env` uncommitted.
+- To enable local Libre2 OCR testing, set `USUGAR_OCR_ENABLED=true` in `.env` and restart the bot runtime; keep `.env` uncommitted. Version `1.3.2` verified this path in the live local runtime and confirmed that `.env` must be UTF-8 without BOM for `python-dotenv` to read `BOT_TOKEN`.
 - Keep reminders useful but non-spammy: reminder delivery keys prevent duplicate background messages.
 - Keep reminder configuration in the WebApp so the user can tune windows, basal reminders, trusted-contact alerts, and short-insulin follow-ups without editing `.env`.
 - Keep mistaken-record deletion narrow: `/undo` deletes only the current user's latest sugar or insulin record after confirmation.
@@ -75,3 +75,10 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Keep `story.html` generated from `SCREENSHOT_STORY.md` so the public development history grows automatically with new screenshots.
 - Continue keeping `bot.py` as the composition root. After `1.3.0`, system handlers live in `handlers/system.py`, profile handlers in `handlers/profile.py`, formula/OCR-status handlers in `handlers/info.py`, glucose command/text handlers live in `handlers/glucose.py`, settings/WebApp handlers live in `handlers/settings.py`, log handlers live in `handlers/logs.py`, therapy handlers live in `handlers/therapy.py`, OCR photo/callback/manual flows live in `handlers/ocr.py`, reminder command/background runtime lives in `runtime/reminders.py`, and startup version sync lives in `runtime/startup.py`; database schema, medical logic, polling, and production deployment remain unchanged.
 - GitHub Pages public Actions logs for run `27433398807` showed build/artifact success and a failed deploy job with the generic message "Deployment failed, try again later"; no local workflow file exists in this repository snapshot, so this is not currently diagnosed as a `story_data.js` or static build error.
+
+## 1.3.2 Runtime Verification Notes
+
+- Managed runtime was restarted with OCR enabled locally and reported `uSugarBot v1.3.2`.
+- Telegram Web showed real OCR responses for Libre2 screenshots through the local `libre2_cv_top_panel` path; Tesseract was still unavailable locally, as expected.
+- During live OCR smoke, Telegram Web focus/keyboard automation accidentally saved test glucose records. They were removed from `usugar.db`, and the database counts returned to the pre-smoke state.
+- Full command smoke should still be treated as partly manual in this desktop session because Telegram Web focus can move to reply-keyboard buttons instead of the message input.

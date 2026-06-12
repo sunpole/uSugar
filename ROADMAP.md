@@ -12,6 +12,7 @@
 
 - Split the large `bot.py` into feature modules. (Started in `1.2.0` with low-risk system handlers in `handlers/system.py`; continued in `1.2.1` with profile handlers in `handlers/profile.py` and info/OCR-status handlers in `handlers/info.py`; continued in `1.2.2` with basic glucose command handlers, in `1.2.3` with glucose text flow in `handlers/glucose.py`, in `1.2.4` with settings/WebApp handlers in `handlers/settings.py`, in `1.2.5` with log handlers in `handlers/logs.py`, in `1.2.6` with therapy handlers in `handlers/therapy.py`, in `1.2.7` with OCR flow handlers in `handlers/ocr.py`, in `1.2.8` with reminders runtime in `runtime/reminders.py`, and finalized in `1.3.0` by moving startup version sync into `runtime/startup.py` while keeping `bot.py` as the composition root.)
 - Audit remaining large files after the `bot.py` split. (Done in `1.3.1` with `LARGE_FILES_AUDIT.md`; no runtime logic changed.)
+- Verify the live local runtime with OCR enabled before the next feature/refactor phase. (Done in `1.3.2`; real Telegram Web OCR responses were observed, test records were cleaned, and `.env` remains local-only.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -34,7 +35,7 @@
 - Add safe Telegram photo intake before OCR calculations. (Done in `1.0.17` with `/ocr` and photo acknowledgements.)
 - Add OCR result aggregation rules before wiring OCR engines. (Done in `1.0.18`.)
 - Store OCR attempt metadata and ignored local runtime images for processing. (Started in `1.0.19`; image processing active in later OCR versions.)
-- Implement Libre2 screenshot OCR behind an explicit feature flag. (Local Libre2 CV path active.)
+- Implement Libre2 screenshot OCR behind an explicit feature flag. (Local Libre2 CV path active; live runtime verified in `1.3.2` with `USUGAR_OCR_ENABLED=true`.)
 - Make `USUGAR_OCR_ENABLED=false` skip heavy OCR completely. (Done in `1.1.0`.)
 - Compare OCR outputs and ask for manual confirmation on disagreement. (Done for current aggregator/confirmation flow.)
 - Add safety copy: the bot helps calculate, but does not replace medical advice.

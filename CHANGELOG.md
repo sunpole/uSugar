@@ -2,6 +2,16 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.3.2 - 2026-06-12
+
+- Enabled local OCR testing through `.env` with `USUGAR_OCR_ENABLED=true`; `.env` remains uncommitted.
+- Fixed the local `.env` encoding issue by saving it as UTF-8 without BOM so `python-dotenv` reads `BOT_TOKEN` correctly.
+- Restarted the managed runtime and confirmed the bot process starts as `uSugarBot v1.3.2`.
+- Confirmed real Libre2 OCR execution in Telegram Web: the local CV path recognized Libre2 screenshot values and reported `uSugarBot v1.3.2`.
+- Cleaned test glucose entries created during the live OCR/Telegram smoke so `usugar.db` returned to its pre-smoke journal counts.
+- Ran `py_compile` and the full unit test suite; all 66 tests passed.
+- Noted that Telegram Web keyboard/focus automation is unstable on this Windows desktop session and should be treated as partially manual for command-smoke verification.
+
 ## 1.3.1 - 2026-06-12
 
 - Added `LARGE_FILES_AUDIT.md` after closing the `bot.py` composition-root refactor.
