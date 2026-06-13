@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.4.1 - 2026-06-13
+
+- Added text fallbacks for `/undo` when Telegram reply buttons are hidden: `удалить последний сахар`, `удалить последний укол`, and `отмена`.
+- Kept `/undo` safe: text selection only chooses the record type; deletion still requires a separate explicit confirmation.
+- Added text alternatives for OCR confirmation: `сохранить`, `не сохранять`, `отмена`, and `ввести вручную`.
+- Added smart-food follow-up text actions after `50+40` / `50 40`: `сохранить еду`, `не сохранять`, and `отмена`.
+- Kept food saving disabled because there is no food journal table yet; `сохранить еду` explains that the calculation is not saved.
+- Updated `/help` with a short note about using words when buttons are not visible.
+
 ## 1.4.0 - 2026-06-13
 
 - Improved Settings WebApp prefill for user name and saved protocol data.

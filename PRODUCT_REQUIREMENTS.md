@@ -1,7 +1,7 @@
 # Product Requirements
 
 Date: 2026-06-13
-Version: 1.4.0
+Version: 1.4.1
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -25,6 +25,8 @@ Status in `1.4.0`: implemented for the current WebApp path. `/setname` remains a
 
 Status in `1.4.0`: partially implemented. Carb-sum inputs like `50+40` and `50 40` now trigger a direct food calculation without saving a record; single-number clarification remains available.
 
+Status in `1.4.1`: safety text fallbacks were added for collapsed Telegram buttons. The user can type `сохранить еду`, `не сохранять`, or `отмена` after a smart-food calculation; food saving remains disabled until a real food journal exists.
+
 ## Food Calculation
 
 - Inputs such as `50+40` or `50 40` should be interpreted as carbohydrate totals when the context points to food.
@@ -36,6 +38,8 @@ Status in `1.4.0`: partially implemented. Carb-sum inputs like `50+40` and `50 4
 
 Status in `1.4.0`: implemented for carb sums and `/food`. Freshness defaults to 60 minutes through `glucose_fresh_minutes`; `dose_reduction_percent` is stored in the protocol and applied to calculated totals.
 
+Status in `1.4.1`: quick food calculations still do not create journal records without a future explicit food-log implementation.
+
 ## OCR Sources
 
 - Keep the current Libre2 CV path as the active local OCR source.
@@ -43,6 +47,8 @@ Status in `1.4.0`: implemented for carb sums and `/food`. Freshness defaults to 
 - Add a future OCR source type for photos of a manual glucometer, often blurred or poorly lit.
 - OCR must not save glucose without explicit confirmation.
 - When OCR engines strongly disagree, the bot should ask for manual verification.
+
+Status in `1.4.1`: OCR confirmation accepts typed actions (`сохранить`, `ввести вручную`, `не сохранять`, `отмена`) in addition to buttons.
 
 ## Trusted Contact
 

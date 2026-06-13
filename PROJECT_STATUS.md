@@ -6,7 +6,7 @@ Date: 2026-06-13
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.4.0` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, and the 1.4.0 Settings WebApp + Smart Food Flow release are now implemented and tested.
+The current working code identifies itself as version `1.4.1` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, and the 1.4.1 UX Safety Commands release are now implemented and tested.
 
 ## Comparison Summary
 
@@ -73,6 +73,7 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Treat `/settings` as the preferred path for editing the display name and protocol; `/setname` remains a legacy fallback.
 - Smart food inputs like `50+40` and `50 40` now produce a calculation without saving a log entry.
 - Food correction uses `glucose_fresh_minutes` from the protocol, defaulting to 60 minutes; older glucose values trigger a fresh-measurement prompt instead of hidden correction.
+- Safety flows now support typed fallbacks when Telegram buttons are hidden: `/undo`, OCR confirmation, and smart-food confirmation can be controlled with short text commands while keeping explicit confirmation before saving or deletion.
 - Use `PROJECT_AUDIT.md`, `LARGE_FILES_AUDIT.md`, and `DATA_SOURCES.md` to keep debts, future split points, placeholders, and external-source decisions visible.
 - Use `PRODUCT_REQUIREMENTS.md` as the product direction source before starting the next implementation phase.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
@@ -98,3 +99,9 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Settings WebApp now prefills user name and protocol more robustly, including local fallback name storage and Telegram WebApp user fallback.
 - The WebApp includes food-calculation safety parameters: `glucose_fresh_minutes` and `dose_reduction_percent`.
 - The direct smart-food path calculates carb sums without writing to `glucose_log`, `insulin_log`, or OCR tables.
+
+## 1.4.1 UX Safety Notes
+
+- `/undo` now tells the user what to type if reply buttons are hidden and accepts text selection for sugar or insulin deletion.
+- OCR confirmation accepts typed actions: `сохранить`, `ввести вручную`, `не сохранять`, and `отмена`.
+- Smart-food calculations accept typed actions after `50+40` or `50 40`; food saving remains intentionally disabled until a food journal exists.

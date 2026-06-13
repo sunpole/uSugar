@@ -14,6 +14,7 @@
 - Audit remaining large files after the `bot.py` split. (Done in `1.3.1` with `LARGE_FILES_AUDIT.md`; no runtime logic changed.)
 - Verify the live local runtime with OCR enabled before the next feature/refactor phase. (Done in `1.3.2`; real Telegram Web OCR responses were observed, test records were cleaned, and `.env` remains local-only.)
 - Capture product requirements before starting `1.4.0` feature work. (Done in `1.3.3` with `PRODUCT_REQUIREMENTS.md`; no runtime behavior changed.)
+- Add text fallbacks for safety flows when Telegram buttons are hidden. (Done in `1.4.1` for `/undo`, OCR confirmation, and smart-food confirmation.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -53,6 +54,7 @@
 - Ask for a fresh glucose measurement if the last value is older than 60 minutes before using it for correction. (Done in `1.4.0`; configurable as `glucose_fresh_minutes`.)
 - Move rounding and dose-reduction rules into protocol parameters. (Partially done in `1.4.0`; `pen_step` and `dose_reduction_percent` are protocol fields.)
 - Keep friendly fallback replies for casual text.
+- Add typed confirmation/cancel fallbacks for smart-food calculations when reply buttons are collapsed. (Done in `1.4.1`; food saving stays disabled until a food journal exists.)
 
 ## Phase 3.5 - Reminder Brain
 
