@@ -2,6 +2,17 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.4.0 - 2026-06-13
+
+- Improved Settings WebApp prefill for user name and saved protocol data.
+- Added WebApp fields for food-calculation safety: fresh-glucose window and optional dose-reduction percentage.
+- Made the Settings WebApp denser for Telegram Mini App use with smaller spacing and compact calculation controls.
+- Marked `/setname` as a legacy/fallback path in `/help`; `/settings` is now the preferred place to edit the display name.
+- Added smart food calculation for inputs like `50+40` and `50 40`: the bot sums carbs, converts to XE, calculates dose from the current protocol, and does not save a journal entry.
+- Changed food correction freshness from the old hidden 15-minute rule to a protocol parameter defaulting to 60 minutes.
+- Updated `/food` flow to accept carbohydrate sums and explain when an older glucose value is not used for correction.
+- Added tests for smart carb sums, protocol food-safety parameters, WebApp fields, and `/setname` legacy help text.
+
 ## 1.3.3 - 2026-06-13
 
 - Added `PRODUCT_REQUIREMENTS.md` to capture product requirements before the next implementation phase.

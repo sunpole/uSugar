@@ -26,8 +26,8 @@
 
 - Connect `settings.html` to Telegram WebApp data flow.
 - Prefill `settings.html` from the current saved user protocol before editing. (Done in `1.1.0` through a signed-by-context local URL payload and localStorage fallback.)
-- Move user display-name editing into the Settings WebApp as the preferred path, while keeping `/setname` as a compatibility command until the WebApp flow is complete. (Captured in `PRODUCT_REQUIREMENTS.md` for future implementation.)
-- Re-check name and protocol prefill against the current database before changing the settings UX. (Captured in `PRODUCT_REQUIREMENTS.md`.)
+- Move user display-name editing into the Settings WebApp as the preferred path, while keeping `/setname` as a compatibility command until the WebApp flow is complete. (Implemented in `1.4.0`; `/setname` remains legacy/fallback.)
+- Re-check name and protocol prefill against the current database before changing the settings UX. (Implemented in `1.4.0` with stronger payload/localStorage/Telegram fallback.)
 - Validate user protocol values before saving.
 - Add a clear version display and compatibility note.
 - Make the settings form compact enough for mobile-first use. (Started in `1.0.38` with compact grid and collapsible advanced sections.)
@@ -48,10 +48,10 @@
 ## Phase 3.1 - Smart Daily Dialog
 
 - Keep the main Telegram keyboard minimal.
-- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin.
-- Treat `50+40` and `50 40` as carbohydrate totals when food context is clear.
-- Ask for a fresh glucose measurement if the last value is older than 60 minutes before using it for correction.
-- Move rounding and dose-reduction rules into protocol parameters.
+- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; carb sums now calculate directly, single numbers still use clarification.)
+- Treat `50+40` and `50 40` as carbohydrate totals when food context is clear. (Done in `1.4.0`.)
+- Ask for a fresh glucose measurement if the last value is older than 60 minutes before using it for correction. (Done in `1.4.0`; configurable as `glucose_fresh_minutes`.)
+- Move rounding and dose-reduction rules into protocol parameters. (Partially done in `1.4.0`; `pen_step` and `dose_reduction_percent` are protocol fields.)
 - Keep friendly fallback replies for casual text.
 
 ## Phase 3.5 - Reminder Brain

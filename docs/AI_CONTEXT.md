@@ -1,7 +1,7 @@
 # AI_CONTEXT - uSugar Documentation Navigator
 
 Дата аудита документации: 2026-06-13
-Текущая версия проекта по активной документации: `1.3.3`
+Текущая версия проекта по активной документации: `1.4.0`
 
 Этот файл является навигатором по уже существующей документации uSugar. Он не заменяет `README.MD`, `PROJECT_STATUS.md`, `RUNBOOK.md` или `ROADMAP.md`, а помогает человеку или ИИ-агенту понять, какие документы читать первыми и каким документам доверять как актуальным.
 
@@ -28,7 +28,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `RUNBOOK.md`;
 - `CHANGELOG.md`.
 
-На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, `1.3.1` large-files audit для планирования следующих мини-модулей, `1.3.2` live runtime/OCR verification pass, а также `1.3.3` product requirements capture перед следующим этапом реализации.
+На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, `1.3.1` large-files audit для планирования следующих мини-модулей, `1.3.2` live runtime/OCR verification pass, `1.3.3` product requirements capture, а также `1.4.0` Settings WebApp + Smart Food Flow.
 
 Важно: публичная GitHub-документация в `docs/github_original/` полезна как исходная концепция, но не является точным описанием текущей локальной реализации.
 
@@ -44,6 +44,9 @@ uSugar - локальный Telegram-бот для семейной поддер
 - SQLite-хранение пользователей, протокола, журналов, OCR-попыток и напоминаний;
 - Telegram WebApp настройки через `settings.html`;
 - prefill WebApp настроек из текущего сохранённого протокола через `/settings`;
+- редактирование имени через Settings WebApp как предпочтительный путь, с `/setname` как legacy fallback;
+- быстрый расчёт еды по суммам вроде `50+40` и `50 40` без сохранения записи в журнал;
+- протокольные параметры `glucose_fresh_minutes` и `dose_reduction_percent` для расчёта еды;
 - ZIP backup через `/backup`;
 - локальный health check;
 - локальный Libre2 OCR/CV-путь с подтверждением результата;
@@ -79,9 +82,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 
 - полноценные три надежные OCR-движка;
 - полностью автоматизированный Telegram Web smoke без участия пользователя или риска попадания фокуса в reply-кнопки;
-- предпочтительное редактирование имени через Settings WebApp вместо `/setname`;
-- smart dialog, который уточняет смысл чисел: сахар, еда или укол;
-- food calculation для выражений вроде `50+40` и свежесть сахара для коррекции;
+- дальнейшее расширение smart dialog за пределы carb-sum сценария;
 - будущие OCR-типы для обновленного Libre screenshot и фото ручного глюкометра;
 - полный trusted-contact consent/verification/quiet-hours flow;
 - надежное распознавание времени телефона/замера со скриншота;

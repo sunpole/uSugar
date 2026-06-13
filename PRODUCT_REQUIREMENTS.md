@@ -1,9 +1,9 @@
 # Product Requirements
 
 Date: 2026-06-13
-Version: 1.3.3
+Version: 1.4.0
 
-This document captures current product requirements before the next implementation phase. It is not an implementation plan and does not mean the features below are already complete.
+This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
 ## Settings WebApp
 
@@ -13,6 +13,8 @@ This document captures current product requirements before the next implementati
 - The form should fit comfortably inside Telegram Mini App on a phone.
 - The design should stay compact, practical, and easy to scan.
 
+Status in `1.4.0`: implemented for the current WebApp path. `/setname` remains available as a legacy/fallback command.
+
 ## Smart Dialog
 
 - The main Telegram keyboard should stay minimal.
@@ -20,6 +22,8 @@ This document captures current product requirements before the next implementati
 - The bot should understand numeric input and clarify whether the user means glucose, food, or insulin.
 - Friendly fallback replies should remain for casual or random messages.
 - The dialog should reduce user effort without hiding safety confirmations.
+
+Status in `1.4.0`: partially implemented. Carb-sum inputs like `50+40` and `50 40` now trigger a direct food calculation without saving a record; single-number clarification remains available.
 
 ## Food Calculation
 
@@ -29,6 +33,8 @@ This document captures current product requirements before the next implementati
 - The latest glucose value may be used only when it is fresh enough.
 - If the latest glucose value is older than 60 minutes, the bot should ask for a fresh measurement before using it for correction.
 - Rounding rules and any dose-reduction rules should be protocol parameters, not hidden constants.
+
+Status in `1.4.0`: implemented for carb sums and `/food`. Freshness defaults to 60 minutes through `glucose_fresh_minutes`; `dose_reduction_percent` is stored in the protocol and applied to calculated totals.
 
 ## OCR Sources
 
