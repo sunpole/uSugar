@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.3.3 - 2026-06-13
+
+- Added `PRODUCT_REQUIREMENTS.md` to capture product requirements before the next implementation phase.
+- Documented requirements for Settings WebApp name editing and prefill, compact Telegram Mini App layout, smart dialog input, food calculation, future OCR source types, trusted contact behavior, and deferred DeepSeek/product database/A4 diary/token work.
+- Updated roadmap, backlog, project status, and AI context to point future work at the product requirements document.
+- No runtime code, medical logic, database schema, or `.env` changes were made.
+
 ## 1.3.2 - 2026-06-12
 
 - Enabled local OCR testing through `.env` with `USUGAR_OCR_ENABLED=true`; `.env` remains uncommitted.

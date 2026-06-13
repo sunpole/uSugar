@@ -7,9 +7,12 @@ This file is a parking place for work that is intentionally outside the stable d
 ## OCR
 
 - Add a reliable small-text OCR path for phone time and Libre2 timestamp.
+- Add support for the updated Libre screenshot format with a long narrow screen and a smaller glucose number.
+- Add support for blurred photos of manual glucometers.
 - Compare before-crop and after-crop OCR results and record disagreements.
 - Add two additional reliable OCR engines or local fallbacks beyond the current Libre2 CV path.
 - Define a confidence policy for automatic save without manual confirmation.
+- Keep explicit confirmation required before saving OCR glucose until that confidence policy is implemented and tested.
 - Improve graph extraction from Libre2 screenshots into a useful trend summary.
 - Add OCR fixtures from redacted sample screenshots.
 
@@ -49,6 +52,29 @@ This file is a parking place for work that is intentionally outside the stable d
 - Add contact verification and revocation.
 - Add quiet hours and escalation rules.
 - Add separate trusted-contact message templates.
+- Make alert logic understandable and non-surprising for family use.
+
+## Settings WebApp
+
+- Move preferred display-name editing into the WebApp instead of relying on `/setname`.
+- Verify `/settings` prefill for both user name and protocol values from the database.
+- Keep the form compact enough for Telegram Mini App on a phone.
+- Preserve `/setname` only as a compatibility/fallback command until WebApp editing is complete.
+
+## Smart Dialog
+
+- Keep the main Telegram keyboard minimal.
+- Route ordinary numeric input through a smart clarification flow: glucose, food, or insulin.
+- Interpret `50+40` and `50 40` as carbohydrate totals in food context.
+- Keep friendly fallback replies for casual or random messages.
+- Avoid hiding safety confirmations behind automation.
+
+## Food Calculation
+
+- Use recent glucose only when it is fresh enough for correction.
+- Ask for a fresh measurement when the latest glucose is older than 60 minutes.
+- Move rounding and dose-reduction rules into protocol settings.
+- Keep calculation examples aligned with `BU`, `ICR`, `ISF`, and the saved user protocol.
 
 ## LLM
 
@@ -61,6 +87,7 @@ This file is a parking place for work that is intentionally outside the stable d
 
 - Decide whether deployment is local-only, VPS, or another controlled environment.
 - Add production `.env` template without secrets.
+- Rotate the Telegram bot token only in the final phase before production or public launch.
 - Add startup and monitoring docs.
 - Add CI checks for tests and syntax.
 - Decide how ngrok or a permanent HTTPS tunnel should be managed.
@@ -71,3 +98,8 @@ This file is a parking place for work that is intentionally outside the stable d
 - Add role checks before any family-wide or trusted-contact action.
 - Add a safe way to list known users.
 - Add an audit log for admin actions.
+
+## Product Database And Reports
+
+- Defer food/product database work until the smart daily flow is stable.
+- Defer printable A4 doctor diary until log structure, filtering, and export requirements are clearer.

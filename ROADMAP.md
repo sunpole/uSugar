@@ -13,6 +13,7 @@
 - Split the large `bot.py` into feature modules. (Started in `1.2.0` with low-risk system handlers in `handlers/system.py`; continued in `1.2.1` with profile handlers in `handlers/profile.py` and info/OCR-status handlers in `handlers/info.py`; continued in `1.2.2` with basic glucose command handlers, in `1.2.3` with glucose text flow in `handlers/glucose.py`, in `1.2.4` with settings/WebApp handlers in `handlers/settings.py`, in `1.2.5` with log handlers in `handlers/logs.py`, in `1.2.6` with therapy handlers in `handlers/therapy.py`, in `1.2.7` with OCR flow handlers in `handlers/ocr.py`, in `1.2.8` with reminders runtime in `runtime/reminders.py`, and finalized in `1.3.0` by moving startup version sync into `runtime/startup.py` while keeping `bot.py` as the composition root.)
 - Audit remaining large files after the `bot.py` split. (Done in `1.3.1` with `LARGE_FILES_AUDIT.md`; no runtime logic changed.)
 - Verify the live local runtime with OCR enabled before the next feature/refactor phase. (Done in `1.3.2`; real Telegram Web OCR responses were observed, test records were cleaned, and `.env` remains local-only.)
+- Capture product requirements before starting `1.4.0` feature work. (Done in `1.3.3` with `PRODUCT_REQUIREMENTS.md`; no runtime behavior changed.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -25,6 +26,8 @@
 
 - Connect `settings.html` to Telegram WebApp data flow.
 - Prefill `settings.html` from the current saved user protocol before editing. (Done in `1.1.0` through a signed-by-context local URL payload and localStorage fallback.)
+- Move user display-name editing into the Settings WebApp as the preferred path, while keeping `/setname` as a compatibility command until the WebApp flow is complete. (Captured in `PRODUCT_REQUIREMENTS.md` for future implementation.)
+- Re-check name and protocol prefill against the current database before changing the settings UX. (Captured in `PRODUCT_REQUIREMENTS.md`.)
 - Validate user protocol values before saving.
 - Add a clear version display and compatibility note.
 - Make the settings form compact enough for mobile-first use. (Started in `1.0.38` with compact grid and collapsible advanced sections.)
@@ -40,6 +43,16 @@
 - Compare OCR outputs and ask for manual confirmation on disagreement. (Done for current aggregator/confirmation flow.)
 - Add safety copy: the bot helps calculate, but does not replace medical advice.
 - Log confidence, source image metadata, and manual overrides.
+- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Captured in `PRODUCT_REQUIREMENTS.md`; not implemented yet.)
+
+## Phase 3.1 - Smart Daily Dialog
+
+- Keep the main Telegram keyboard minimal.
+- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin.
+- Treat `50+40` and `50 40` as carbohydrate totals when food context is clear.
+- Ask for a fresh glucose measurement if the last value is older than 60 minutes before using it for correction.
+- Move rounding and dose-reduction rules into protocol parameters.
+- Keep friendly fallback replies for casual text.
 
 ## Phase 3.5 - Reminder Brain
 
@@ -49,6 +62,7 @@
 - Add basal insulin reminder checks from the configured protocol time. (Done in `1.0.33`.)
 - Move reminder windows, basal toggles, and trusted-person settings into the WebApp. (Started in `1.0.34`; trusted contact ID added in `1.0.35`.)
 - Add trusted-person alert flow after long missing measurement windows. (Done in `1.0.35` for Telegram ID delivery.)
+- Finish trusted-contact consent, verification, disable/revoke flow, quiet hours, and clearer alert rules. (Captured in `PRODUCT_REQUIREMENTS.md`; future work.)
 - Add one-time follow-up reminders after food bolus/correction. (Started in `1.0.37` for logged short insulin.)
 
 ## Phase 4 - Production Shape
@@ -63,6 +77,7 @@
 - Review Tidepool, OpenAPS, DIAX, and Nightscout as reference sources before importing data.
 - Add a safe knowledge module for explanations and UX hints.
 - Add DeepSeek as a bounded helper layer only after prompt and privacy boundaries are documented.
+- Keep product database work and printable A4 doctor diary deferred until core daily flows are stable.
 
 Deferred work after `1.1.0` is tracked in `FUTURE_BACKLOG.md` so the roadmap stays focused on phase direction rather than every parked idea. Version `1.1.1` did not pull deferred functionality back into scope; it only cleaned the existing UX.
 

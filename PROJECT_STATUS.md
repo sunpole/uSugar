@@ -1,12 +1,12 @@
 # uSugar Project Status
 
-Date: 2026-06-12
+Date: 2026-06-13
 
 ## Current State
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.3.2` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, and the 1.3.2 local runtime/OCR verification pass are now implemented and tested.
+The current working code identifies itself as version `1.3.3` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, and the 1.3.3 product requirements capture are now documented and tested.
 
 ## Comparison Summary
 
@@ -71,6 +71,7 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Keep mistaken-record deletion narrow: `/undo` deletes only the current user's latest sugar or insulin record after confirmation.
 - Keep UX surfaces short and distinct: `/health` is technical runtime status, `/status` is the user's latest glucose record, and `/reminders` is schedule/reminder state.
 - Use `PROJECT_AUDIT.md`, `LARGE_FILES_AUDIT.md`, and `DATA_SOURCES.md` to keep debts, future split points, placeholders, and external-source decisions visible.
+- Use `PRODUCT_REQUIREMENTS.md` as the product direction source before starting the next implementation phase.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
 - Keep `story.html` generated from `SCREENSHOT_STORY.md` so the public development history grows automatically with new screenshots.
 - Continue keeping `bot.py` as the composition root. After `1.3.0`, system handlers live in `handlers/system.py`, profile handlers in `handlers/profile.py`, formula/OCR-status handlers in `handlers/info.py`, glucose command/text handlers live in `handlers/glucose.py`, settings/WebApp handlers live in `handlers/settings.py`, log handlers live in `handlers/logs.py`, therapy handlers live in `handlers/therapy.py`, OCR photo/callback/manual flows live in `handlers/ocr.py`, reminder command/background runtime lives in `runtime/reminders.py`, and startup version sync lives in `runtime/startup.py`; database schema, medical logic, polling, and production deployment remain unchanged.
@@ -82,3 +83,9 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Telegram Web showed real OCR responses for Libre2 screenshots through the local `libre2_cv_top_panel` path; Tesseract was still unavailable locally, as expected.
 - During live OCR smoke, Telegram Web focus/keyboard automation accidentally saved test glucose records. They were removed from `usugar.db`, and the database counts returned to the pre-smoke state.
 - Full command smoke should still be treated as partly manual in this desktop session because Telegram Web focus can move to reply-keyboard buttons instead of the message input.
+
+## 1.3.3 Product Requirements Notes
+
+- `PRODUCT_REQUIREMENTS.md` now captures the current product direction without implementing new behavior.
+- The next implementation phase should prioritize Settings WebApp name/prefill polish, smart dialog input, safer food calculation context, OCR source expansion planning, and trusted-contact consent/verification design.
+- DeepSeek/LLM, product database work, printable A4 doctor diary, and Telegram token rotation remain deferred until later phases.
