@@ -1,7 +1,7 @@
 # Release Plan
 
 Date: 2026-06-21
-Version: 1.5.2
+Version: 1.5.3
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -67,7 +67,27 @@ Exit criteria:
 - uNews dry-run/check passes for the new 1.5.2 patch note.
 - No local Telegram publication is performed.
 
-## 1.5.3 - Food Log
+## 1.5.3 - New Libre2 Narrow OCR Tuning
+
+Goal: improve only the updated Libre2 landscape screenshot source without weakening OCR safety.
+
+Status: implemented. The real `img/simple_new` files are 1280x576 landscape screenshots with the current value usually on the right side, not the earlier vertical synthetic narrow UI. Version `1.5.3` adds a right-side ROI and preprocessing variants for `libre2_narrow_updated`.
+
+Completed work:
+
+- Add `narrow_landscape_right_value` as a new Libre2 narrow variant.
+- Normalize landscape component strings like `1.4.1` into `14.1` inside the Libre2 ROI.
+- Improve `img/simple_new` smoke from 14 no-result frames to 9.
+- Keep all new Libre2 candidates manual-confirmation by default.
+- Confirm `img/simple` and `img/simple_gluk` counts did not regress.
+
+Exit criteria:
+
+- Full unit tests pass.
+- OCR smoke confirms better `img/simple_new` coverage and no old-Libre/glucometer regression.
+- uNews patch note passes local check only; real publication is GitHub-first.
+
+## 1.5.4 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -85,7 +105,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.5.4 - Smart Daily Dialog
+## 1.5.5 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 

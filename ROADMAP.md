@@ -19,6 +19,7 @@
 - Rebuild the current-state map and release-reporting workflow after the pause. (Done in `1.4.3` with `CURRENT_STATE.md`, `MANUAL_TELEGRAM_TEST_PLAN.md`, and `PATCH_NOTIFICATION_RULES.md`.)
 - Map open work and release targets before the next feature phase. (Done in `1.4.4` with `OPEN_WORK.md` and `RELEASE_PLAN.md`.)
 - Audit real OCR behavior and uNews publication failure before continuing OCR feature work. (Done in `1.5.2` with `OCR_REALITY_REPORT.md`, `scripts/ocr_smoke.py`, `TEXT_INTEGRITY_REPORT.md`, and `UNEWS_PUBLISHING_AUDIT.md`.)
+- Tune the updated Libre2 landscape screenshot path before expanding into other OCR sources. (Done in `1.5.3`; `img/simple_new` no-result frames dropped from 14/18 to 9/18, and new candidates remain manual.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -48,7 +49,7 @@
 - Compare OCR outputs and ask for manual confirmation on disagreement. (Done for current aggregator/confirmation flow.)
 - Add safety copy: the bot helps calculate, but does not replace medical advice.
 - Log confidence, source image metadata, and manual overrides.
-- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; `1.5.1` added safety guards after live smoke showed disagreement and false-source risks; `1.5.2` measured the current reality: old Libre2 is partial, new narrow Libre2 is mostly failed/partial, and glucometer photos are low-confidence/manual.)
+- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; `1.5.1` added safety guards after live smoke showed disagreement and false-source risks; `1.5.2` measured the current reality; `1.5.3` tuned real 1280x576 updated Libre2 screenshots while keeping results manual.)
 
 ## Phase 3.1 - Smart Daily Dialog
 

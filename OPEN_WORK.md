@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-21
-Version: 1.5.2
+Version: 1.5.3
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -16,8 +16,8 @@ Status values:
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
 | Old Libre2 CV path | partial | high | 1.5.x | Exists and remains the best current source, but `OCR_REALITY_REPORT.md` measured only partial stability on `img/simple`; more tuning is needed before it can be called fully reliable. |
-| Updated narrow Libre screenshot | partial | high | 1.5.x | Initial lightweight CV source `libre2_narrow_updated` exists and is covered by synthetic tests; `1.5.2` showed real `img/simple_new` samples are still mostly failed/partial. |
-| Manual glucometer photo recognition | partial | high | 1.5.x | Initial lightweight CV source `glucometer_photo` exists with blur/low-confidence safety; `1.5.2` showed real `img/simple_gluk` samples remain low-confidence/manual. |
+| Updated narrow Libre screenshot | partial | high | 1.5.x | `1.5.3` added a landscape right-side ROI for real 1280x576 updated Libre screenshots and reduced `img/simple_new` no-result frames from 14/18 to 9/18. Still manual-confirmation by default. |
+| Manual glucometer photo recognition | partial | high | 1.5.x | Initial lightweight CV source `glucometer_photo` exists with blur/low-confidence safety; `1.5.2` showed real `img/simple_gluk` samples remain low-confidence/manual. Not changed in `1.5.3`. |
 | Multiple OCR engine comparison | partial | high | 1.5.x | Source-aware aggregation exists; 1.5.1 improved disagreement safety, but production-grade multi-engine coverage is not complete. 1.5.2 added repeatable smoke reporting. |
 | Before-crop / after-crop comparison | partial | medium | 1.5.0 | Existing variants are logged by source/variant; disagreement reporting still can become clearer. |
 | Protection from mistaken OCR save | done | high | 1.4.1 | OCR requires explicit confirmation before saving. |

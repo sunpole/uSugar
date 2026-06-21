@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 41,
+  "count": 42,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -330,6 +330,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Safe public release card with no medical sample values, Telegram IDs, tokens, or private screenshots. It records the 1.5.2 audit outcome: old Libre2 is partial, new Libre2 is mostly failed/partial, glucometer photos are manual/low-confidence, and uNews publication is blocked by GitHub Actions Telegram Unauthorized.",
       "caption": "uSugarBot 1.5.2 stops pretending OCR is solved: the project measures what works, documents what fails, and finds why the release news queue stalled.",
       "version": "1.5.2"
+    },
+    {
+      "file": "2026-06-22_libre2_narrow_ocr_tuning_v1_5_3_working.png",
+      "image": "docs/history/2026-06-22_libre2_narrow_ocr_tuning_v1_5_3_working.png",
+      "role": "New Libre2 narrow OCR tuning",
+      "description": "Safe public release card showing the before/after smoke counts for `img/simple_new` after adding the landscape right-side ROI. It avoids Telegram IDs, private screenshots, secrets, and autosave claims.",
+      "caption": "uSugarBot 1.5.3 teaches the new Libre2 landscape screenshots where to look: no-result frames drop from 14 to 9 while new candidates stay manual by default.",
+      "version": "1.5.3"
     }
   ]
 };

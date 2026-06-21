@@ -2,6 +2,16 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.3 - 2026-06-22
+
+- Tuned the `libre2_narrow_updated` OCR source for real landscape Libre2 screenshots from `img/simple_new`.
+- Added a right-side landscape ROI detector (`narrow_landscape_right_value`) for 1280x576 screenshots where the current glucose value is shown near the right edge.
+- Normalized Libre2 component strings such as `1.4.1` into `14.1` only inside the new landscape ROI.
+- Improved `img/simple_new` smoke results from `14 no_result / 3 manual / 1 accepted` to `9 no_result / 8 manual / 1 accepted`.
+- Kept new Libre2 results manual by default; OCR still does not save sugar without explicit confirmation.
+- Confirmed no regression in `img/simple` and `img/simple_gluk` smoke counts.
+- No glucometer OCR tuning, food logging, trusted contact work, DeepSeek, Telegram token change, or local Telegram publication was added.
+
 ## 1.5.2 - 2026-06-21
 
 - Added `OCR_REALITY_REPORT.md` with measured OCR results across `img/simple`, `img/simple_new`, and `img/simple_gluk`.

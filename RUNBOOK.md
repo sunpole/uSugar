@@ -264,6 +264,14 @@ venv\Scripts\python.exe scripts\ocr_smoke.py --folder img/simple_gluk
 
 Read `OCR_REALITY_REPORT.md` before claiming that an OCR source works reliably. The current measured state is: old Libre2 is partial, updated narrow Libre2 is mostly failed/partial, and glucometer photos are low-confidence/manual. Read `UNEWS_PUBLISHING_AUDIT.md` if uSugar news is pending but not visible in `@uNewsLog`; 1.5.0 and 1.5.1 were blocked by the uNews GitHub Actions publisher receiving Telegram `Unauthorized`, not by uSugar patch-note content.
 
+Version 1.5.3 tunes only the updated Libre2 landscape path. Real `img/simple_new` samples are `1280x576`; the current value is usually in the right-side ROI. Expected smoke counts after 1.5.3:
+
+- `img/simple_new`: 1 accepted, 8 manual, 9 no_result.
+- `img/simple`: 4 accepted, 7 manual, 0 no_result.
+- `img/simple_gluk`: 0 accepted, 8 manual, 19 no_result.
+
+New `libre2_narrow_updated` candidates should still be treated as manual confirmation by default. Do not use 1.5.3 as a reason to autosave OCR values.
+
 ## Important Caution
 
 Do not use archived setup scripts as launch scripts. They are kept only for history. One legacy script contained a real Telegram token, so regenerate the token before publishing or pushing code.

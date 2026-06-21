@@ -1,7 +1,7 @@
 # OCR Reality Report
 
-Date: 2026-06-21
-Release: uSugar 1.5.2
+Date: 2026-06-22
+Release: uSugar 1.5.3
 
 This audit measures the real OCR behavior on the local safe sample folders. The smoke script does not write to SQLite, does not create glucose_log rows, and does not save OCR attempts.
 
@@ -9,9 +9,9 @@ This audit measures the real OCR behavior on the local safe sample folders. The 
 
 | Source group | Reality | Short conclusion |
 |---|---|---|
-| `img/simple` | partial | 4/11 accepted, 7/11 manual, 0/11 no_result. ?????? Libre2 CV ???????? ?????? ??????? ??????????, ?? ????? ?????? ?????? ? ?????? ???????? ??-?? ??????????? ? ??????????????? ???????. |
-| `img/simple_new` | mostly failed / partial | 1/18 accepted, 3/18 manual, 14/18 no_result. ????? ????? ????????? ???? ? ???????? ?? ???????????? ????????? ?????? libre2_narrow_updated; ????????? ????????? ???????? ?? ?????? Libre-????? ??? low-confidence photo branch. |
-| `img/simple_gluk` | partial low-confidence / manual | 0/27 accepted, 8/27 manual, 19/27 no_result. ???? ?????????? ???? ?????? ?????????????????? ????????? ??? no_result. ?? ?????? ??????? ???????? ?????????????? OCR. |
+| `img/simple` | partial | 4/11 accepted, 7/11 manual, 0/11 no_result. Old Libre2 CV remains the best current source, but some frames still need manual confirmation because helper branches disagree. |
+| `img/simple_new` | improved partial | Before 1.5.3: 1/18 accepted, 3/18 manual, 14/18 no_result. After 1.5.3: 1/18 accepted, 8/18 manual, 9/18 no_result. The new landscape ROI now finds more right-side Libre2 values, but keeps them manual. |
+| `img/simple_gluk` | partial low-confidence / manual | 0/27 accepted, 8/27 manual, 19/27 no_result. Glucometer photos still need separate future work and remain low-confidence/manual. |
 
 ## Safety Findings
 
@@ -20,7 +20,50 @@ This audit measures the real OCR behavior on the local safe sample folders. The 
 - Glucometer photo candidates are low-confidence/manual by default until the digit recognition is improved.
 - The current smoke is diagnostic only; it should not be used as proof that the photo OCR is production-ready.
 
-## File Results
+## 1.5.3 New Libre2 Geometry
+
+The real files in `img/simple_new` are landscape screenshots with size `1280x576`, not the earlier synthetic vertical narrow shape. The visible current glucose value is usually in the right side of the screenshot:
+
+- typical ROI: `x=55-98%`, `y=5-85%`;
+- value examples found in the right ROI: `10.1`, `14.6`, `14.1`, `11.0`, `15.6`, `5.1`, `10.2`;
+- full-history screenshots without a large current value can still correctly remain `no_result`.
+
+The 1.5.3 tuning adds `libre2_narrow_updated:narrow_landscape_right_value`. It converts component strings such as `1.4.1` into `14.1` only inside this Libre2 landscape ROI. These results are intentionally treated as manual confirmation candidates, not autosave-ready values.
+
+| Folder | Before 1.5.3 | After 1.5.3 | Change |
+|---|---:|---:|---|
+| `img/simple_new` accepted | 1/18 | 1/18 | unchanged |
+| `img/simple_new` manual | 3/18 | 8/18 | +5 useful manual candidates |
+| `img/simple_new` no_result | 14/18 | 9/18 | -5 no-result frames |
+| `img/simple` | 4 accepted, 7 manual, 0 no_result | 4 accepted, 7 manual, 0 no_result | no regression |
+| `img/simple_gluk` | 0 accepted, 8 manual, 19 no_result | 0 accepted, 8 manual, 19 no_result | no regression |
+
+### 1.5.3 `img/simple_new` After Tuning
+
+| File | Source | Candidate | Confidence | Status |
+|---|---|---:|---|---|
+| `0f4e1786-6c63-4e05-9e92-1e202576c0e9.jfif` | - | - | none | no_result |
+| `34f749eb-98c2-4560-9052-7cbe1059069f.jfif` | - | - | none | no_result |
+| `3f524d68-83af-464e-b2ae-a24191d35a50.jfif` | - | - | none | no_result |
+| `59847551-71dc-48da-b6da-c587f4fc564f.jfif` | libre2_narrow_updated | 10.1 | low | needs_confirmation |
+| `5a94cba2-f21a-49c1-bdd6-95403c58d97e.jfif` | libre2_narrow_updated | 14.6 | low | needs_confirmation |
+| `659e37c7-bee2-4677-b6a4-50f8a12926c6.jfif` | libre2_narrow_updated | 14.1 | low | needs_confirmation |
+| `74670552-5a4c-4390-a912-167e3528fe6e.jfif` | libre2_narrow_updated | 11.0 | low | needs_confirmation |
+| `8873145a-715f-40e8-a7ad-121fc197cbac.jfif` | - | - | none | no_result |
+| `8ba8defb-fb0c-4b7e-ab5b-4522e5b403a3.jfif` | libre2_narrow_updated | 15.6 | low | needs_confirmation |
+| `a052ef26-61d4-475f-9832-81a99bad8de6.jfif` | - | - | none | no_result |
+| `a9b1e19a-da93-4fcc-b504-ca90b1ecec87.jfif` | libre2_narrow_updated | 14.3 | medium | needs_confirmation |
+| `b7706034-355e-4a5f-82c7-cc7a340515f0.jfif` | libre2_cv_old | 16.3 | high | accepted |
+| `b98977de-fa32-4379-bd3d-b2cda84f2e53.jfif` | - | - | none | no_result |
+| `c2f2cb0d-3f85-4f4b-af3c-4be130c0bb6c.jfif` | libre2_narrow_updated | 5.1 | low | needs_confirmation |
+| `c3c9bd61-690c-4ca7-8941-010947f98bcc.jfif` | - | - | none | no_result |
+| `d905ff35-59be-49da-9d24-2989e7a9e8eb.jfif` | - | - | none | no_result |
+| `f43139a3-bdb2-4c74-a829-88db7b78f54d.jfif` | - | - | none | no_result |
+| `photo_5289843234458771065_y.jpg` | libre2_narrow_updated | 10.2 | medium | needs_confirmation |
+
+## 1.5.2 Baseline File Results
+
+This table is kept as the original 1.5.2 baseline. The updated 1.5.3 results for `img/simple_new` are listed above.
 
 | Folder | File | Detected source | Candidate | Confidence | Status | Reason |
 |---|---|---|---:|---|---|---|
