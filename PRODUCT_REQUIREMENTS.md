@@ -1,7 +1,7 @@
 # Product Requirements
 
-Date: 2026-06-13
-Version: 1.4.1
+Date: 2026-06-21
+Version: 1.4.2
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -56,6 +56,20 @@ Status in `1.4.1`: OCR confirmation accepts typed actions (`сохранить`,
 - The trusted-contact flow needs consent from the trusted person.
 - It needs verification, disabling/revocation, quiet hours, and clear alert rules.
 - Alert logic should be understandable to the family and should avoid noisy or surprising messages.
+
+Status in `1.4.2`: foundation improved. `/whoami` now shows `user_id`, `chat_id`, and `chat_type`; `trusted_contact_id` may point to a private chat or family group; `/trustedtest` sends only a safe connection-check message without medical data. Full consent, verification, revocation, quiet hours, and alert policy remain future work.
+
+## Telegram Family Mode
+
+- Private chat should remain the main place for glucose, food, insulin, OCR, settings, journal, backup, and deletion.
+- Family groups should support coordination and diagnostics without saving medical data by default.
+- Safe group commands are `/version`, `/help`, `/health`, `/whoami`, and `/reminders`.
+- If someone tries to enter sugar, food, insulin, OCR, settings, logs, backup, or deletion in a group, the bot should explain that medical records belong in private chat.
+- Channels are not the primary dialog. They may become a future one-way announcement or carefully designed notification surface.
+- Official bot identity should be configured through BotFather: name, username, description, about text, avatar/photo, command list, and privacy mode.
+- Token rotation should wait until final production/public launch.
+
+Status in `1.4.2`: implemented as the first family-mode foundation with `TELEGRAM_BOT_SETUP.md`, chat type detection, group/private safety guards, `/whoami` IDs, `/trustedtest`, and a neutral channel command notice.
 
 ## Future
 

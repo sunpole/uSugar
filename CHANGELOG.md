@@ -2,6 +2,16 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.4.2 - 2026-06-21
+
+- Added `TELEGRAM_BOT_SETUP.md` with BotFather identity setup, command list guidance, privacy-mode notes, channel positioning, and token-rotation policy.
+- Added `common/chat.py` for safe chat type detection and shared private/group/channel policy helpers.
+- Kept medical data entry private by default: glucose, food, insulin, OCR, settings, logs, backup, and deletion now explain that they belong in private chat when called from groups.
+- Added family group safe command behavior for `/version`, `/help`, `/health`, `/whoami`, and `/reminders`; group `/help` now shows a shorter family-mode command list.
+- Improved `/whoami` to show `user_id`, `chat_id`, and `chat_type` for trusted-contact and family-group setup.
+- Added `/trustedtest` as a safe trusted-contact delivery check without glucose, insulin, OCR, journal, or other medical data.
+- Added a neutral channel command notice so Telegram channels are treated as future announcement/notification surfaces, not the main daily dialog.
+
 ## 1.4.1 - 2026-06-13
 
 - Added text fallbacks for `/undo` when Telegram reply buttons are hidden: `удалить последний сахар`, `удалить последний укол`, and `отмена`.

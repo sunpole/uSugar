@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 38,
+  "count": 39,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -306,6 +306,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Real desktop capture with Codex on the left and Telegram Web on the right, showing uSugarBot `1.3.0` after moving startup version sync into `runtime/startup.py`; the fresh `/help` response includes `/start` and `/help` and confirms the current version.",
       "caption": "uSugarBot 1.3.0 closes the bot.py split: the main file now composes the runtime while Telegram shows the full command surface at the new version.",
       "version": "1.3.0"
+    },
+    {
+      "file": "2026-06-21_family_mode_identity_v1_4_2_working.png",
+      "image": "docs/history/2026-06-21_family_mode_identity_v1_4_2_working.png",
+      "role": "Telegram family mode and identity",
+      "description": "Cropped Telegram Web chat showing uSugarBot `1.4.2` after the family-mode release, with live `/story` and `/health` responses. The temporary WebApp URL is redacted for public history.",
+      "caption": "uSugarBot 1.4.2 prepares for family use: identity, safe chat boundaries, trusted-contact testing, and public-history hygiene move into the product.",
+      "version": "1.4.2"
     }
   ]
 };

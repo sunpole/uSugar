@@ -15,6 +15,7 @@
 - Verify the live local runtime with OCR enabled before the next feature/refactor phase. (Done in `1.3.2`; real Telegram Web OCR responses were observed, test records were cleaned, and `.env` remains local-only.)
 - Capture product requirements before starting `1.4.0` feature work. (Done in `1.3.3` with `PRODUCT_REQUIREMENTS.md`; no runtime behavior changed.)
 - Add text fallbacks for safety flows when Telegram buttons are hidden. (Done in `1.4.1` for `/undo`, OCR confirmation, and smart-food confirmation.)
+- Prepare Telegram family mode and bot identity. (Done in `1.4.2`: BotFather guide, group-safe command policy, private-only medical entry guards, `/whoami` IDs, `/trustedtest`, and channel notice.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -65,7 +66,17 @@
 - Move reminder windows, basal toggles, and trusted-person settings into the WebApp. (Started in `1.0.34`; trusted contact ID added in `1.0.35`.)
 - Add trusted-person alert flow after long missing measurement windows. (Done in `1.0.35` for Telegram ID delivery.)
 - Finish trusted-contact consent, verification, disable/revoke flow, quiet hours, and clearer alert rules. (Captured in `PRODUCT_REQUIREMENTS.md`; future work.)
+- Add safe trusted-contact connection testing before full alert UX. (Started in `1.4.2` with `/trustedtest`; no medical data is sent by the test.)
 - Add one-time follow-up reminders after food bolus/correction. (Started in `1.0.37` for logged short insulin.)
+
+## Phase 3.6 - Telegram Family Mode
+
+- Keep private chat as the default place for daily medical records. (Done in `1.4.2`.)
+- Allow only safe commands in groups/supergroups: `/version`, `/help`, `/health`, `/whoami`, and `/reminders`. (Done in `1.4.2`.)
+- Show `user_id`, `chat_id`, and `chat_type` through `/whoami` for family setup. (Done in `1.4.2`.)
+- Document BotFather identity, command list, privacy mode, channel positioning, and token-rotation policy. (Done in `1.4.2` with `TELEGRAM_BOT_SETUP.md`.)
+- Treat channels as future notification/announcement surfaces, not daily input surfaces. (Started in `1.4.2` with a neutral channel command notice.)
+- Later: design explicit consent, quiet hours, revocation, and alert routing before sending real medical notifications to groups.
 
 ## Phase 4 - Production Shape
 

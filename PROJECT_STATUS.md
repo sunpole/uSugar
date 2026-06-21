@@ -1,12 +1,12 @@
 # uSugar Project Status
 
-Date: 2026-06-13
+Date: 2026-06-21
 
 ## Current State
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.4.1` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, and the 1.4.1 UX Safety Commands release are now implemented and tested.
+The current working code identifies itself as version `1.4.2` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, the 1.4.1 UX Safety Commands release, and the 1.4.2 Telegram Family Mode + Bot Identity release are now implemented and tested.
 
 ## Comparison Summary
 
@@ -14,7 +14,7 @@ The current working code identifies itself as version `1.4.1` through `VERSION.j
 - Local is code-first and newer for implementation.
 - Local had many manual backup copies and legacy setup scripts; these were moved to `_archive/2026-06-04_initial_cleanup`.
 - `LICENSE` was copied from GitHub into the local project.
-- The active local runtime files are now the root `bot.py`, `config.py`, `db.py`, `keyboards.py`, `settings.html`, `.env`, `usugar.db`, the helper modules `usugar_logic.py`, `usugar_export.py`, `usugar_ocr.py`, `usugar_vision.py`, `usugar_brain.py`, `usugar_reminders.py`, `usugar_protocol.py`, the handler modules `handlers/system.py`, `handlers/profile.py`, `handlers/info.py`, `handlers/glucose.py`, `handlers/settings.py`, `handlers/logs.py`, `handlers/therapy.py`, `handlers/ocr.py`, the runtime modules `runtime/reminders.py`, `runtime/startup.py`, and the common modules `common/text.py`, `common/fsm.py`.
+- The active local runtime files are now the root `bot.py`, `config.py`, `db.py`, `keyboards.py`, `settings.html`, `.env`, `usugar.db`, the helper modules `usugar_logic.py`, `usugar_export.py`, `usugar_ocr.py`, `usugar_vision.py`, `usugar_brain.py`, `usugar_reminders.py`, `usugar_protocol.py`, the handler modules `handlers/system.py`, `handlers/profile.py`, `handlers/info.py`, `handlers/glucose.py`, `handlers/settings.py`, `handlers/logs.py`, `handlers/therapy.py`, `handlers/ocr.py`, the runtime modules `runtime/reminders.py`, `runtime/startup.py`, and the common modules `common/text.py`, `common/fsm.py`, `common/chat.py`.
 
 ## Security Notes
 
@@ -74,6 +74,9 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Smart food inputs like `50+40` and `50 40` now produce a calculation without saving a log entry.
 - Food correction uses `glucose_fresh_minutes` from the protocol, defaulting to 60 minutes; older glucose values trigger a fresh-measurement prompt instead of hidden correction.
 - Safety flows now support typed fallbacks when Telegram buttons are hidden: `/undo`, OCR confirmation, and smart-food confirmation can be controlled with short text commands while keeping explicit confirmation before saving or deletion.
+- Telegram family mode now keeps medical records private by default. In groups/supergroups, only `/version`, `/help`, `/health`, `/whoami`, and `/reminders` are considered safe; medical entry commands explain that they belong in private chat. Channel commands receive a neutral notice because channels are future notification/announcement surfaces rather than the main daily dialog.
+- `/whoami` now shows `user_id`, `chat_id`, and `chat_type`; `/trustedtest` can test delivery to the configured trusted contact without sending medical data.
+- Use `TELEGRAM_BOT_SETUP.md` when configuring BotFather identity, username, description/about text, avatar, command list, privacy mode, and token-rotation timing.
 - Use `PROJECT_AUDIT.md`, `LARGE_FILES_AUDIT.md`, and `DATA_SOURCES.md` to keep debts, future split points, placeholders, and external-source decisions visible.
 - Use `PRODUCT_REQUIREMENTS.md` as the product direction source before starting the next implementation phase.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
@@ -105,3 +108,11 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - `/undo` now tells the user what to type if reply buttons are hidden and accepts text selection for sugar or insulin deletion.
 - OCR confirmation accepts typed actions: `сохранить`, `ввести вручную`, `не сохранять`, and `отмена`.
 - Smart-food calculations accept typed actions after `50+40` or `50 40`; food saving remains intentionally disabled until a food journal exists.
+
+## 1.4.2 Telegram Family Mode Notes
+
+- `TELEGRAM_BOT_SETUP.md` documents official BotFather setup and explains why the current local token should not be rotated until the final production/public-launch phase.
+- `common/chat.py` centralizes chat type detection and private/group/channel safety text.
+- Private chat remains the daily medical workflow. Groups are limited to safe coordination commands. Channels are documented as future one-way announcement/notification surfaces.
+- `/whoami` now exposes the IDs needed to configure family groups and trusted contacts.
+- `/trustedtest` sends only a connection-check message to the configured trusted contact target.
