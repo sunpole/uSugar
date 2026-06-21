@@ -1,7 +1,7 @@
 # Release Plan
 
 Date: 2026-06-21
-Version: 1.5.1
+Version: 1.5.2
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -46,7 +46,28 @@ Exit criteria:
 - Manual Telegram smoke confirms the bot reports `v1.5.1`.
 - uNews patch note passes local check but is not locally published.
 
-## 1.5.2 - Food Log
+## 1.5.2 - OCR Reality + uNews Publishing Audit
+
+Goal: stop guessing about OCR and uNews status, then document the real state before continuing feature work.
+
+Status: implemented as an audit release. `OCR_REALITY_REPORT.md` records real smoke results for `img/simple`, `img/simple_new`, and `img/simple_gluk`; `scripts/ocr_smoke.py` provides repeatable local checks without database writes; `TEXT_INTEGRITY_REPORT.md` records the text-integrity pass; `UNEWS_PUBLISHING_AUDIT.md` explains why 1.5.0 and 1.5.1 did not appear in `@uNewsLog`.
+
+Completed work:
+
+- Measure old Libre2, new Libre2, and glucometer sample folders with one local smoke command.
+- Confirm old Libre2 is partial, new narrow Libre2 is mostly failed/partial, and glucometer photos are low-confidence/manual.
+- Keep OCR non-saving unless the user explicitly confirms in Telegram.
+- Confirm 1.5.0/1.5.1 uNews patch notes are valid and pending.
+- Identify the uNews GitHub Actions `Unauthorized` failure as the publication blocker.
+
+Exit criteria:
+
+- OCR smoke runs across all three sample folders.
+- Text integrity guard reports no current suspicious patterns after targeted fixes.
+- uNews dry-run/check passes for the new 1.5.2 patch note.
+- No local Telegram publication is performed.
+
+## 1.5.3 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -64,7 +85,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.5.3 - Smart Daily Dialog
+## 1.5.4 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 

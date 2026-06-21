@@ -254,6 +254,16 @@ Version 1.5.0 adds source-aware OCR paths without changing the database schema o
 
 Version 1.5.1 is an OCR safety hotfix after live sample smoke. If old Libre2 CV and experimental branches disagree, do not average unrelated values into a confident answer. Libre-specific OCR branches should skip camera-photo-like glucometer frames, and ambiguous glucometer digit strings should stay manual/no-result. During this learning phase, user-approved test records may remain in the local database if the user explicitly asks not to delete them.
 
+Version 1.5.2 adds a local OCR reality smoke script and audit reports. Use these commands to measure OCR without writing to SQLite or creating glucose records:
+
+```powershell
+venv\Scripts\python.exe scripts\ocr_smoke.py --folder img/simple
+venv\Scripts\python.exe scripts\ocr_smoke.py --folder img/simple_new
+venv\Scripts\python.exe scripts\ocr_smoke.py --folder img/simple_gluk
+```
+
+Read `OCR_REALITY_REPORT.md` before claiming that an OCR source works reliably. The current measured state is: old Libre2 is partial, updated narrow Libre2 is mostly failed/partial, and glucometer photos are low-confidence/manual. Read `UNEWS_PUBLISHING_AUDIT.md` if uSugar news is pending but not visible in `@uNewsLog`; 1.5.0 and 1.5.1 were blocked by the uNews GitHub Actions publisher receiving Telegram `Unauthorized`, not by uSugar patch-note content.
+
 ## Important Caution
 
 Do not use archived setup scripts as launch scripts. They are kept only for history. One legacy script contained a real Telegram token, so regenerate the token before publishing or pushing code.

@@ -18,6 +18,7 @@
 - Prepare Telegram family mode and bot identity. (Done in `1.4.2`: BotFather guide, group-safe command policy, private-only medical entry guards, `/whoami` IDs, `/trustedtest`, and channel notice.)
 - Rebuild the current-state map and release-reporting workflow after the pause. (Done in `1.4.3` with `CURRENT_STATE.md`, `MANUAL_TELEGRAM_TEST_PLAN.md`, and `PATCH_NOTIFICATION_RULES.md`.)
 - Map open work and release targets before the next feature phase. (Done in `1.4.4` with `OPEN_WORK.md` and `RELEASE_PLAN.md`.)
+- Audit real OCR behavior and uNews publication failure before continuing OCR feature work. (Done in `1.5.2` with `OCR_REALITY_REPORT.md`, `scripts/ocr_smoke.py`, `TEXT_INTEGRITY_REPORT.md`, and `UNEWS_PUBLISHING_AUDIT.md`.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -47,7 +48,7 @@
 - Compare OCR outputs and ask for manual confirmation on disagreement. (Done for current aggregator/confirmation flow.)
 - Add safety copy: the bot helps calculate, but does not replace medical advice.
 - Log confidence, source image metadata, and manual overrides.
-- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; `1.5.1` added safety guards after live smoke showed disagreement and false-source risks; real-world coverage still needs more safe fixtures and manual smoke.)
+- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; `1.5.1` added safety guards after live smoke showed disagreement and false-source risks; `1.5.2` measured the current reality: old Libre2 is partial, new narrow Libre2 is mostly failed/partial, and glucometer photos are low-confidence/manual.)
 
 ## Phase 3.1 - Smart Daily Dialog
 
@@ -108,4 +109,5 @@ Deferred work after `1.1.0` is tracked in `FUTURE_BACKLOG.md` so the roadmap sta
 - Use a manual Telegram smoke checklist when browser automation is unreliable. (Done in `1.4.3`.)
 - Prepare uSugar patch notes for the uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`. (Rule documented in `1.4.3`.)
 - Publish every future closed uSugar release through the GitHub-first uNews workflow when the project-local patch note has a safe image and the uNews dry-run/check is green. (Required since `1.4.4`; local commands are for checks/diagnostics, not normal real publication.)
+- If uSugar news is pending but not visible in `@uNewsLog`, check `UNEWS_PUBLISHING_AUDIT.md` and the `sunpole/uNews` GitHub Actions publisher first. The 1.5.0/1.5.1 queue was blocked by Telegram `Unauthorized` in the uNews Actions secret, not by uSugar YAML/image content.
 - Stop instead of publishing if a patch note has missing images, invalid YAML, secrets/private data, or failed dry-run/check.

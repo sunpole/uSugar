@@ -2,6 +2,16 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.2 - 2026-06-21
+
+- Added `OCR_REALITY_REPORT.md` with measured OCR results across `img/simple`, `img/simple_new`, and `img/simple_gluk`.
+- Added `scripts/ocr_smoke.py`, a local OCR smoke command that prints file/source/candidate/confidence/status without writing to SQLite or creating glucose records.
+- Added `scripts/text_integrity_check.py` and `TEXT_INTEGRITY_REPORT.md` to guard current documentation, news notes, settings text, and bot-facing text against damaged encoding.
+- Fixed the current OCR manual-check text path in `usugar_vision.py` so users do not see question-mark mojibake when OCR needs manual review.
+- Added `UNEWS_PUBLISHING_AUDIT.md`; the missing 1.5.0 and 1.5.1 posts are traced to the `sunpole/uNews` GitHub Actions publisher failing with Telegram `Unauthorized`.
+- Added the 1.5.2 uNews patch note for GitHub-first publication checks. No local Telegram publication was performed.
+- No database schema migration, dose logic change, Telegram token change, local uNews publish, or new large OCR algorithm was added.
+
 ## 1.5.1 - 2026-06-21
 
 - Hardened OCR aggregation after live Telegram smoke with real user-approved sample images showed unsafe disagreement between old Libre, new Libre, and glucometer branches.

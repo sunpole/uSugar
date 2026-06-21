@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 40,
+  "count": 41,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -322,6 +322,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Real collage built from user-approved public OCR samples: old Libre2, updated Libre, and glucometer photo. It records the moment live smoke showed false-confidence risk and the project responded with source priority, shape guards, and manual-check defaults.",
       "caption": "uSugarBot 1.5.1 turns a failed OCR smoke into safety logic: old Libre stays trusted, camera photos stop masquerading as Libre screenshots, and uncertain glucometer reads remain manual.",
       "version": "1.5.1"
+    },
+    {
+      "file": "2026-06-21_ocr_reality_unews_audit_v1_5_2_working.png",
+      "image": "docs/history/2026-06-21_ocr_reality_unews_audit_v1_5_2_working.png",
+      "role": "OCR reality and uNews audit",
+      "description": "Safe public release card with no medical sample values, Telegram IDs, tokens, or private screenshots. It records the 1.5.2 audit outcome: old Libre2 is partial, new Libre2 is mostly failed/partial, glucometer photos are manual/low-confidence, and uNews publication is blocked by GitHub Actions Telegram Unauthorized.",
+      "caption": "uSugarBot 1.5.2 stops pretending OCR is solved: the project measures what works, documents what fails, and finds why the release news queue stalled.",
+      "version": "1.5.2"
     }
   ]
 };

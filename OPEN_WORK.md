@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-21
-Version: 1.5.1
+Version: 1.5.2
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -15,10 +15,10 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| Old Libre2 CV path | done | high | 1.3.2 | Current local Libre2 CV recognition exists and is now labeled `libre2_cv_old`. |
-| Updated narrow Libre screenshot | partial | high | 1.5.x | Initial lightweight CV source `libre2_narrow_updated` exists and is covered by synthetic tests; live smoke showed it still needs more real-world tuning. |
-| Manual glucometer photo recognition | partial | high | 1.5.x | Initial lightweight CV source `glucometer_photo` exists with blur/low-confidence safety; 1.5.1 added guards so uncertain photos do not become confident false reads. |
-| Multiple OCR engine comparison | partial | high | 1.5.x | Source-aware aggregation exists; 1.5.1 improved disagreement safety, but production-grade multi-engine coverage is not complete. |
+| Old Libre2 CV path | partial | high | 1.5.x | Exists and remains the best current source, but `OCR_REALITY_REPORT.md` measured only partial stability on `img/simple`; more tuning is needed before it can be called fully reliable. |
+| Updated narrow Libre screenshot | partial | high | 1.5.x | Initial lightweight CV source `libre2_narrow_updated` exists and is covered by synthetic tests; `1.5.2` showed real `img/simple_new` samples are still mostly failed/partial. |
+| Manual glucometer photo recognition | partial | high | 1.5.x | Initial lightweight CV source `glucometer_photo` exists with blur/low-confidence safety; `1.5.2` showed real `img/simple_gluk` samples remain low-confidence/manual. |
+| Multiple OCR engine comparison | partial | high | 1.5.x | Source-aware aggregation exists; 1.5.1 improved disagreement safety, but production-grade multi-engine coverage is not complete. 1.5.2 added repeatable smoke reporting. |
 | Before-crop / after-crop comparison | partial | medium | 1.5.0 | Existing variants are logged by source/variant; disagreement reporting still can become clearer. |
 | Protection from mistaken OCR save | done | high | 1.4.1 | OCR requires explicit confirmation before saving. |
 | Phone time / measurement time extraction | not started | medium | 1.5.x | Needed before using screenshot age in decisions. |
@@ -54,7 +54,7 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.5.2 | Required before food confirmations can save real meal records. |
+| `food_log` table and journal | not started | high | 1.5.3 | Required before food confirmations can save real meal records. Deferred because 1.5.2 was used for OCR/uNews audit. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |
@@ -65,9 +65,9 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| CSV export | partial | medium | 1.5.2 | `/log` can export long glucose/insulin logs; food export depends on `food_log`. |
+| CSV export | partial | medium | 1.5.3 | `/log` can export long glucose/insulin logs; food export depends on `food_log`. |
 | Backup ZIP | done | high | 1.0.x | `/backup` exports safe user data without secrets. |
-| Backup restore | not started | high | 1.5.2 | Needed before backup can be considered a complete data lifecycle. |
+| Backup restore | not started | high | 1.5.4 | Needed before backup can be considered a complete data lifecycle. |
 | Filtered exports | not started | medium | 1.6.1 | Depends on search/filtering. |
 | A4 doctor diary | not started | medium | 1.6.1 | Should be printable and understandable to a doctor. |
 
