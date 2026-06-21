@@ -252,6 +252,8 @@ Version 1.1.1 is a UX cleanup release: `/help` is grouped by task, `/health`/`/s
 
 Version 1.5.0 adds source-aware OCR paths without changing the database schema or automatic-save policy. Engine results now identify `libre2_cv_old`, `libre2_narrow_updated`, and `glucometer_photo` inside the existing OCR JSON metadata. `/ocr` lists active sources, and `/ocrlog` shows source, confidence, and saved/not-saved status without showing Telegram `file_id` values. The old Libre2 CV path remains the most reliable local source; the narrow Libre and glucometer-photo branches are initial lightweight CV support and should be treated as manual-confirmation candidates during real-world smoke.
 
+Version 1.5.1 is an OCR safety hotfix after live sample smoke. If old Libre2 CV and experimental branches disagree, do not average unrelated values into a confident answer. Libre-specific OCR branches should skip camera-photo-like glucometer frames, and ambiguous glucometer digit strings should stay manual/no-result. During this learning phase, user-approved test records may remain in the local database if the user explicitly asks not to delete them.
+
 ## Important Caution
 
 Do not use archived setup scripts as launch scripts. They are kept only for history. One legacy script contained a real Telegram token, so regenerate the token before publishing or pushing code.

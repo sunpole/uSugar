@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-21
-Version: 1.5.0
+Version: 1.5.1
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -16,12 +16,12 @@ Status values:
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
 | Old Libre2 CV path | done | high | 1.3.2 | Current local Libre2 CV recognition exists and is now labeled `libre2_cv_old`. |
-| Updated narrow Libre screenshot | partial | high | 1.5.0 | Initial lightweight CV source `libre2_narrow_updated` exists and is covered by synthetic tests; real-world fixtures are still needed. |
-| Manual glucometer photo recognition | partial | high | 1.5.0 | Initial lightweight CV source `glucometer_photo` exists with blur/low-confidence safety; real-world coverage still needs safe local smoke. |
-| Multiple OCR engine comparison | partial | high | 1.5.0 | Source-aware aggregation exists, but production-grade multi-engine coverage is not complete. |
+| Updated narrow Libre screenshot | partial | high | 1.5.x | Initial lightweight CV source `libre2_narrow_updated` exists and is covered by synthetic tests; live smoke showed it still needs more real-world tuning. |
+| Manual glucometer photo recognition | partial | high | 1.5.x | Initial lightweight CV source `glucometer_photo` exists with blur/low-confidence safety; 1.5.1 added guards so uncertain photos do not become confident false reads. |
+| Multiple OCR engine comparison | partial | high | 1.5.x | Source-aware aggregation exists; 1.5.1 improved disagreement safety, but production-grade multi-engine coverage is not complete. |
 | Before-crop / after-crop comparison | partial | medium | 1.5.0 | Existing variants are logged by source/variant; disagreement reporting still can become clearer. |
 | Protection from mistaken OCR save | done | high | 1.4.1 | OCR requires explicit confirmation before saving. |
-| Phone time / measurement time extraction | not started | medium | 1.5.0 | Needed before using screenshot age in decisions. |
+| Phone time / measurement time extraction | not started | medium | 1.5.x | Needed before using screenshot age in decisions. |
 | Libre graph trend extraction | partial | medium | 1.5.0 | Basic trend exists, not a reliable time-series analysis yet. |
 
 ## Family Mode
@@ -44,17 +44,17 @@ Status values:
 | Glucose entry | done | high | 1.0.x | Manual glucose input and `/sugar` are implemented. |
 | Food calculation | partial | high | 1.4.0 | Carb sums calculate dose, but full food logging is not complete. |
 | Insulin entry | done | high | 1.0.x | Short and long insulin logging exists. |
-| Smart dialog for numeric input | partial | high | 1.5.2 | Carb sums and multi-number choices exist; broader dialog remains future work. |
-| Friendly fallback | partial | medium | 1.5.2 | Basic fallback exists, needs more consistent smart-dialog routing. |
+| Smart dialog for numeric input | partial | high | 1.5.3 | Carb sums and multi-number choices exist; broader dialog remains future work. |
+| Friendly fallback | partial | medium | 1.5.3 | Basic fallback exists, needs more consistent smart-dialog routing. |
 | Text confirmations when buttons are hidden | done | high | 1.4.1 | `/undo`, OCR, and food confirmation fallbacks exist. |
-| Old-record editing | not started | medium | 1.5.2 | `/undo` only handles the latest selected record type. |
+| Old-record editing | not started | medium | 1.5.3 | `/undo` only handles the latest selected record type. |
 | Daily UX smoke plan | done | medium | 1.4.3 | Manual Telegram smoke plan is documented. |
 
 ## Food
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.5.1 | Required before food confirmations can save real meal records. |
+| `food_log` table and journal | not started | high | 1.5.2 | Required before food confirmations can save real meal records. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |
@@ -65,9 +65,9 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| CSV export | partial | medium | 1.5.1 | `/log` can export long glucose/insulin logs; food export depends on `food_log`. |
+| CSV export | partial | medium | 1.5.2 | `/log` can export long glucose/insulin logs; food export depends on `food_log`. |
 | Backup ZIP | done | high | 1.0.x | `/backup` exports safe user data without secrets. |
-| Backup restore | not started | high | 1.5.1 | Needed before backup can be considered a complete data lifecycle. |
+| Backup restore | not started | high | 1.5.2 | Needed before backup can be considered a complete data lifecycle. |
 | Filtered exports | not started | medium | 1.6.1 | Depends on search/filtering. |
 | A4 doctor diary | not started | medium | 1.6.1 | Should be printable and understandable to a doctor. |
 

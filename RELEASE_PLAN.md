@@ -1,7 +1,7 @@
 # Release Plan
 
 Date: 2026-06-21
-Version: 1.5.0
+Version: 1.5.1
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -26,7 +26,27 @@ Exit criteria:
 - New source tests pass.
 - Telegram photo smoke remains manual/user-assisted with safe test images.
 
-## 1.5.1 - Food Log
+## 1.5.1 - OCR Safety Hotfix
+
+Goal: make the new OCR source work safer after live sample smoke exposed false confidence risks.
+
+Status: implemented as a patch release after `1.5.0`. The old Libre2 CV path keeps priority when experimental sources disagree, Libre-specific OCR branches skip camera-photo-like glucometer frames, ambiguous glucometer digit strings are rejected as low-confidence/no-result, and the manual-check message is readable.
+
+Completed work:
+
+- Preserve old Libre2 CV as the trusted candidate for known Libre screenshots.
+- Avoid averaging unrelated OCR candidates into a misleading glucose value.
+- Prevent Libre OCR paths from processing camera-photo-like glucometer images.
+- Treat ambiguous glucometer digit strings as manual/no-result.
+- Keep test records created during live smoke in the local database by user request.
+
+Exit criteria:
+
+- Full unit tests pass.
+- Manual Telegram smoke confirms the bot reports `v1.5.1`.
+- uNews patch note passes local check but is not locally published.
+
+## 1.5.2 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -44,7 +64,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.5.2 - Smart Daily Dialog
+## 1.5.3 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 

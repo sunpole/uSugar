@@ -47,7 +47,7 @@
 - Compare OCR outputs and ask for manual confirmation on disagreement. (Done for current aggregator/confirmation flow.)
 - Add safety copy: the bot helps calculate, but does not replace medical advice.
 - Log confidence, source image metadata, and manual overrides.
-- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; real-world coverage still needs more safe fixtures and manual smoke.)
+- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; `1.5.1` added safety guards after live smoke showed disagreement and false-source risks; real-world coverage still needs more safe fixtures and manual smoke.)
 
 ## Phase 3.1 - Smart Daily Dialog
 

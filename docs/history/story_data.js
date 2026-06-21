@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 39,
+  "count": 40,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -314,6 +314,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Cropped Telegram Web chat showing uSugarBot `1.4.2` after the family-mode release, with live `/story` and `/health` responses. The temporary WebApp URL is redacted for public history.",
       "caption": "uSugarBot 1.4.2 prepares for family use: identity, safe chat boundaries, trusted-contact testing, and public-history hygiene move into the product.",
       "version": "1.4.2"
+    },
+    {
+      "file": "2026-06-21_ocr_safety_hotfix_v1_5_1_working.png",
+      "image": "docs/history/2026-06-21_ocr_safety_hotfix_v1_5_1_working.png",
+      "role": "OCR safety hotfix",
+      "description": "Real collage built from user-approved public OCR samples: old Libre2, updated Libre, and glucometer photo. It records the moment live smoke showed false-confidence risk and the project responded with source priority, shape guards, and manual-check defaults.",
+      "caption": "uSugarBot 1.5.1 turns a failed OCR smoke into safety logic: old Libre stays trusted, camera photos stop masquerading as Libre screenshots, and uncertain glucometer reads remain manual.",
+      "version": "1.5.1"
     }
   ]
 };

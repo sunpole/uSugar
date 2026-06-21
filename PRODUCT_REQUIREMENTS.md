@@ -1,7 +1,7 @@
 # Product Requirements
 
 Date: 2026-06-21
-Version: 1.5.0
+Version: 1.5.1
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -52,6 +52,8 @@ Status in `1.5.0`: initial source-aware OCR support is implemented without a dat
 
 The project also now keeps user-approved public OCR sample folders under `img/simple`, `img/simple_new`, and `img/simple_gluk`. These samples are for development and regression checks, not automatic medical decisions.
 
+Status in `1.5.1`: live smoke with those public samples showed that experimental branches can be worse than no recognition when they disagree. The safety requirement is now stricter: old Libre2 CV keeps priority for known Libre screenshots, Libre OCR must not run on camera-photo-like glucometer frames, ambiguous glucometer digit strings should become manual/no-result, and the bot should ask the user to check the number instead of averaging unrelated candidates.
+
 Status in `1.4.1`: OCR confirmation accepts typed actions (`сохранить`, `ввести вручную`, `не сохранять`, `отмена`) in addition to buttons.
 
 ## Trusted Contact
@@ -95,4 +97,4 @@ Status in `1.4.3`: documented only. No runtime behavior or medical logic changed
 
 Status in `1.4.4`: strengthened into a required release workflow and paired with `OPEN_WORK.md` plus `RELEASE_PLAN.md`.
 
-Status in `1.5.0`: uSugar creates release notes in `news/` and runs the uNews check locally, but normal real publication belongs to the GitHub-first uNews workflow after the note and safe image reach the public repository.
+Status in `1.5.1`: uSugar continues to create release notes in `news/` and run the uNews check locally. Real publication remains GitHub-first after the note and safe image reach the public repository; local real publishing is not part of the normal workflow.

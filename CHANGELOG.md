@@ -2,6 +2,17 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.1 - 2026-06-21
+
+- Hardened OCR aggregation after live Telegram smoke with real user-approved sample images showed unsafe disagreement between old Libre, new Libre, and glucometer branches.
+- Restored old Libre2 CV priority when new experimental sources disagree, so the bot no longer averages unrelated candidates into a misleading value.
+- Added image-shape guards so Libre screenshot OCR branches skip camera-photo-like glucometer frames instead of trying to interpret device photos as Libre screens.
+- Tightened the glucometer photo branch so ambiguous long digit strings become low-confidence/no-result candidates rather than confident wrong glucose values.
+- Fixed the uncertain OCR message for the "manual check needed" path so users see a readable safety prompt instead of damaged encoding.
+- Added regression tests for old-Libre priority, far-source disagreement, camera-photo shape guards, and ambiguous glucometer digit rejection.
+- Test glucose records created during live learning smoke were intentionally left in the local database because the user asked not to delete them during OCR development.
+- No database schema migration, automatic OCR saving, medical dose logic, Telegram token, production deployment, or uNews local publishing was added.
+
 ## 1.5.0 - 2026-06-21
 
 - Added source-aware OCR result metadata with `source_type` values for `libre2_cv_old`, `libre2_narrow_updated`, and `glucometer_photo`.
