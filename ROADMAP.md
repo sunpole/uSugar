@@ -16,6 +16,7 @@
 - Capture product requirements before starting `1.4.0` feature work. (Done in `1.3.3` with `PRODUCT_REQUIREMENTS.md`; no runtime behavior changed.)
 - Add text fallbacks for safety flows when Telegram buttons are hidden. (Done in `1.4.1` for `/undo`, OCR confirmation, and smart-food confirmation.)
 - Prepare Telegram family mode and bot identity. (Done in `1.4.2`: BotFather guide, group-safe command policy, private-only medical entry guards, `/whoami` IDs, `/trustedtest`, and channel notice.)
+- Rebuild the current-state map and release-reporting workflow after the pause. (Done in `1.4.3` with `CURRENT_STATE.md`, `MANUAL_TELEGRAM_TEST_PLAN.md`, and `PATCH_NOTIFICATION_RULES.md`.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -99,3 +100,10 @@ Deferred work after `1.1.0` is tracked in `FUTURE_BACKLOG.md` so the roadmap sta
 - Build an interactive landing page from `docs/history/SCREENSHOT_STORY.md`. (Started in `1.0.39`.)
 - Keep screenshot captions, version filters, and visual history generated from one source file.
 - Expose the page through a Telegram command while the project is being shaped.
+
+## Phase 7 - Release Notes And uNews
+
+- Keep a short current-state document for returning to the project after pauses. (Done in `1.4.3`.)
+- Use a manual Telegram smoke checklist when browser automation is unreliable. (Done in `1.4.3`.)
+- Prepare uSugar patch notes for the uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`. (Rule documented in `1.4.3`; actual publication remains an explicit separate step.)
+- For future public patch notes, include version, commit, archive, tests, Telegram smoke status, safe screenshot if available, and GitHub docs-only status.

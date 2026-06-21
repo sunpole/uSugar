@@ -6,7 +6,7 @@ Date: 2026-06-21
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.4.2` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, the 1.4.1 UX Safety Commands release, and the 1.4.2 Telegram Family Mode + Bot Identity release are now implemented and tested.
+The current working code identifies itself as version `1.4.3` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, the 1.4.1 UX Safety Commands release, the 1.4.2 Telegram Family Mode + Bot Identity release, and the 1.4.3 Current State + Patch Bot Integration documentation release are now implemented and tested.
 
 ## Comparison Summary
 
@@ -77,6 +77,9 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Telegram family mode now keeps medical records private by default. In groups/supergroups, only `/version`, `/help`, `/health`, `/whoami`, and `/reminders` are considered safe; medical entry commands explain that they belong in private chat. Channel commands receive a neutral notice because channels are future notification/announcement surfaces rather than the main daily dialog.
 - `/whoami` now shows `user_id`, `chat_id`, and `chat_type`; `/trustedtest` can test delivery to the configured trusted contact without sending medical data.
 - Use `TELEGRAM_BOT_SETUP.md` when configuring BotFather identity, username, description/about text, avatar, command list, privacy mode, and token-rotation timing.
+- Use `CURRENT_STATE.md` for the short operational map after a pause.
+- Use `MANUAL_TELEGRAM_TEST_PLAN.md` when a release needs Telegram smoke; Codex should run code/log/test checks itself, then ask the user for a short manual command list instead of fighting Chrome focus.
+- Use `PATCH_NOTIFICATION_RULES.md` before preparing a uNews patch note. The active local uNews path is `C:\!CODE_CLUB\new 2026\004_uNews`; the documented Telegram channel is `@uNewsLog` and the publishing bot is `@uNewsDev_bot`.
 - Use `PROJECT_AUDIT.md`, `LARGE_FILES_AUDIT.md`, and `DATA_SOURCES.md` to keep debts, future split points, placeholders, and external-source decisions visible.
 - Use `PRODUCT_REQUIREMENTS.md` as the product direction source before starting the next implementation phase.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
@@ -116,3 +119,10 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Private chat remains the daily medical workflow. Groups are limited to safe coordination commands. Channels are documented as future one-way announcement/notification surfaces.
 - `/whoami` now exposes the IDs needed to configure family groups and trusted contacts.
 - `/trustedtest` sends only a connection-check message to the configured trusted contact target.
+
+## 1.4.3 Current State And Patch Notes
+
+- `CURRENT_STATE.md` summarizes what works, what is partial, and what is not implemented.
+- `MANUAL_TELEGRAM_TEST_PLAN.md` makes manual Telegram smoke the default when Codex cannot reliably type into Telegram Web.
+- `PATCH_NOTIFICATION_RULES.md` connects uSugar release reporting to the existing uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`.
+- No medical logic, database schema, OCR behavior, or Telegram handler behavior was intentionally changed in this release.

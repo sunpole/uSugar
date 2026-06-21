@@ -1,7 +1,7 @@
 # Product Requirements
 
 Date: 2026-06-21
-Version: 1.4.2
+Version: 1.4.3
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -77,3 +77,12 @@ Status in `1.4.2`: implemented as the first family-mode foundation with `TELEGRA
 - Product database / food database work stays deferred.
 - Printable A4 doctor diary stays deferred.
 - A new Telegram token should be issued only in the final phase before production or public launch.
+
+## Release And Patch Reporting
+
+- After each meaningful release, the project should have a short factual summary with version, commit, archive, tests, Telegram smoke status, and GitHub docs-only status.
+- Telegram smoke should be manual/user-assisted when Codex cannot reliably type into Telegram Web.
+- uSugar patch notes should be prepared according to `PATCH_NOTIFICATION_RULES.md` and the local uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`.
+- Publishing a uNews patch note to `@uNewsLog` is a separate explicit action and must not include secrets, private medical values, database contents, Telegram file IDs, or temporary ngrok URLs.
+
+Status in `1.4.3`: documented only. No runtime behavior or medical logic changed.

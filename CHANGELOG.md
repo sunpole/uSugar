@@ -2,6 +2,14 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.4.3 - 2026-06-21
+
+- Added `CURRENT_STATE.md` as a short current-state map after the 1.4.2 pause.
+- Added `MANUAL_TELEGRAM_TEST_PLAN.md` to make Telegram smoke testing explicitly user-assisted when Codex cannot reliably type into Telegram Web.
+- Added `PATCH_NOTIFICATION_RULES.md` documenting how uSugar should prepare patch notes for the local uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`.
+- Confirmed the uNews channel/bot workflow from local docs: `@uNewsLog`, `@uNewsDev_bot`, project-local `news/` patch notes, YAML metadata, and dry-run publication checks.
+- No medical logic, Telegram handlers, OCR behavior, database schema, or runtime behavior was intentionally changed.
+
 ## 1.4.2 - 2026-06-21
 
 - Added `TELEGRAM_BOT_SETUP.md` with BotFather identity setup, command list guidance, privacy-mode notes, channel positioning, and token-rotation policy.

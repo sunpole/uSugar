@@ -116,6 +116,48 @@ This command shows the bot version, database file name, settings-page configurat
 
 Use `/status` for the current user's latest glucose record. Use `/reminders` for measurement, basal, and follow-up reminder state. This separation is intentional since `1.1.1`.
 
+## Telegram Smoke Testing
+
+Codex can run code checks, inspect runtime logs, and read screenshots, but direct Telegram Web typing is unreliable in this Windows desktop session. Use `MANUAL_TELEGRAM_TEST_PLAN.md` for release smoke.
+
+Default private smoke commands:
+
+```text
+/version
+/help
+/health
+/status
+/whoami
+/trustedtest
+```
+
+Process:
+
+1. Codex runs `py_compile` and unit tests.
+2. Codex starts or checks the runtime.
+3. The user sends the smoke commands manually in Telegram.
+4. Codex reads the result from Telegram Web, screenshots, and `.runtime/logs`.
+5. Codex reports the smoke as confirmed, partially confirmed, or blocked.
+
+Do not spend a long time fighting Chrome focus. If manual smoke is needed, ask for the command list once and wait for the user's confirmation.
+
+## Patch Notes For uNews
+
+uSugar release notes can be prepared for the local uNews workflow.
+
+Current local uNews path:
+
+```text
+C:\!CODE_CLUB\new 2026\004_uNews
+```
+
+Documented Telegram endpoints:
+
+- channel: `@uNewsLog`
+- bot: `@uNewsDev_bot`
+
+Before preparing a public patch note, read `PATCH_NOTIFICATION_RULES.md`. The patch note should include version, commit, archive, tests, Telegram smoke status, safe screenshot if available, and GitHub docs-only status. Real publication through uNews is a separate explicit step and must not include secrets, `.env`, database data, Telegram file IDs, ngrok URLs, or private medical values.
+
 ## Settings WebApp
 
 Use `/settings` in Telegram before changing the protocol. Since `1.1.0`, the bot replies with the current saved protocol and a WebApp URL that includes the current values for prefill. Since `1.1.1`, the message explicitly asks the user to review current values before editing. `settings.html` also keeps the last submitted protocol in local browser storage as a fallback for local testing.
