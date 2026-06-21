@@ -2,6 +2,14 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.4.4 - 2026-06-21
+
+- Added `OPEN_WORK.md` with the current unfinished-work inventory grouped by OCR, family mode, daily flow, food, exports, and future production/LLM tasks.
+- Added `RELEASE_PLAN.md` with the planned milestone order from `1.5.0` OCR new sources through `1.8.0` DeepSeek.
+- Strengthened the uNews workflow: each closed uSugar release must now produce a project-local patch note and publish it to `@uNewsLog` when dry-run/check and safety checks pass.
+- Added the `1.4.4` uNews patch note in `news/` with a safe documentation screenshot.
+- No medical logic, OCR algorithms, Telegram token, database schema, or runtime behavior was intentionally changed.
+
 ## 1.4.3 - 2026-06-21
 
 - Added `CURRENT_STATE.md` as a short current-state map after the 1.4.2 pause.

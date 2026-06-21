@@ -156,7 +156,7 @@ Documented Telegram endpoints:
 - channel: `@uNewsLog`
 - bot: `@uNewsDev_bot`
 
-Before preparing a public patch note, read `PATCH_NOTIFICATION_RULES.md`. The patch note should include version, commit, archive, tests, Telegram smoke status, safe screenshot if available, and GitHub docs-only status. Real publication through uNews is a separate explicit step and must not include secrets, `.env`, database data, Telegram file IDs, ngrok URLs, or private medical values.
+Before preparing a public patch note, read `PATCH_NOTIFICATION_RULES.md`. Since `1.4.4`, uNews publication is a release gate after a closed uSugar release: create a project-local patch note in `news/`, include a safe image, run the uNews dry-run/check, publish documentation/news to GitHub through the docs-only path, and publish to `@uNewsLog` when the check is green and no safety blocker is present. uNews also has a GitHub auto-discovery path (`publish-all-news.yml` + `projects.json`) that scans public repositories for `news/` folders, so the patch note must be valid after it lands in the repository. If the image is missing, YAML is invalid, secrets/private data are detected, or dry-run fails, stop and report instead of publishing.
 
 ## Settings WebApp
 

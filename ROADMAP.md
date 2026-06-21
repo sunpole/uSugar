@@ -17,6 +17,7 @@
 - Add text fallbacks for safety flows when Telegram buttons are hidden. (Done in `1.4.1` for `/undo`, OCR confirmation, and smart-food confirmation.)
 - Prepare Telegram family mode and bot identity. (Done in `1.4.2`: BotFather guide, group-safe command policy, private-only medical entry guards, `/whoami` IDs, `/trustedtest`, and channel notice.)
 - Rebuild the current-state map and release-reporting workflow after the pause. (Done in `1.4.3` with `CURRENT_STATE.md`, `MANUAL_TELEGRAM_TEST_PLAN.md`, and `PATCH_NOTIFICATION_RULES.md`.)
+- Map open work and release targets before the next feature phase. (Done in `1.4.4` with `OPEN_WORK.md` and `RELEASE_PLAN.md`.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -105,5 +106,6 @@ Deferred work after `1.1.0` is tracked in `FUTURE_BACKLOG.md` so the roadmap sta
 
 - Keep a short current-state document for returning to the project after pauses. (Done in `1.4.3`.)
 - Use a manual Telegram smoke checklist when browser automation is unreliable. (Done in `1.4.3`.)
-- Prepare uSugar patch notes for the uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`. (Rule documented in `1.4.3`; actual publication remains an explicit separate step.)
-- For future public patch notes, include version, commit, archive, tests, Telegram smoke status, safe screenshot if available, and GitHub docs-only status.
+- Prepare uSugar patch notes for the uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`. (Rule documented in `1.4.3`.)
+- Publish every future closed uSugar release to `@uNewsLog` when the project-local patch note has a safe image and the uNews dry-run/check is green. (Required since `1.4.4`.)
+- Stop instead of publishing if a patch note has missing images, invalid YAML, secrets/private data, or failed dry-run/check.

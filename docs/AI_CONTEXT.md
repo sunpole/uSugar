@@ -1,7 +1,7 @@
 # AI_CONTEXT - uSugar Documentation Navigator
 
 Дата аудита документации: 2026-06-21
-Текущая версия проекта по активной документации: `1.4.3`
+Текущая версия проекта по активной документации: `1.4.4`
 
 Этот файл является навигатором по уже существующей документации uSugar. Он не заменяет `README.MD`, `PROJECT_STATUS.md`, `RUNBOOK.md` или `ROADMAP.md`, а помогает человеку или ИИ-агенту понять, какие документы читать первыми и каким документам доверять как актуальным.
 
@@ -28,7 +28,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `RUNBOOK.md`;
 - `CHANGELOG.md`.
 
-На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, `1.3.1` large-files audit для планирования следующих мини-модулей, `1.3.2` live runtime/OCR verification pass, `1.3.3` product requirements capture, `1.4.0` Settings WebApp + Smart Food Flow, `1.4.1` UX Safety Commands, `1.4.2` Telegram Family Mode + Bot Identity, а также `1.4.3` Current State + Patch Bot Integration.
+На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, `1.3.1` large-files audit для планирования следующих мини-модулей, `1.3.2` live runtime/OCR verification pass, `1.3.3` product requirements capture, `1.4.0` Settings WebApp + Smart Food Flow, `1.4.1` UX Safety Commands, `1.4.2` Telegram Family Mode + Bot Identity, `1.4.3` Current State + Patch Bot Integration, а также `1.4.4` Open Work Inventory + uNewsLog Auto Patch Workflow.
 
 Важно: публичная GitHub-документация в `docs/github_original/` полезна как исходная концепция, но не является точным описанием текущей локальной реализации.
 
@@ -54,7 +54,10 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `TELEGRAM_BOT_SETUP.md` описывает BotFather identity, команды, privacy mode, канал и политику смены token;
 - `CURRENT_STATE.md` даёт короткую карту текущего состояния после паузы;
 - `MANUAL_TELEGRAM_TEST_PLAN.md` задаёт ручной Telegram smoke, когда Codex плохо попадает в Telegram Web;
-- `PATCH_NOTIFICATION_RULES.md` описывает интеграцию uSugar с локальным uNews workflow в `C:\!CODE_CLUB\new 2026\004_uNews`, каналом `@uNewsLog` и ботом `@uNewsDev_bot`;
+- `PATCH_NOTIFICATION_RULES.md` описывает интеграцию uSugar с локальным uNews workflow в `C:\!CODE_CLUB\new 2026\004_uNews`, каналом `@uNewsLog`, ботом `@uNewsDev_bot` и GitHub auto-discovery через папки `news/` в публичных репозиториях;
+- `OPEN_WORK.md` описывает незавершённые задачи по блокам, статусам, приоритетам и целевым релизам;
+- `RELEASE_PLAN.md` задаёт порядок следующих релизов от `1.5.0` OCR new sources до `1.8.0` DeepSeek;
+- `PATCH_NOTIFICATION_RULES.md` теперь требует patch note и uNewsLog-публикацию после каждого закрытого релиза, если dry-run/check и safety checks зелёные;
 - ZIP backup через `/backup`;
 - локальный health check;
 - локальный Libre2 OCR/CV-путь с подтверждением результата;
@@ -135,6 +138,8 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `CURRENT_STATE.md` - короткое текущее состояние проекта.
 - `MANUAL_TELEGRAM_TEST_PLAN.md` - как проводить ручной Telegram smoke через пользователя.
 - `PATCH_NOTIFICATION_RULES.md` - как готовить uSugar patch notes для uNews.
+- `OPEN_WORK.md` - текущая карта незавершённых задач.
+- `RELEASE_PLAN.md` - целевой порядок следующих релизов.
 - `docs/history/SCREENSHOT_STORY.md` - источник истории скриншотов для landing/story.
 
 ## 6. Вспомогательные документы
@@ -221,10 +226,12 @@ uSugar - локальный Telegram-бот для семейной поддер
 10. `TELEGRAM_SMOKE_TEST.md` - ручная проверка через пользователя.
 11. `CURRENT_STATE.md` - быстрый operational snapshot.
 12. `MANUAL_TELEGRAM_TEST_PLAN.md` - правила ручного smoke через пользователя.
-13. `PATCH_NOTIFICATION_RULES.md` - uNews patch-note workflow.
-14. `TELEGRAM_BOT_SETUP.md` - BotFather, family mode, channel policy and token timing.
-15. `docs/history/SCREENSHOT_STORY.md` - как обновлять историю и story page.
-16. `CHANGELOG.md`, `VERSIONING.md`, `STABLE_ARCHIVES.md` - версии, архивы, история изменений.
+13. `OPEN_WORK.md` - текущие незавершённые задачи по областям.
+14. `RELEASE_PLAN.md` - порядок следующих релизов.
+15. `PATCH_NOTIFICATION_RULES.md` - uNews patch-note workflow.
+16. `TELEGRAM_BOT_SETUP.md` - BotFather, family mode, channel policy and token timing.
+17. `docs/history/SCREENSHOT_STORY.md` - как обновлять историю и story page.
+18. `CHANGELOG.md`, `VERSIONING.md`, `STABLE_ARCHIVES.md` - версии, архивы, история изменений.
 
 ИИ-агенту не рекомендуется начинать с `docs/github_original/` или `docs/legacy_local/`, потому что там много старых целей, не равных текущему коду.
 
@@ -248,6 +255,8 @@ uSugar - локальный Telegram-бот для семейной поддер
 ### Планы развития
 
 - `ROADMAP.md`;
+- `OPEN_WORK.md`;
+- `RELEASE_PLAN.md`;
 - `NEXT_STEPS.md`;
 - `BOT_BRAIN.md`;
 - `DATA_SOURCES.md`;
@@ -308,6 +317,9 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `RUNBOOK.md` - если изменились запуск, переменные `.env`, ngrok, backup, OCR, reminders;
 - `README.MD` - если изменились ключевые возможности или команды;
 - `TELEGRAM_SMOKE_TEST.md` - если изменилась ручная проверка в Telegram;
+- `OPEN_WORK.md` - если задача закрывает или добавляет крупный блок работы;
+- `RELEASE_PLAN.md` - если меняется целевой порядок релизов;
+- `PATCH_NOTIFICATION_RULES.md` - если меняется uNews/uNewsLog release workflow;
 - `BOT_BRAIN.md` - если изменились реакции, reminders, trusted alerts, follow-ups;
 - `DATA_SOURCES.md` - если добавлены источники данных, LLM или знания;
 - `docs/history/SCREENSHOT_STORY.md` - если добавлены исторические скриншоты;
@@ -336,6 +348,8 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `CURRENT_STATE.md` - короткая карта того, что работает, что частично работает и что ещё не реализовано.
 - `MANUAL_TELEGRAM_TEST_PLAN.md` - ручной Telegram smoke plan.
 - `PATCH_NOTIFICATION_RULES.md` - правила patch notes для uNews.
+- `OPEN_WORK.md` - source of truth для незавершённой работы.
+- `RELEASE_PLAN.md` - source of truth для следующей последовательности релизов.
 - `docs/history/SCREENSHOT_STORY.md` - source of truth для исторического лендинга.
 - `DOCS_INDEX.md` и `docs/AI_CONTEXT.md` - навигация по документации.
 

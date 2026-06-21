@@ -1,7 +1,7 @@
 # Product Requirements
 
 Date: 2026-06-21
-Version: 1.4.3
+Version: 1.4.4
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -80,9 +80,13 @@ Status in `1.4.2`: implemented as the first family-mode foundation with `TELEGRA
 
 ## Release And Patch Reporting
 
-- After each meaningful release, the project should have a short factual summary with version, commit, archive, tests, Telegram smoke status, and GitHub docs-only status.
+- After each meaningful release, the project must have a short factual summary with version, tests, Telegram smoke status, and GitHub docs-only status when relevant.
 - Telegram smoke should be manual/user-assisted when Codex cannot reliably type into Telegram Web.
-- uSugar patch notes should be prepared according to `PATCH_NOTIFICATION_RULES.md` and the local uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`.
-- Publishing a uNews patch note to `@uNewsLog` is a separate explicit action and must not include secrets, private medical values, database contents, Telegram file IDs, or temporary ngrok URLs.
+- uSugar patch notes must be prepared according to `PATCH_NOTIFICATION_RULES.md` and the local uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`.
+- The patch note and its image should live in the repository-local `news/` folder so the uNews GitHub auto-discovery workflow can find them in any public project repository.
+- After a release is closed, publish the uNews patch note to `@uNewsLog` without another confirmation prompt only when dry-run/check is green, the image exists, and safety checks pass.
+- Do not publish if the note includes secrets, private medical values, database contents, Telegram file IDs, temporary ngrok URLs, or private IDs.
 
 Status in `1.4.3`: documented only. No runtime behavior or medical logic changed.
+
+Status in `1.4.4`: strengthened into a required release workflow and paired with `OPEN_WORK.md` plus `RELEASE_PLAN.md`.
