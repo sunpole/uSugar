@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-21
-Version: 1.4.4
+Version: 1.5.0
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -15,11 +15,11 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| Old Libre2 CV path | done | high | 1.3.2 | Current local Libre2 CV recognition exists and was verified with OCR enabled locally. |
-| Updated narrow Libre screenshot | not started | high | 1.5.0 | Needed for newer Libre layouts with a narrow screen and smaller main number. |
-| Manual glucometer photo recognition | not started | high | 1.5.0 | Needs blurred/low-light test fixtures and a stricter confirmation policy. |
-| Multiple OCR engine comparison | partial | high | 1.5.0 | Aggregation logic exists, but production-grade multi-engine coverage is not complete. |
-| Before-crop / after-crop comparison | partial | medium | 1.5.0 | Existing variants are useful, but disagreement reporting should be clearer. |
+| Old Libre2 CV path | done | high | 1.3.2 | Current local Libre2 CV recognition exists and is now labeled `libre2_cv_old`. |
+| Updated narrow Libre screenshot | partial | high | 1.5.0 | Initial lightweight CV source `libre2_narrow_updated` exists and is covered by synthetic tests; real-world fixtures are still needed. |
+| Manual glucometer photo recognition | partial | high | 1.5.0 | Initial lightweight CV source `glucometer_photo` exists with blur/low-confidence safety; real-world coverage still needs safe local smoke. |
+| Multiple OCR engine comparison | partial | high | 1.5.0 | Source-aware aggregation exists, but production-grade multi-engine coverage is not complete. |
+| Before-crop / after-crop comparison | partial | medium | 1.5.0 | Existing variants are logged by source/variant; disagreement reporting still can become clearer. |
 | Protection from mistaken OCR save | done | high | 1.4.1 | OCR requires explicit confirmation before saving. |
 | Phone time / measurement time extraction | not started | medium | 1.5.0 | Needed before using screenshot age in decisions. |
 | Libre graph trend extraction | partial | medium | 1.5.0 | Basic trend exists, not a reliable time-series analysis yet. |
@@ -81,4 +81,3 @@ Status values:
 | New Telegram token | not started | high | production phase | Rotate only before public/production launch. |
 | GitHub code publication | not started | medium | production phase | Current GitHub flow remains docs/history/news-only. |
 | CI checks | not started | medium | 1.9.0 | Should run syntax and tests before production. |
-

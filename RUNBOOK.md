@@ -156,7 +156,7 @@ Documented Telegram endpoints:
 - channel: `@uNewsLog`
 - bot: `@uNewsDev_bot`
 
-Before preparing a public patch note, read `PATCH_NOTIFICATION_RULES.md`. Since `1.4.4`, uNews publication is a release gate after a closed uSugar release: create a project-local patch note in `news/`, include a safe image, run the uNews dry-run/check, publish documentation/news to GitHub through the docs-only path, and publish to `@uNewsLog` when the check is green and no safety blocker is present. uNews also has a GitHub auto-discovery path (`publish-all-news.yml` + `projects.json`) that scans public repositories for `news/` folders, so the patch note must be valid after it lands in the repository. If the image is missing, YAML is invalid, secrets/private data are detected, or dry-run fails, stop and report instead of publishing.
+Before preparing a public patch note, read `PATCH_NOTIFICATION_RULES.md`. Since `1.4.4`, uNews publication is a release gate after a closed uSugar release: create a project-local patch note in `news/`, include a safe image, run the uNews dry-run/check, and publish documentation/news to GitHub through the docs-only path so GitHub-first auto-discovery can publish it. Local uNews commands are for checks, credential diagnostics, and debugging; normal real Telegram publication should happen through the uNews GitHub Actions workflow after the note lands in the public repository. If the image is missing, YAML is invalid, secrets/private data are detected, or dry-run fails, stop and report instead of publishing.
 
 ## Settings WebApp
 
@@ -249,6 +249,8 @@ Version 1.0.37 adds one-time follow-up reminders after logged short insulin. The
 Version 1.1.0 stabilizes daily-use behavior: OCR disabled mode skips heavy recognition, reminder/OCR user messages are readable in Russian, `/undo` can remove the latest mistaken sugar or insulin entry with confirmation, and `/settings` shows/prefills the current protocol before editing.
 
 Version 1.1.1 is a UX cleanup release: `/help` is grouped by task, `/health`/`/status`/`/reminders` are explained as different screens, `/undo` is harder to misread, and low-confidence OCR replies use shorter result/action wording.
+
+Version 1.5.0 adds source-aware OCR paths without changing the database schema or automatic-save policy. Engine results now identify `libre2_cv_old`, `libre2_narrow_updated`, and `glucometer_photo` inside the existing OCR JSON metadata. `/ocr` lists active sources, and `/ocrlog` shows source, confidence, and saved/not-saved status without showing Telegram `file_id` values. The old Libre2 CV path remains the most reliable local source; the narrow Libre and glucometer-photo branches are initial lightweight CV support and should be treated as manual-confirmation candidates during real-world smoke.
 
 ## Important Caution
 

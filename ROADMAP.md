@@ -47,7 +47,7 @@
 - Compare OCR outputs and ask for manual confirmation on disagreement. (Done for current aggregator/confirmation flow.)
 - Add safety copy: the bot helps calculate, but does not replace medical advice.
 - Log confidence, source image metadata, and manual overrides.
-- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Captured in `PRODUCT_REQUIREMENTS.md`; not implemented yet.)
+- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; real-world coverage still needs more safe fixtures and manual smoke.)
 
 ## Phase 3.1 - Smart Daily Dialog
 
@@ -107,5 +107,5 @@ Deferred work after `1.1.0` is tracked in `FUTURE_BACKLOG.md` so the roadmap sta
 - Keep a short current-state document for returning to the project after pauses. (Done in `1.4.3`.)
 - Use a manual Telegram smoke checklist when browser automation is unreliable. (Done in `1.4.3`.)
 - Prepare uSugar patch notes for the uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`. (Rule documented in `1.4.3`.)
-- Publish every future closed uSugar release to `@uNewsLog` when the project-local patch note has a safe image and the uNews dry-run/check is green. (Required since `1.4.4`.)
+- Publish every future closed uSugar release through the GitHub-first uNews workflow when the project-local patch note has a safe image and the uNews dry-run/check is green. (Required since `1.4.4`; local commands are for checks/diagnostics, not normal real publication.)
 - Stop instead of publishing if a patch note has missing images, invalid YAML, secrets/private data, or failed dry-run/check.

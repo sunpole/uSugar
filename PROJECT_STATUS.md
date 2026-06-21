@@ -6,7 +6,7 @@ Date: 2026-06-21
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.4.4` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, Libre2 local recognition, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, the 1.4.1 UX Safety Commands release, the 1.4.2 Telegram Family Mode + Bot Identity release, the 1.4.3 Current State + Patch Bot Integration documentation release, and the 1.4.4 Open Work Inventory + uNewsLog Auto Patch Workflow release are now implemented and tested.
+The current working code identifies itself as version `1.5.0` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, source-aware Libre2/glucometer OCR metadata, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, the 1.4.1 UX Safety Commands release, the 1.4.2 Telegram Family Mode + Bot Identity release, the 1.4.3 Current State + Patch Bot Integration documentation release, the 1.4.4 Open Work Inventory + uNewsLog Auto Patch Workflow release, and the 1.5.0 OCR New Sources release are now implemented and tested.
 
 ## Comparison Summary
 
@@ -63,7 +63,7 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 
 ## Current Implementation Focus
 
-- Keep OCR fast and safe: Libre2 CV is the current reliable local path; Tesseract is optional and EasyOCR remains disabled by default on this Windows runtime.
+- Keep OCR fast and safe: Libre2 CV remains the current reliable local path; version `1.5.0` adds source-aware metadata plus lightweight branches for updated narrow Libre screenshots and manual-glucometer photos. Tesseract is optional and EasyOCR remains disabled by default on this Windows runtime.
 - Keep `USUGAR_OCR_ENABLED=false` as a real safety switch: disabled OCR accepts the photo metadata but does not download or run recognition.
 - To enable local Libre2 OCR testing, set `USUGAR_OCR_ENABLED=true` in `.env` and restart the bot runtime; keep `.env` uncommitted. Version `1.3.2` verified this path in the live local runtime and confirmed that `.env` must be UTF-8 without BOM for `python-dotenv` to read `BOT_TOKEN`.
 - Keep reminders useful but non-spammy: reminder delivery keys prevent duplicate background messages.
@@ -80,7 +80,7 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Use `CURRENT_STATE.md` for the short operational map after a pause.
 - Use `MANUAL_TELEGRAM_TEST_PLAN.md` when a release needs Telegram smoke; Codex should run code/log/test checks itself, then ask the user for a short manual command list instead of fighting Chrome focus.
 - Use `OPEN_WORK.md` for the current unfinished-work inventory and `RELEASE_PLAN.md` for the next milestone order.
-- Use `PATCH_NOTIFICATION_RULES.md` before preparing a uNews patch note. Since `1.4.4`, every closed uSugar release must publish to `@uNewsLog` when the uNews dry-run/check and safety checks are green. The active local uNews path is `C:\!CODE_CLUB\new 2026\004_uNews`; the documented Telegram channel is `@uNewsLog` and the publishing bot is `@uNewsDev_bot`.
+- Use `PATCH_NOTIFICATION_RULES.md` before preparing a uNews patch note. Since `1.4.4`, every closed uSugar release must create a safe `news/` patch note and pass the uNews dry-run/check; normal real publication belongs to the GitHub-first uNews workflow after docs/news reach the public repository. The active local uNews path is `C:\!CODE_CLUB\new 2026\004_uNews`; the documented Telegram channel is `@uNewsLog` and the publishing bot is `@uNewsDev_bot`.
 - Use `PROJECT_AUDIT.md`, `LARGE_FILES_AUDIT.md`, and `DATA_SOURCES.md` to keep debts, future split points, placeholders, and external-source decisions visible.
 - Use `PRODUCT_REQUIREMENTS.md` as the product direction source before starting the next implementation phase.
 - Use `FUTURE_BACKLOG.md` for deferred work that should not distract from stable 1.1.x maintenance.
@@ -127,6 +127,14 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - uNews patch publication is now a release gate after a closed release, not only a manual optional note.
 - The `1.4.4` patch note lives under `news/` and uses a safe documentation screenshot rather than Telegram data.
 - `/trustedtest` sends only a connection-check message to the configured trusted contact target.
+
+## 1.5.0 OCR New Sources Notes
+
+- OCR engine results now carry source-aware metadata for `libre2_cv_old`, `libre2_narrow_updated`, and `glucometer_photo`.
+- The old Libre2 CV path remains active and is still the preferred local source for known Libre screenshots.
+- Updated narrow Libre screenshots and manual-glucometer photos have initial lightweight CV branches covered by synthetic tests, but real-world Telegram smoke should still use explicit manual confirmation.
+- `/ocr` reports active OCR sources, and `/ocrlog` reports source, confidence, and saved/not-saved status without exposing Telegram `file_id` values.
+- No database schema migration, automatic OCR save, medical dose-logic change, token change, or production deployment was added.
 
 ## 1.4.3 Current State And Patch Notes
 

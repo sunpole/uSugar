@@ -1,7 +1,7 @@
 # Patch Notification Rules
 
 Date: 2026-06-21
-Version: 1.4.4
+Version: 1.5.0
 
 This file records how uSugar works with the local uNews / patch-note workflow.
 
@@ -26,7 +26,7 @@ Telegram endpoints documented there:
 - Channel: `@uNewsLog`
 - Bot: `@uNewsDev_bot`
 
-uNews expects every project to keep patch notes in its own `news/` folder. The local publisher reads those files and can publish them to Telegram.
+uNews expects every project to keep patch notes in its own `news/` folder. Local uNews commands are used for validation, credential diagnostics, and debugging.
 
 The GitHub-side uNews workflow also supports automatic discovery. `projects.json` uses `mode: auto-discover-public-repositories`, scans public repositories under `sunpole`, reads their `news/` folders, and publishes new patch notes through `scripts/publish-all-news.js` / `.github/workflows/publish-all-news.yml`. Therefore, every uSugar release note must be valid both for the local one-file publisher and for the repository-level auto-discovery path.
 
@@ -45,7 +45,7 @@ After each release is closed, Codex must:
 7. Add a safe screenshot/image.
 8. Run the uNews dry-run/check command.
 9. Publish documentation/news to GitHub through the docs-only path so the `news/` folder is available to the uNews auto-discovery workflow.
-10. If the check is green and safety checks pass, publish to `@uNewsLog` without another confirmation prompt.
+10. If the check is green and safety checks pass, let the GitHub-first uNews workflow publish it after the docs/news-only update reaches the public repository.
 11. If YAML is invalid, the image is missing, secrets/private data are found, or dry-run/check fails, do not publish; stop with a report.
 
 ## Patch Note Contents
@@ -131,11 +131,7 @@ npm run publish:all:check
 
 It scans configured public repositories and their `news/` folders. It only sees uSugar news after the docs-only GitHub publication puts the patch note and image into the repository.
 
-Real publication after a closed uSugar release is mandatory when dry-run/check and safety checks are green:
-
-```powershell
-npm run publish:projects -- "..\002_usugar\news\YYYY-MM-DD-usugar-vX-Y-Z-short-title.md"
-```
+Normal real publication after a closed uSugar release must happen through the GitHub-first uNews workflow, not from the local workstation. Do not run local real publish for routine uSugar releases. Local real publishing is reserved only for explicitly approved emergency debugging of uNews itself.
 
 ## Safety
 

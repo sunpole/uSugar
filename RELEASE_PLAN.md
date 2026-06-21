@@ -1,7 +1,7 @@
 # Release Plan
 
 Date: 2026-06-21
-Version: 1.4.4
+Version: 1.5.0
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -9,12 +9,14 @@ This document turns the open work inventory into a practical release sequence. I
 
 Goal: make image intake more useful without weakening safety.
 
-Planned work:
+Status: implemented as the first safe source-aware OCR step. The old Libre2 CV path remains active, `libre2_narrow_updated` and `glucometer_photo` were added as lightweight CV sources, synthetic tests cover the new branches, and every recognized value still requires explicit confirmation before saving.
 
-- Support the updated narrow Libre screenshot format.
-- Add a first safe path for manual glucometer photos.
-- Add redacted OCR fixtures for both new source types.
-- Compare OCR variants/engines and show disagreement clearly.
+Completed work:
+
+- Support the updated narrow Libre screenshot format as an initial synthetic-tested CV path.
+- Add a first safe path for manual glucometer photos with stricter manual confirmation.
+- Add synthetic OCR fixture policy and tests for both new source types.
+- Compare OCR variants/engines with source-aware metadata.
 - Keep explicit user confirmation before saving any OCR value.
 
 Exit criteria:
@@ -22,7 +24,7 @@ Exit criteria:
 - OCR disabled mode still skips heavy recognition.
 - Existing Libre2 CV path still works.
 - New source tests pass.
-- Telegram photo smoke is confirmed with safe test images.
+- Telegram photo smoke remains manual/user-assisted with safe test images.
 
 ## 1.5.1 - Food Log
 
@@ -124,4 +126,3 @@ Exit criteria:
 
 - LLM calls are optional, disabled by default, and covered by tests.
 - Failure modes are documented before runtime use.
-

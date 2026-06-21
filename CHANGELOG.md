@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.0 - 2026-06-21
+
+- Added source-aware OCR result metadata with `source_type` values for `libre2_cv_old`, `libre2_narrow_updated`, and `glucometer_photo`.
+- Kept the existing Libre2 CV path working while adding lightweight CV recognition branches for updated narrow Libre screenshots and synthetic manual-glucometer photos.
+- Updated OCR aggregation safety: a single Libre candidate can be shown as medium confidence, while a single glucometer-photo candidate requires manual confirmation.
+- Expanded `/ocr` and `/ocrlog` surfaces so users can see active OCR sources, source type, confidence, saved/not-saved status, and engine notes without exposing Telegram `file_id` values.
+- Added synthetic OCR unit-test coverage, `tests/fixtures/ocr/README.md`, and public OCR sample folders under `img/` with user-approved Libre/glucometer examples.
+- No database schema migration, medical dose logic, Telegram token, production deployment, or automatic OCR saving was added.
+
 ## 1.4.4 - 2026-06-21
 
 - Added `OPEN_WORK.md` with the current unfinished-work inventory grouped by OCR, family mode, daily flow, food, exports, and future production/LLM tasks.

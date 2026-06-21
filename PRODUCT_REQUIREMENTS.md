@@ -1,7 +1,7 @@
 # Product Requirements
 
 Date: 2026-06-21
-Version: 1.4.4
+Version: 1.5.0
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -48,6 +48,10 @@ Status in `1.4.1`: quick food calculations still do not create journal records w
 - OCR must not save glucose without explicit confirmation.
 - When OCR engines strongly disagree, the bot should ask for manual verification.
 
+Status in `1.5.0`: initial source-aware OCR support is implemented without a database migration. The old Libre2 CV path is labeled `libre2_cv_old`; the updated narrow Libre branch is labeled `libre2_narrow_updated`; the manual-glucometer photo branch is labeled `glucometer_photo`. All OCR values still require explicit confirmation before saving, and single glucometer-photo candidates remain manual-check results rather than trusted automatic reads.
+
+The project also now keeps user-approved public OCR sample folders under `img/simple`, `img/simple_new`, and `img/simple_gluk`. These samples are for development and regression checks, not automatic medical decisions.
+
 Status in `1.4.1`: OCR confirmation accepts typed actions (`сохранить`, `ввести вручную`, `не сохранять`, `отмена`) in addition to buttons.
 
 ## Trusted Contact
@@ -84,9 +88,11 @@ Status in `1.4.2`: implemented as the first family-mode foundation with `TELEGRA
 - Telegram smoke should be manual/user-assisted when Codex cannot reliably type into Telegram Web.
 - uSugar patch notes must be prepared according to `PATCH_NOTIFICATION_RULES.md` and the local uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`.
 - The patch note and its image should live in the repository-local `news/` folder so the uNews GitHub auto-discovery workflow can find them in any public project repository.
-- After a release is closed, publish the uNews patch note to `@uNewsLog` without another confirmation prompt only when dry-run/check is green, the image exists, and safety checks pass.
+- After a release is closed, publish documentation/news through the docs-only GitHub path so the uNews GitHub-first workflow can publish the patch note when dry-run/check is green, the image exists, and safety checks pass.
 - Do not publish if the note includes secrets, private medical values, database contents, Telegram file IDs, temporary ngrok URLs, or private IDs.
 
 Status in `1.4.3`: documented only. No runtime behavior or medical logic changed.
 
 Status in `1.4.4`: strengthened into a required release workflow and paired with `OPEN_WORK.md` plus `RELEASE_PLAN.md`.
+
+Status in `1.5.0`: uSugar creates release notes in `news/` and runs the uNews check locally, but normal real publication belongs to the GitHub-first uNews workflow after the note and safe image reach the public repository.

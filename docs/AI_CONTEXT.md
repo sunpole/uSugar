@@ -1,7 +1,7 @@
 # AI_CONTEXT - uSugar Documentation Navigator
 
 Дата аудита документации: 2026-06-21
-Текущая версия проекта по активной документации: `1.4.4`
+Текущая версия проекта по активной документации: `1.5.0`
 
 Этот файл является навигатором по уже существующей документации uSugar. Он не заменяет `README.MD`, `PROJECT_STATUS.md`, `RUNBOOK.md` или `ROADMAP.md`, а помогает человеку или ИИ-агенту понять, какие документы читать первыми и каким документам доверять как актуальным.
 
@@ -28,7 +28,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `RUNBOOK.md`;
 - `CHANGELOG.md`.
 
-На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, `1.3.1` large-files audit для планирования следующих мини-модулей, `1.3.2` live runtime/OCR verification pass, `1.3.3` product requirements capture, `1.4.0` Settings WebApp + Smart Food Flow, `1.4.1` UX Safety Commands, `1.4.2` Telegram Family Mode + Bot Identity, `1.4.3` Current State + Patch Bot Integration, а также `1.4.4` Open Work Inventory + uNewsLog Auto Patch Workflow.
+На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, `1.3.1` large-files audit для планирования следующих мини-модулей, `1.3.2` live runtime/OCR verification pass, `1.3.3` product requirements capture, `1.4.0` Settings WebApp + Smart Food Flow, `1.4.1` UX Safety Commands, `1.4.2` Telegram Family Mode + Bot Identity, `1.4.3` Current State + Patch Bot Integration, `1.4.4` Open Work Inventory + uNewsLog Auto Patch Workflow, а также `1.5.0` OCR New Sources.
 
 Важно: публичная GitHub-документация в `docs/github_original/` полезна как исходная концепция, но не является точным описанием текущей локальной реализации.
 
@@ -60,7 +60,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `PATCH_NOTIFICATION_RULES.md` теперь требует patch note и uNewsLog-публикацию после каждого закрытого релиза, если dry-run/check и safety checks зелёные;
 - ZIP backup через `/backup`;
 - локальный health check;
-- локальный Libre2 OCR/CV-путь с подтверждением результата;
+- локальный source-aware OCR/CV-путь с подтверждением результата: `libre2_cv_old`, `libre2_narrow_updated`, `glucometer_photo`;
 - локально проверенное включение OCR через `.env` (`USUGAR_OCR_ENABLED=true`) в версии `1.3.2`;
 - optional Tesseract OCR, если установлен `tesseract.exe`;
 - отключенный по умолчанию EasyOCR из-за проблем стабильности/скорости на Windows;
@@ -94,7 +94,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - полноценные три надежные OCR-движка;
 - полностью автоматизированный Telegram Web smoke без участия пользователя или риска попадания фокуса в reply-кнопки;
 - дальнейшее расширение smart dialog за пределы carb-sum сценария;
-- будущие OCR-типы для обновленного Libre screenshot и фото ручного глюкометра;
+- production-grade OCR для реальных обновленных Libre screenshots и фото ручного глюкометра за пределами синтетических/первичных CV-проверок;
 - полный trusted-contact consent/verification/quiet-hours flow;
 - надежное распознавание времени телефона/замера со скриншота;
 - полноценный анализ графика Libre2 как временного ряда;
