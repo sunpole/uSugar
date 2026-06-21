@@ -2,7 +2,7 @@
 
 uSugar is an early-stage Telegram bot for family diabetes support. The project is currently being assembled into a clean local working version before active feature development continues.
 
-Current local code version: `1.1.0`
+Current local code version: `1.4.2`
 
 ## What This Project Is Now
 
@@ -159,14 +159,17 @@ Useful Telegram commands:
 - `/settings` - show the current protocol and a prefilled WebApp settings URL
 - `/undo` - delete the last mistaken glucose or insulin record after confirmation
 - `/setname` - set or change the user display name
-- `/whoami` - show the stored display name state
+- `/whoami` - show user_id, chat_id, and chat_type for family setup
 - `/health` - runtime status without secrets
 - `/backup` - ZIP export with protocol and logs
 - `/ocr` - OCR/photo intake status
 - `/ocrlog` - recent OCR/photo attempts
 - `/reminders` - current measurement reminder state
+- `/trustedtest` - safe trusted-contact delivery test without medical data
 - `/story` - interactive history of how uSugar is being created
 - `/version` - running bot version
+
+In family groups, use only safe commands: `/version`, `/help`, `/health`, `/whoami`, and `/reminders`. Glucose, food, insulin, OCR, settings, logs, backup, and deletion stay in private chat by default.
 
 ## Safety Note
 
