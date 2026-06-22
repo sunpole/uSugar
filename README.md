@@ -2,7 +2,7 @@
 
 uSugar is an early-stage Telegram bot for family diabetes support. The project is currently being assembled into a clean local working version before active feature development continues.
 
-Current local code version: `1.4.2`
+Current local code version: `1.5.9`
 
 ## What This Project Is Now
 
@@ -114,6 +114,35 @@ Run logic tests:
 ```bat
 venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
+
+## Daily Telegram Commands
+
+Short daily help is available through `/help` or `помощь`.
+
+Full technical and legacy command list:
+
+```text
+/commands
+/devhelp
+команды
+```
+
+Common Russian aliases without slash:
+
+- `настройки` -> `/settings`
+- `статус` -> `/status`
+- `журнал` -> `/log`
+- `оцр`, `распознавание`, `фото сахара` -> `/ocr`
+- `журнал оцр` -> `/ocrlog`
+- `напоминания` -> `/reminders`
+- `формула` -> `/formula`
+- `версия` -> `/version`
+- `здоровье`, `проверка` -> `/health`
+- `кто я` -> `/whoami`
+- `резервная копия`, `бэкап` -> `/backup`
+- `история` -> `/story`
+
+Compatibility commands remain available: `/sugar`, `/food`, `/insulin`, and legacy `/setname`.
 
 ## Documentation
 
