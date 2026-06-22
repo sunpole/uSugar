@@ -124,12 +124,29 @@ Default private smoke commands:
 
 ```text
 /version
+/start
 /help
 /health
 /status
 /whoami
 /trustedtest
 ```
+
+Menu/smart-input smoke after `1.5.8`:
+
+```text
+/version
+/start
+/help
+8.4 сахар
+отмена
+3 укол
+отмена
+50 40 еда
+отмена
+```
+
+The visible reply keyboard should show only navigation buttons: Settings, Status, Log, OCR, Reminders, Formula, Help. The old Name/Sugar/Food/Insulin daily-entry buttons should not be visible, although `/sugar`, `/food`, `/insulin`, and `/setname` remain compatibility commands.
 
 Process:
 

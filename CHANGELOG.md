@@ -2,6 +2,14 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.8 - 2026-06-22
+
+- Confirmed the main reply keyboard no longer exposes the legacy daily-entry buttons: Name, Sugar, Food, and Insulin.
+- Kept the visible main menu focused on navigation: Settings, Status, Log, OCR, Reminders, Formula, and Help.
+- Kept compatibility commands `/sugar`, `/food`, `/insulin`, and legacy `/setname` available but not promoted as daily buttons.
+- Updated `/help` with a clearer daily smart-input block: `8.4 сахар`, `3 укол`, `50 40 еда`, `новый либре`, `глюкометр`, and `отмена`.
+- No food_log table, OCR tuning, DeepSeek, trusted-contact logic, local Telegram publication, medical formula, or database schema change was added.
+
 ## 1.5.7 - 2026-06-22
 
 - Added an explicit confirmation dialog in Settings WebApp before sending settings back to Telegram.

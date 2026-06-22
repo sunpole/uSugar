@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 44,
+  "count": 45,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -354,6 +354,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Safe public release card showing the 1.5.7 product decision: Settings WebApp asks before applying changes, trusted-contact state is visible after save, and the main menu becomes navigation instead of old data-entry buttons.",
       "caption": "uSugarBot 1.5.7 turns the smart-input idea into the visible product surface: settings confirm before saving, trusted contact is shown, and the main keyboard stops competing with typed daily messages.",
       "version": "1.5.7"
+    },
+    {
+      "file": "2026-06-22_remove_legacy_buttons_v1_5_8_working.png",
+      "image": "docs/history/2026-06-22_remove_legacy_buttons_v1_5_8_working.png",
+      "role": "Remove legacy daily buttons",
+      "description": "Safe public release card showing the 1.5.8 cleanup: old Name/Sugar/Food/Insulin buttons are removed from the visible main menu while smart text input and compatibility commands remain.",
+      "caption": "uSugarBot 1.5.8 makes the daily direction unmistakable: the keyboard is for navigation, and everyday records start from typed smart input.",
+      "version": "1.5.8"
     }
   ]
 };

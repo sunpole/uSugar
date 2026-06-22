@@ -1,7 +1,7 @@
 # Release Plan
 
 Date: 2026-06-22
-Version: 1.5.7
+Version: 1.5.8
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -163,7 +163,26 @@ Exit criteria:
 - Settings WebApp still sends current protocol data.
 - Food Log remains a separate planned feature.
 
-## 1.5.8 - Food Log
+## 1.5.8 - Remove Legacy Daily Buttons
+
+Goal: make the main Telegram menu match the smart text input flow.
+
+Status: implemented. Version `1.5.8` confirms that the old Name/Sugar/Food/Insulin daily-entry buttons are not exposed in the main reply keyboard, while compatibility commands remain available.
+
+Completed work:
+
+- Keep the main menu focused on Settings, Status, Log, OCR, Reminders, Formula, and Help.
+- Keep `/sugar`, `/food`, `/insulin`, and legacy `/setname` available for compatibility.
+- Make `/help` show the preferred daily input examples: `8.4 сахар`, `3 укол`, `50 40 еда`, `новый либре`, `глюкометр`, and `отмена`.
+- Keep smart text input as the preferred daily entry path.
+
+Exit criteria:
+
+- Unit tests and text-integrity checks pass.
+- Main keyboard contains no Name/Sugar/Food/Insulin legacy daily buttons.
+- Telegram smoke confirms the visible keyboard and smart text examples.
+
+## 1.5.9 - Food Log
 
 Goal: make food calculations recordable and exportable.
 

@@ -1,7 +1,7 @@
 # Product Requirements
 
 Date: 2026-06-21
-Version: 1.5.5
+Version: 1.5.8
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -26,6 +26,8 @@ Status in `1.5.5`: Settings WebApp also includes the preferred OCR mode selector
 - The dialog should reduce user effort without hiding safety confirmations.
 
 Status in `1.4.0`: partially implemented. Carb-sum inputs like `50+40` and `50 40` now trigger a direct food calculation without saving a record; single-number clarification remains available.
+
+Status in `1.5.8`: the main reply keyboard is navigation-only and no longer exposes the old Name/Sugar/Food/Insulin daily buttons. Daily entry should use smart text input, `/help`, and compatibility commands instead of reintroducing those buttons.
 
 Status in `1.4.1`: safety text fallbacks were added for collapsed Telegram buttons. The user can type `сохранить еду`, `не сохранять`, or `отмена` after a smart-food calculation; food saving remains disabled until a real food journal exists.
 
@@ -100,6 +102,13 @@ Status in `1.4.3`: documented only. No runtime behavior or medical logic changed
 Status in `1.4.4`: strengthened into a required release workflow and paired with `OPEN_WORK.md` plus `RELEASE_PLAN.md`.
 
 Status in `1.5.1`: uSugar continues to create release notes in `news/` and run the uNews check locally. Real publication remains GitHub-first after the note and safe image reach the public repository; local real publishing is not part of the normal workflow.
+
+## Status in 1.5.8
+
+- Main menu buttons are limited to Settings, Status, Log, OCR, Reminders, Formula, and Help.
+- Legacy daily-entry buttons Name, Sugar, Food, and Insulin should not be re-added to the main keyboard.
+- `/sugar`, `/food`, `/insulin`, and legacy `/setname` remain compatibility commands.
+- `/help` documents the preferred daily text inputs: `8.4 сахар`, `3 укол`, `50 40 еда`, `новый либре`, `глюкометр`, and `отмена`.
 
 ## Status in 1.5.5
 
