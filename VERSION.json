@@ -1,9 +1,10 @@
 {
-  "version": "1.5.5",
+  "version": "1.5.6",
   "date": "2026-06-22",
   "stage": "local-mvp",
-  "summary": "OCR mode selector and smart text input",
+  "summary": "Runtime hotfix for Python 3.9 bot startup",
   "notes": [
+    "Bumped patch version from 1.5.5 to 1.5.6.",
     "Bumped patch version from 1.5.4 to 1.5.5.",
     "Bumped patch version from 1.5.3 to 1.5.4.",
     "Bumped patch version from 1.5.2 to 1.5.3.",
@@ -325,6 +326,10 @@
     {
       "version": "1.5.5",
       "summary": "OCR mode selector and smart text input"
+    },
+    {
+      "version": "1.5.6",
+      "summary": "Runtime hotfix for Python 3.9 bot startup"
     }
   ]
 }

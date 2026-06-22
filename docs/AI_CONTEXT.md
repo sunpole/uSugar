@@ -2,7 +2,9 @@
 
 ## Current Update For Agents - 2026-06-22
 
-Current runtime/documentation version: `1.5.5`.
+Current runtime/documentation version: `1.5.6`.
+
+uSugar `1.5.6` is a runtime hotfix after `1.5.5`: it fixes a Python 3.9 startup crash in the insulin text fallback. The fix replaces a Python 3.10-only type hint with a Python 3.9-compatible `Optional[str]`. No medical formula, OCR algorithm, database schema, Telegram token, or production setting changed.
 
 uSugar `1.5.5` adds a per-user OCR mode selector (`auto`, `libre2_old`, `libre2_new`, `glucometer`) and smart text input for explicit daily phrases such as `8.4 сахар`, `сахр 8.4`, `50 40 еда`, `3 4 5 20 70 80 еда`, `3 укол`, and `укло 3`. The mode is stored in the existing protocol JSON as `ocr_mode`, including Settings WebApp prefill/save. OCR still never saves glucose without explicit confirmation. No medical formula, database schema, DeepSeek, trusted-contact, food-log, or production deployment work was added in this release.
 

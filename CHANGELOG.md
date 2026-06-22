@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.6 - 2026-06-22
+
+- Fixed a Python 3.9 runtime startup crash introduced in the 1.5.5 smart text input fallback.
+- Replaced the incompatible `str | None` type hint in the insulin text fallback with `Optional[str]`.
+- Confirmed `py_compile` and the full unit test suite pass after the fix.
+- No medical formula, OCR algorithm, database schema, Telegram token, or local Telegram publication work was changed.
+
 ## 1.5.5 - 2026-06-22
 
 - Added per-user OCR mode selection stored in the existing protocol JSON: `auto`, `libre2_old`, `libre2_new`, and `glucometer`.
