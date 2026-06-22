@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.4 - 2026-06-22
+
+- Tuned only the `glucometer_photo` OCR source for real manual-glucometer photos from `img/simple_gluk`.
+- Added a fallback display search with multiple safe ROIs, contrast/sharpen preprocess variants, upscale, and small rotation tolerance for portrait camera photos.
+- Improved `img/simple_gluk` smoke results from `19 no_result / 8 manual / 0 accepted` to `9 no_result / 18 manual / 0 accepted`.
+- Kept all glucometer candidates manual-confirmation by default; no automatic OCR saving was added.
+- Confirmed Libre2 smoke did not regress: `img/simple` stayed at `4 accepted / 7 manual / 0 no_result`, and `img/simple_new` stayed within the improved 1.5.3 range.
+- No Libre2 algorithm change, food logging, trusted contact work, DeepSeek, Telegram token change, or local Telegram publication was added.
+
 ## 1.5.3 - 2026-06-22
 
 - Tuned the `libre2_narrow_updated` OCR source for real landscape Libre2 screenshots from `img/simple_new`.

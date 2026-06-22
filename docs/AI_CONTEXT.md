@@ -1,7 +1,7 @@
 # AI_CONTEXT - uSugar Documentation Navigator
 
 Дата аудита документации: 2026-06-21
-Текущая версия проекта по активной документации: `1.5.3`
+Текущая версия проекта по активной документации: `1.5.4`
 
 Этот файл является навигатором по уже существующей документации uSugar. Он не заменяет `README.MD`, `PROJECT_STATUS.md`, `RUNBOOK.md` или `ROADMAP.md`, а помогает человеку или ИИ-агенту понять, какие документы читать первыми и каким документам доверять как актуальным.
 
@@ -28,7 +28,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `RUNBOOK.md`;
 - `CHANGELOG.md`.
 
-На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, `1.3.1` large-files audit для планирования следующих мини-модулей, `1.3.2` live runtime/OCR verification pass, `1.3.3` product requirements capture, `1.4.0` Settings WebApp + Smart Food Flow, `1.4.1` UX Safety Commands, `1.4.2` Telegram Family Mode + Bot Identity, `1.4.3` Current State + Patch Bot Integration, `1.4.4` Open Work Inventory + uNewsLog Auto Patch Workflow, `1.5.0` OCR New Sources, `1.5.1` OCR Safety Hotfix после живого smoke на публичных примерах, `1.5.2` OCR Reality + uNews Publishing Audit, а также `1.5.3` New Libre2 Narrow OCR Tuning.
+На момент аудита проект находится в рабочей MVP-стадии. Локальная версия богаче старой GitHub-документации: есть Telegram runtime, SQLite, WebApp настройки, OCR Libre2, reminders, backup, тесты, story landing, история скриншотов, UX cleanup релиз `1.1.1`, полный 1.2.x путь разделения `bot.py` на system/profile/info/glucose/settings/logs/therapy/OCR/reminders модули, релиз `1.3.0`, который вынес startup version sync в `runtime/startup.py` и оставил `bot.py` composition root, `1.3.1` large-files audit для планирования следующих мини-модулей, `1.3.2` live runtime/OCR verification pass, `1.3.3` product requirements capture, `1.4.0` Settings WebApp + Smart Food Flow, `1.4.1` UX Safety Commands, `1.4.2` Telegram Family Mode + Bot Identity, `1.4.3` Current State + Patch Bot Integration, `1.4.4` Open Work Inventory + uNewsLog Auto Patch Workflow, `1.5.0` OCR New Sources, `1.5.1` OCR Safety Hotfix после живого smoke на публичных примерах, `1.5.2` OCR Reality + uNews Publishing Audit, `1.5.3` New Libre2 Narrow OCR Tuning, а также `1.5.4` Glucometer Photo OCR Tuning.
 
 Важно: публичная GitHub-документация в `docs/github_original/` полезна как исходная концепция, но не является точным описанием текущей локальной реализации.
 
@@ -60,7 +60,7 @@ uSugar - локальный Telegram-бот для семейной поддер
 - `PATCH_NOTIFICATION_RULES.md` теперь требует patch note и uNewsLog-публикацию после каждого закрытого релиза, если dry-run/check и safety checks зелёные;
 - ZIP backup через `/backup`;
 - локальный health check;
-- локальный source-aware OCR/CV-путь с подтверждением результата: `libre2_cv_old`, `libre2_narrow_updated`, `glucometer_photo`; в `1.5.1` старый Libre2 CV получает приоритет при конфликте, Libre OCR не запускается на фото глюкометров, а сомнительные glucometer-цифры остаются ручной проверкой; в `1.5.2` добавлены `OCR_REALITY_REPORT.md` и `scripts/ocr_smoke.py`, которые честно показывают partial/mostly failed/low-confidence состояние реальных примеров; в `1.5.3` `libre2_narrow_updated` получил landscape ROI для реальных `1280x576` скринов из `img/simple_new`;
+- локальный source-aware OCR/CV-путь с подтверждением результата: `libre2_cv_old`, `libre2_narrow_updated`, `glucometer_photo`; в `1.5.1` старый Libre2 CV получает приоритет при конфликте, Libre OCR не запускается на фото глюкометров, а сомнительные glucometer-цифры остаются ручной проверкой; в `1.5.2` добавлены `OCR_REALITY_REPORT.md` и `scripts/ocr_smoke.py`, которые честно показывают partial/mostly failed/low-confidence состояние реальных примеров; в `1.5.3` `libre2_narrow_updated` получил landscape ROI для реальных `1280x576` скринов из `img/simple_new`; в `1.5.4` `glucometer_photo` получил fallback-поиск display ROI для реальных фото из `img/simple_gluk`, но все кандидаты остаются manual-only;
 - локально проверенное включение OCR через `.env` (`USUGAR_OCR_ENABLED=true`) в версии `1.3.2`;
 - optional Tesseract OCR, если установлен `tesseract.exe`;
 - отключенный по умолчанию EasyOCR из-за проблем стабильности/скорости на Windows;

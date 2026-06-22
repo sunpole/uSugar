@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 42,
+  "count": 43,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -338,6 +338,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Safe public release card showing the before/after smoke counts for `img/simple_new` after adding the landscape right-side ROI. It avoids Telegram IDs, private screenshots, secrets, and autosave claims.",
       "caption": "uSugarBot 1.5.3 teaches the new Libre2 landscape screenshots where to look: no-result frames drop from 14 to 9 while new candidates stay manual by default.",
       "version": "1.5.3"
+    },
+    {
+      "file": "2026-06-22_glucometer_photo_ocr_tuning_v1_5_4_working.png",
+      "image": "docs/history/2026-06-22_glucometer_photo_ocr_tuning_v1_5_4_working.png",
+      "role": "Glucometer photo OCR tuning",
+      "description": "Safe public release card showing the before/after smoke counts for `img/simple_gluk` after adding display ROI fallback, photo preprocessing, upscaling, and small rotation tolerance. It avoids readable medical-photo crops, Telegram IDs, secrets, and autosave claims.",
+      "caption": "uSugarBot 1.5.4 makes real glucometer photos less silent: no-result frames drop from 19 to 9, but every candidate still asks for human confirmation.",
+      "version": "1.5.4"
     }
   ]
 };

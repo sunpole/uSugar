@@ -1,7 +1,7 @@
 # Release Plan
 
-Date: 2026-06-21
-Version: 1.5.3
+Date: 2026-06-22
+Version: 1.5.4
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -87,7 +87,26 @@ Exit criteria:
 - OCR smoke confirms better `img/simple_new` coverage and no old-Libre/glucometer regression.
 - uNews patch note passes local check only; real publication is GitHub-first.
 
-## 1.5.4 - Food Log
+## 1.5.4 - Glucometer Photo OCR Tuning
+
+Goal: improve only manual-glucometer photo coverage without weakening safety.
+
+Status: implemented. Version `1.5.4` adds fallback display ROI search, contrast/equalize/sharpen preprocessing, upscaling, and small rotation tolerance for `glucometer_photo`.
+
+Completed work:
+
+- Improve `img/simple_gluk` smoke from 19 no-result frames to 9.
+- Keep accepted glucometer results at 0 by design.
+- Keep every glucometer candidate manual-confirmation only.
+- Confirm `img/simple` and `img/simple_new` did not regress.
+
+Exit criteria:
+
+- Full unit tests pass.
+- OCR smoke confirms better `img/simple_gluk` coverage.
+- uNews patch note passes local check only; real publication is GitHub-first.
+
+## 1.5.5 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -105,7 +124,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.5.5 - Smart Daily Dialog
+## 1.5.6 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 

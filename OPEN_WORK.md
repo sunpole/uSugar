@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-21
-Version: 1.5.3
+Version: 1.5.4
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -17,7 +17,7 @@ Status values:
 |---|---|---:|---|---|
 | Old Libre2 CV path | partial | high | 1.5.x | Exists and remains the best current source, but `OCR_REALITY_REPORT.md` measured only partial stability on `img/simple`; more tuning is needed before it can be called fully reliable. |
 | Updated narrow Libre screenshot | partial | high | 1.5.x | `1.5.3` added a landscape right-side ROI for real 1280x576 updated Libre screenshots and reduced `img/simple_new` no-result frames from 14/18 to 9/18. Still manual-confirmation by default. |
-| Manual glucometer photo recognition | partial | high | 1.5.x | Initial lightweight CV source `glucometer_photo` exists with blur/low-confidence safety; `1.5.2` showed real `img/simple_gluk` samples remain low-confidence/manual. Not changed in `1.5.3`. |
+| Manual glucometer photo recognition | partial | high | 1.5.x | `1.5.4` added display ROI/preprocess fallback search for real `img/simple_gluk` samples, improving no-result frames from 19/27 to 9/27. Accepted remains 0 by design; candidates are manual only. |
 | Multiple OCR engine comparison | partial | high | 1.5.x | Source-aware aggregation exists; 1.5.1 improved disagreement safety, but production-grade multi-engine coverage is not complete. 1.5.2 added repeatable smoke reporting. |
 | Before-crop / after-crop comparison | partial | medium | 1.5.0 | Existing variants are logged by source/variant; disagreement reporting still can become clearer. |
 | Protection from mistaken OCR save | done | high | 1.4.1 | OCR requires explicit confirmation before saving. |
@@ -54,7 +54,7 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.5.3 | Required before food confirmations can save real meal records. Deferred because 1.5.2 was used for OCR/uNews audit. |
+| `food_log` table and journal | not started | high | 1.5.5 | Required before food confirmations can save real meal records. Deferred because 1.5.2-1.5.4 were used for OCR/uNews audit and OCR tuning. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |

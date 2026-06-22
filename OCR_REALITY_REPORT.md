@@ -1,7 +1,7 @@
 # OCR Reality Report
 
 Date: 2026-06-22
-Release: uSugar 1.5.3
+Release: uSugar 1.5.4
 
 This audit measures the real OCR behavior on the local safe sample folders. The smoke script does not write to SQLite, does not create glucose_log rows, and does not save OCR attempts.
 
@@ -10,8 +10,8 @@ This audit measures the real OCR behavior on the local safe sample folders. The 
 | Source group | Reality | Short conclusion |
 |---|---|---|
 | `img/simple` | partial | 4/11 accepted, 7/11 manual, 0/11 no_result. Old Libre2 CV remains the best current source, but some frames still need manual confirmation because helper branches disagree. |
-| `img/simple_new` | improved partial | Before 1.5.3: 1/18 accepted, 3/18 manual, 14/18 no_result. After 1.5.3: 1/18 accepted, 8/18 manual, 9/18 no_result. The new landscape ROI now finds more right-side Libre2 values, but keeps them manual. |
-| `img/simple_gluk` | partial low-confidence / manual | 0/27 accepted, 8/27 manual, 19/27 no_result. Glucometer photos still need separate future work and remain low-confidence/manual. |
+| `img/simple_new` | improved partial | After 1.5.4: 1/18 accepted, 9/18 manual, 8/18 no_result. The 1.5.3 landscape ROI still finds more right-side Libre2 values, and 1.5.4 did not weaken that path. |
+| `img/simple_gluk` | improved partial, manual only | Before 1.5.4: 0/27 accepted, 8/27 manual, 19/27 no_result. After 1.5.4: 0/27 accepted, 18/27 manual, 9/27 no_result. Glucometer candidates still require manual checking. |
 
 ## Safety Findings
 
@@ -19,6 +19,29 @@ This audit measures the real OCR behavior on the local safe sample folders. The 
 - Disagreement between sources is treated as manual confirmation, not as averaging.
 - Glucometer photo candidates are low-confidence/manual by default until the digit recognition is improved.
 - The current smoke is diagnostic only; it should not be used as proof that the photo OCR is production-ready.
+
+## 1.5.4 Glucometer Photo Tuning
+
+The real files in `img/simple_gluk` are camera photos of a handheld glucometer. Typical problems:
+
+- small display area inside a much larger phone photo;
+- textile/background noise around the device;
+- focus and motion blur in several frames;
+- glare/reflections on the LCD screen;
+- tilted or rotated device angles;
+- low-contrast seven-segment digits rather than app-style text.
+
+Version 1.5.4 keeps the existing `glucometer_photo` source and adds a fallback display search with several ROIs (`display_roi_upper`, `display_roi_tight`, `display_roi_center`), contrast/equalize/sharpen preprocessing, upscaling, and small rotation tolerance. These candidates are intentionally low-trust: the bot can show a possible value, but saving still requires explicit user confirmation.
+
+| Folder | Before 1.5.4 | After 1.5.4 | Change |
+|---|---:|---:|---|
+| `img/simple_gluk` accepted | 0/27 | 0/27 | unchanged by design |
+| `img/simple_gluk` manual | 8/27 | 18/27 | +10 manual candidates |
+| `img/simple_gluk` no_result | 19/27 | 9/27 | -10 no-result frames |
+| `img/simple` | 4 accepted, 7 manual, 0 no_result | 4 accepted, 7 manual, 0 no_result | no regression |
+| `img/simple_new` | 1 accepted, 8 manual, 9 no_result | 1 accepted, 9 manual, 8 no_result | no regression |
+
+Important: the improvement is coverage, not medical trust. Glucometer photo OCR can still be wrong because photos are blurred, angled, and low-contrast. Treat all `glucometer_photo` output as a manual candidate.
 
 ## 1.5.3 New Libre2 Geometry
 

@@ -272,6 +272,14 @@ Version 1.5.3 tunes only the updated Libre2 landscape path. Real `img/simple_new
 
 New `libre2_narrow_updated` candidates should still be treated as manual confirmation by default. Do not use 1.5.3 as a reason to autosave OCR values.
 
+Version 1.5.4 tunes only the manual-glucometer photo path. Real `img/simple_gluk` photos contain small displays, blur, glare, tilt, and textile/background noise. Expected smoke counts after 1.5.4:
+
+- `img/simple_gluk`: 0 accepted, 18 manual, 9 no_result.
+- `img/simple`: 4 accepted, 7 manual, 0 no_result.
+- `img/simple_new`: 1 accepted, 9 manual, 8 no_result.
+
+All `glucometer_photo` candidates must stay manual-confirmation only. Do not use 1.5.4 as a reason to autosave OCR values or to treat glucometer photos as production-grade recognition.
+
 ## Important Caution
 
 Do not use archived setup scripts as launch scripts. They are kept only for history. One legacy script contained a real Telegram token, so regenerate the token before publishing or pushing code.
