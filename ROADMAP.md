@@ -22,7 +22,7 @@
 - Tune the updated Libre2 landscape screenshot path before expanding into other OCR sources. (Done in `1.5.3`; `img/simple_new` no-result frames dropped from 14/18 to 9/18, and new candidates remain manual.)
 - Tune manual glucometer photo OCR without increasing trust. (Done in `1.5.4`; `img/simple_gluk` no-result frames dropped from 19/27 to 9/27, accepted stayed 0, and all candidates remain manual.)
 - Add a user-selectable OCR mode and smart text shortcuts for daily input. (Done in `1.5.5`; modes are `auto`, `libre2_old`, `libre2_new`, and `glucometer`; text examples include explicit sugar, food, and insulin phrases.)
-- Make Settings WebApp and the main keyboard match smart-input daily use. (Done across `1.5.7` and `1.5.8`; settings now ask for confirmation before applying, trusted contact state is shown after save, and the main keyboard is compact navigation rather than old Name/Sugar/Food/Insulin entry buttons.)
+- Make Settings WebApp and the main keyboard match smart-input daily use. (Done across `1.5.7`, `1.5.8`, and `1.5.9`; settings now ask for confirmation before applying, trusted contact state is shown after save, the main keyboard is compact navigation, Russian aliases are available, `/help` is short, and `/commands` holds the full technical list.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -58,7 +58,7 @@
 ## Phase 3.1 - Smart Daily Dialog
 
 - Keep the main Telegram keyboard minimal.
-- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; `1.5.5` understands explicit sugar, food, and insulin phrases with typo variants, while bare single numbers still use clarification. `1.5.8` made this clearer by confirming the main keyboard exposes only navigation buttons.)
+- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; `1.5.5` understands explicit sugar, food, and insulin phrases with typo variants, while bare single numbers still use clarification. `1.5.8` made this clearer by confirming the main keyboard exposes only navigation buttons, and `1.5.9` added Russian text aliases plus a short daily `/help`.)
 - Treat `50+40` and `50 40` as carbohydrate totals when food context is clear. (Done in `1.4.0`.)
 - Ask for a fresh glucose measurement if the last value is older than 60 minutes before using it for correction. (Done in `1.4.0`; configurable as `glucose_fresh_minutes`.)
 - Move rounding and dose-reduction rules into protocol parameters. (Partially done in `1.4.0`; `pen_step` and `dose_reduction_percent` are protocol fields.)

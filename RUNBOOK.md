@@ -148,6 +148,24 @@ Menu/smart-input smoke after `1.5.8`:
 
 The visible reply keyboard should show only navigation buttons: Settings, Status, Log, OCR, Reminders, Formula, Help. The old Name/Sugar/Food/Insulin daily-entry buttons should not be visible, although `/sugar`, `/food`, `/insulin`, and `/setname` remain compatibility commands.
 
+Russian aliases/help smoke after `1.5.9`:
+
+```text
+/version
+помощь
+команды
+настройки
+журнал
+версия
+OCR
+новый либре
+/ocr
+50 40 еда
+отмена
+```
+
+Expected behavior: `/help` is short, `команды` shows the full technical/legacy list, OCR mode appears near the version/status footer, and old Name/Sugar/Food/Insulin buttons do not return.
+
 Process:
 
 1. Codex runs `py_compile` and unit tests.

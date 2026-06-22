@@ -2,9 +2,11 @@
 
 ## Current Update For Agents - 2026-06-22
 
-Current runtime/documentation version: `1.5.8`.
+Current runtime/documentation version: `1.5.9`.
 
-uSugar `1.5.8` is a small menu cleanup release after the Settings/Menu UX pass: the visible main keyboard is navigation-only, legacy Name/Sugar/Food/Insulin daily buttons are not exposed, and `/help` points users to smart text input (`8.4 сахар`, `3 укол`, `50 40 еда`, OCR mode words, and `отмена`). The commands `/sugar`, `/food`, `/insulin`, and legacy `/setname` remain available for compatibility. Food Log is still not implemented and should be planned as the next feature release.
+uSugar `1.5.9` is a small Telegram UX release after the legacy daily buttons were removed. It adds Russian text aliases for common navigation (`помощь`, `команды`, `настройки`, `статус`, `журнал`, `оцр`, `напоминания`, `формула`, `версия`, `здоровье`, `кто я`, `бэкап`, `история`), keeps `/help` short for daily use, moves the full technical/legacy list to `/commands` and `/devhelp`, and shows the current OCR mode next to the bot version in key surfaces. No medical formula, OCR algorithm, database schema, food_log, DeepSeek, or trusted-contact policy changed.
+
+uSugar `1.5.8` is a small menu cleanup release after the Settings/Menu UX pass: the visible main keyboard is navigation-only, legacy Name/Sugar/Food/Insulin daily buttons are not exposed, and `/help` points users to smart text input (`8.4 сахар`, `3 укол`, `50 40 еда`, OCR mode words, and `отмена`). The commands `/sugar`, `/food`, `/insulin`, and legacy `/setname` remain available for compatibility. Food Log is still not implemented and should be planned as a later feature release.
 
 uSugar `1.5.6` is a runtime hotfix after `1.5.5`: it fixes a Python 3.9 startup crash in the insulin text fallback. The fix replaces a Python 3.10-only type hint with a Python 3.9-compatible `Optional[str]`. No medical formula, OCR algorithm, database schema, Telegram token, or production setting changed.
 

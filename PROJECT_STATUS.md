@@ -6,7 +6,7 @@ Date: 2026-06-22
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.5.8` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, source-aware Libre2/glucometer OCR metadata, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, the 1.4.1 UX Safety Commands release, the 1.4.2 Telegram Family Mode + Bot Identity release, the 1.4.3 Current State + Patch Bot Integration documentation release, the 1.4.4 Open Work Inventory + uNewsLog Auto Patch Workflow release, the 1.5.0 OCR New Sources release, the 1.5.1 OCR Safety Hotfix, the 1.5.2 OCR Reality + uNews Publishing Audit, the 1.5.3 New Libre2 Narrow OCR Tuning, the 1.5.4 Glucometer Photo OCR Tuning, the 1.5.5 OCR Mode Selector + Smart Text Input release, the 1.5.6 Python runtime hotfix, the 1.5.7 Settings/Menu UX cleanup, and the 1.5.8 Remove Legacy Daily Buttons cleanup are now implemented and tested.
+The current working code identifies itself as version `1.5.9` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, source-aware Libre2/glucometer OCR metadata, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.0 Settings WebApp + Smart Food Flow release, the 1.4.1 UX Safety Commands release, the 1.4.2 Telegram Family Mode + Bot Identity release, the 1.4.3 Current State + Patch Bot Integration documentation release, the 1.4.4 Open Work Inventory + uNewsLog Auto Patch Workflow release, the 1.5.0 OCR New Sources release, the 1.5.1 OCR Safety Hotfix, the 1.5.2 OCR Reality + uNews Publishing Audit, the 1.5.3 New Libre2 Narrow OCR Tuning, the 1.5.4 Glucometer Photo OCR Tuning, the 1.5.5 OCR Mode Selector + Smart Text Input release, the 1.5.6 Python runtime hotfix, the 1.5.7 Settings/Menu UX cleanup, the 1.5.8 Remove Legacy Daily Buttons cleanup, and the 1.5.9 Russian Command Aliases + Help Split cleanup are now implemented and tested.
 
 ## Comparison Summary
 
@@ -72,6 +72,9 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - Keep UX surfaces short and distinct: `/health` is technical runtime status, `/status` is the user's latest glucose record, and `/reminders` is schedule/reminder state.
 - Treat `/settings` as the preferred path for editing the display name and protocol; `/setname` remains a legacy fallback.
 - Smart text inputs like `8.4 сахар`, `сахр 8.4`, `50 40 еда`, `3 4 5 20 70 80 еда`, `3 укол`, and `укло 3` are routed without relying on Telegram buttons. Ambiguous messages ask whether the user means sugar, food, or insulin.
+- Common navigation can now be typed in Russian without slash commands: `помощь`, `команды`, `настройки`, `статус`, `журнал`, `оцр`, `журнал оцр`, `напоминания`, `формула`, `версия`, `здоровье`, `кто я`, `бэкап`, and `история`.
+- `/help` is now a short daily guide, while `/commands` and `/devhelp` hold the full technical/legacy command list.
+- The current OCR mode is visible next to the bot version in `/version`, `/help`, `/commands`, `/status`, and `/health`.
 - Food correction uses `glucose_fresh_minutes` from the protocol, defaulting to 60 minutes; older glucose values trigger a fresh-measurement prompt instead of hidden correction.
 - Safety flows now support typed fallbacks when Telegram buttons are hidden: `/undo`, OCR confirmation, and smart-food confirmation can be controlled with short text commands while keeping explicit confirmation before saving or deletion.
 - Telegram family mode now keeps medical records private by default. In groups/supergroups, only `/version`, `/help`, `/health`, `/whoami`, and `/reminders` are considered safe; medical entry commands explain that they belong in private chat. Channel commands receive a neutral notice because channels are future notification/announcement surfaces rather than the main daily dialog.
@@ -152,6 +155,15 @@ Live Telegram Web testing confirmed earlier versions. Historical screenshots are
 - `MANUAL_TELEGRAM_TEST_PLAN.md` makes manual Telegram smoke the default when Codex cannot reliably type into Telegram Web.
 - `PATCH_NOTIFICATION_RULES.md` connects uSugar release reporting to the existing uNews workflow in `C:\!CODE_CLUB\new 2026\004_uNews`.
 - No medical logic, database schema, OCR behavior, or Telegram handler behavior was intentionally changed in this release.
+
+## 1.5.9 Russian Command Aliases + Help Split Notes
+
+- Restarted the local runtime and confirmed the previous bot process was serving `v1.5.8` before the patch.
+- Removed one local test glucose row with value `8.4` that was created during manual smoke.
+- Added Russian text aliases for common navigation commands so daily use is not dependent on slash commands or reply buttons.
+- Split help into short `/help` and full `/commands`/`/devhelp`.
+- Added the current OCR mode to key user-visible status/version surfaces.
+- No medical formula, OCR algorithm, database schema, food_log, DeepSeek, trusted-contact policy, token, production deployment, or local Telegram publication work was added.
 
 ## 1.5.8 Remove Legacy Daily Buttons Notes
 

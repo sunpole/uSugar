@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.9 - 2026-06-22
+
+- Added Russian text aliases for common commands: help, settings, status, journal, OCR, OCR log, reminders, formula, version, health, whoami, backup, and story.
+- Split `/help` into a short user-facing daily guide and `/commands`/`/devhelp` for the full technical command list.
+- Added the current OCR mode to `/version`, `/help`, `/commands`, `/status`, and `/health` surfaces.
+- Confirmed the main reply keyboard remains navigation-only and the legacy Name/Sugar/Food/Insulin buttons did not return.
+- Removed the local test glucose record `8.4` that was created during manual smoke before starting this patch.
+- No medical formula, food_log table, OCR algorithm, database schema, DeepSeek, trusted-contact logic, local Telegram publication, or token change was added.
+
 ## 1.5.8 - 2026-06-22
 
 - Confirmed the main reply keyboard no longer exposes the legacy daily-entry buttons: Name, Sugar, Food, and Insulin.

@@ -1,7 +1,7 @@
 # Release Plan
 
 Date: 2026-06-22
-Version: 1.5.8
+Version: 1.5.9
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -182,7 +182,26 @@ Exit criteria:
 - Main keyboard contains no Name/Sugar/Food/Insulin legacy daily buttons.
 - Telegram smoke confirms the visible keyboard and smart text examples.
 
-## 1.5.9 - Food Log
+## 1.5.9 - Russian Command Aliases + Help Split
+
+Goal: make the bot easier to use after the legacy daily buttons were removed.
+
+Status: implemented. Version `1.5.9` keeps smart text input as the daily path, adds Russian text aliases for navigation commands, makes `/help` short, moves the full technical list to `/commands` and `/devhelp`, and shows the current OCR mode in key status/version surfaces.
+
+Completed work:
+
+- Add Russian aliases: help, commands, settings, status, journal, OCR, OCR log, reminders, formula, version, health, whoami, backup, and story.
+- Keep slash commands and legacy compatibility commands available.
+- Add OCR mode footer to `/version`, `/help`, `/commands`, `/status`, and `/health`.
+- Confirm the `8.4` manual-smoke test glucose row was removed before the patch.
+
+Exit criteria:
+
+- Unit tests and text-integrity checks pass.
+- Main keyboard still contains no Name/Sugar/Food/Insulin legacy daily buttons.
+- Manual Telegram smoke can verify `/version`, `помощь`, `команды`, `настройки`, `журнал`, `версия`, `OCR`, OCR mode selection, and smart-food cancel flow.
+
+## 1.6.0 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -200,7 +219,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.5.9 - Smart Daily Dialog
+## 1.6.1 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 
