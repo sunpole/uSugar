@@ -2,20 +2,21 @@
 type: bugfix
 project: uSugar
 series: usugar
-title: Runtime hotfix for bot startup
+title: Исправление запуска бота
 version: 1.5.6
 repo_url: https://github.com/sunpole/uSugar
 image: 2026-06-22-usugar-v1-5-6-runtime-hotfix.png
+image_text: uSugar 1.5.6 запуск бота восстановлен настройки и OCR не менялись
 ---
 
 # uSugar 1.5.6
 
-Bugfix release after the OCR mode and smart text input update.
+Патч исправления после обновления OCR-режимов и умного текстового ввода.
 
-What changed:
-- fixed a startup crash in the insulin text fallback on the current Windows Python runtime;
-- replaced a too-new type hint with a compatible `Optional[str]`;
-- confirmed the bot can start again with the current Windows virtual environment;
-- kept OCR, formulas, database schema, tokens, and production settings unchanged.
+Что изменилось:
+- исправлен сбой запуска в текстовом fallback для уколов на текущем Windows runtime;
+- заменена несовместимая подсказка типа на безопасный вариант для текущего окружения;
+- подтверждено, что бот снова запускается в рабочем виртуальном окружении;
+- OCR, формулы, схема базы данных, токены и production-настройки не менялись.
 
-This patch is intentionally small: it only restores runtime compatibility and keeps the 1.5.5 UX work intact.
+Этот патч намеренно маленький: он возвращает совместимость запуска и сохраняет UX-работу версии 1.5.5.

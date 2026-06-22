@@ -6,11 +6,12 @@ title: OCR-режимы и умный текстовый ввод
 version: 1.5.5
 repo_url: https://github.com/sunpole/uSugar
 image: 2026-06-22-usugar-v1-5-5-ocr-mode-smart-text.png
+image_text: uSugar 1.5.5 OCR режимы умный текстовый ввод безопасность подтверждения
 ---
 
 # uSugar 1.5.5
 
-Обновление ежедневного Telegram UX: бот теперь умеет выбирать preferred OCR-режим и понимать короткие сообщения с числами и словами.
+Обновление ежедневного Telegram UX: бот теперь умеет выбирать предпочитаемый OCR-режим и понимать короткие сообщения с числами и словами.
 
 Что изменилось:
 - добавлены OCR-режимы `auto`, `libre2_old`, `libre2_new`, `glucometer`;

@@ -2,21 +2,22 @@
 type: feature
 project: uSugar
 series: usugar
-title: Settings confirmation and compact menu
+title: Подтверждение настроек и компактное меню
 version: 1.5.7
 repo_url: https://github.com/sunpole/uSugar
 image: 2026-06-22-usugar-v1-5-7-settings-menu-ux.png
+image_text: uSugar 1.5.7 настройки подтверждаются меню стало компактным умный ввод главный путь
 ---
 
 # uSugar 1.5.7
 
-UX update after live Settings WebApp testing.
+UX-обновление после живой проверки Settings WebApp.
 
-What changed:
-- Settings WebApp asks for confirmation before applying changes;
-- the Telegram reply clearly says that settings were applied and saved;
-- trusted contact target is shown after save together with enabled/disabled state;
-- the main keyboard is now compact and focused on navigation;
-- daily records are expected to start from smart text input instead of old Sugar/Food/Insulin buttons.
+Что изменилось:
+- Settings WebApp спрашивает подтверждение перед применением изменений;
+- ответ в Telegram явно сообщает, что настройки применены и сохранены;
+- доверенный контакт показывается после сохранения вместе с состоянием включено/выключено;
+- основная клавиатура стала компактной и сфокусированной на навигации;
+- ежедневные записи теперь ожидаются через умный текстовый ввод вместо старых кнопок Сахар/Еда/Укол.
 
-Food Log is still a separate upcoming feature. This release does not change OCR algorithms, medical formulas, database schema, tokens, or production deployment.
+Food Log остаётся отдельной будущей задачей. Этот релиз не меняет OCR-алгоритмы, медицинские формулы, схему базы данных, токены или production-развёртывание.
