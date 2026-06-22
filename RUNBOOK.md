@@ -280,6 +280,22 @@ Version 1.5.4 tunes only the manual-glucometer photo path. Real `img/simple_gluk
 
 All `glucometer_photo` candidates must stay manual-confirmation only. Do not use 1.5.4 as a reason to autosave OCR values or to treat glucometer photos as production-grade recognition.
 
+Version 1.5.5 adds OCR mode selection and smart text shortcuts. The selected OCR mode is stored in the existing user protocol JSON as `ocr_mode` and can be changed with `/ocr`, Settings WebApp, or typed phrases:
+
+- `авто`
+- `старый либре`
+- `новый либре`
+- `глюкометр`
+
+Daily text shortcuts are intentionally explicit. Examples:
+
+- `8.4 сахар` or `сахр 8.4` records sugar.
+- `50 40 еда` calculates food/carbs without saving a food log.
+- `3 укол` asks for short/long insulin before saving.
+- `укло 3` is treated as an insulin typo and still asks for type.
+
+If a message mixes meanings, the bot should ask whether it is sugar, food, or insulin. OCR still requires explicit confirmation before saving.
+
 ## Important Caution
 
 Do not use archived setup scripts as launch scripts. They are kept only for history. One legacy script contained a real Telegram token, so regenerate the token before publishing or pushing code.

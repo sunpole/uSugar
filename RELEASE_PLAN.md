@@ -1,7 +1,7 @@
 # Release Plan
 
 Date: 2026-06-22
-Version: 1.5.4
+Version: 1.5.5
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -106,7 +106,27 @@ Exit criteria:
 - OCR smoke confirms better `img/simple_gluk` coverage.
 - uNews patch note passes local check only; real publication is GitHub-first.
 
-## 1.5.5 - Food Log
+## 1.5.5 - OCR Mode Selector + Smart Text Input
+
+Goal: make daily Telegram use less dependent on buttons without changing dose formulas or OCR save policy.
+
+Status: implemented. Version `1.5.5` adds a per-user OCR mode stored in the existing protocol JSON and a small smart text parser for explicit daily phrases.
+
+Completed work:
+
+- Add OCR modes: `auto`, `libre2_old`, `libre2_new`, and `glucometer`.
+- Let users change OCR mode through `/ocr`, typed phrases, and Settings WebApp.
+- Prioritize the selected OCR source while keeping other source results as diagnostics/backup.
+- Parse explicit daily text such as `8.4 сахар`, `сахр 8.4`, `50 40 еда`, `3 4 5 20 70 80 еда`, `3 укол`, and `укло 3`.
+- Ask for clarification when the text is ambiguous or an insulin type is missing.
+
+Exit criteria:
+
+- Full unit tests pass.
+- OCR smoke does not write to SQLite.
+- uNews patch note passes local check only; real publication is GitHub-first.
+
+## 1.5.6 - Food Log
 
 Goal: make food calculations recordable and exportable.
 

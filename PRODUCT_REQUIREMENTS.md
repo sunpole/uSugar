@@ -1,7 +1,7 @@
 # Product Requirements
 
 Date: 2026-06-21
-Version: 1.5.1
+Version: 1.5.5
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -14,6 +14,8 @@ This document captures current product requirements and implementation status. I
 - The design should stay compact, practical, and easy to scan.
 
 Status in `1.4.0`: implemented for the current WebApp path. `/setname` remains available as a legacy/fallback command.
+
+Status in `1.5.5`: Settings WebApp also includes the preferred OCR mode selector. It stores `ocr_mode` in the existing protocol JSON without a schema migration.
 
 ## Smart Dialog
 
@@ -98,3 +100,12 @@ Status in `1.4.3`: documented only. No runtime behavior or medical logic changed
 Status in `1.4.4`: strengthened into a required release workflow and paired with `OPEN_WORK.md` plus `RELEASE_PLAN.md`.
 
 Status in `1.5.1`: uSugar continues to create release notes in `news/` and run the uNews check locally. Real publication remains GitHub-first after the note and safe image reach the public repository; local real publishing is not part of the normal workflow.
+
+## Status in 1.5.5
+
+- OCR mode selection is implemented through `/ocr`, typed phrases, and Settings WebApp. The selected mode is saved as `ocr_mode` in the existing protocol JSON.
+- Supported modes are `auto`, `libre2_old`, `libre2_new`, and `glucometer`.
+- Smart text input now handles explicit daily phrases such as `8.4 сахар`, `сахр 8.4`, `50 40 еда`, `3 4 5 20 70 80 еда`, `3 укол`, and `укло 3`.
+- Ambiguous phrases ask for clarification instead of saving silently.
+- OCR still requires explicit confirmation before saving glucose.
+- Food logging, product database, DeepSeek, trusted-contact completion, A4 doctor diary, and production deployment remain future work.

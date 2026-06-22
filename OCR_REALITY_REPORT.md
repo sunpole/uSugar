@@ -1,7 +1,7 @@
 # OCR Reality Report
 
 Date: 2026-06-22
-Release: uSugar 1.5.4
+Release: uSugar 1.5.5
 
 This audit measures the real OCR behavior on the local safe sample folders. The smoke script does not write to SQLite, does not create glucose_log rows, and does not save OCR attempts.
 
@@ -19,6 +19,18 @@ This audit measures the real OCR behavior on the local safe sample folders. The 
 - Disagreement between sources is treated as manual confirmation, not as averaging.
 - Glucometer photo candidates are low-confidence/manual by default until the digit recognition is improved.
 - The current smoke is diagnostic only; it should not be used as proof that the photo OCR is production-ready.
+- Version 1.5.5 adds an OCR mode selector. It changes source priority, not medical trust: selected new Libre2 and glucometer candidates still require manual confirmation.
+
+## 1.5.5 OCR Mode Selector
+
+The OCR mode selector stores `ocr_mode` in the existing user protocol JSON. Modes:
+
+- `auto` - current source-aware automatic order;
+- `libre2_old` - prefer the older Libre2 CV source first;
+- `libre2_new` - prefer the updated landscape/narrow Libre2 source first;
+- `glucometer` - prefer the manual-glucometer photo source first.
+
+The selector is available through `/ocr`, typed phrases (`старый либре`, `новый либре`, `глюкометр`, `авто`), and Settings WebApp. Other OCR sources still run as diagnostics/backup, and the bot still asks the user to confirm before saving any OCR value.
 
 ## 1.5.4 Glucometer Photo Tuning
 

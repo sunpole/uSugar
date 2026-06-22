@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.5 - 2026-06-22
+
+- Added per-user OCR mode selection stored in the existing protocol JSON: `auto`, `libre2_old`, `libre2_new`, and `glucometer`.
+- `/ocr` now shows the current OCR mode and offers mode buttons; typed mode commands also work: `старый либре`, `новый либре`, `глюкометр`, `авто`.
+- Settings WebApp now includes a compact OCR mode selector and preserves it with the rest of the protocol.
+- Added a small smart text parser for daily messages such as `8.4 сахар`, `сахр 8.4`, `50 40 еда`, `3 4 5 20 70 80 еда`, `3 укол`, and `укло 3`.
+- Ambiguous text input asks for clarification instead of saving silently; `3 укол` asks for short/long type before saving.
+- OCR still does not save sugar without explicit confirmation; no medical formula, database schema, DeepSeek, trusted-contact, food-log, or local Telegram publication work was added.
+
 ## 1.5.4 - 2026-06-22
 
 - Tuned only the `glucometer_photo` OCR source for real manual-glucometer photos from `img/simple_gluk`.

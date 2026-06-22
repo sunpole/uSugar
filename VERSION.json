@@ -1,0 +1,330 @@
+{
+  "version": "1.5.5",
+  "date": "2026-06-22",
+  "stage": "local-mvp",
+  "summary": "OCR mode selector and smart text input",
+  "notes": [
+    "Bumped patch version from 1.5.4 to 1.5.5.",
+    "Bumped patch version from 1.5.3 to 1.5.4.",
+    "Bumped patch version from 1.5.2 to 1.5.3.",
+    "Bumped patch version from 1.5.1 to 1.5.2.",
+    "Bumped patch version from 1.5.0 to 1.5.1.",
+    "Bumped minor version from 1.4.4 to 1.5.0.",
+    "Bumped patch version from 1.4.3 to 1.4.4.",
+    "Bumped patch version from 1.4.2 to 1.4.3.",
+    "Bumped patch version from 1.4.1 to 1.4.2.",
+    "Bumped patch version from 1.4.0 to 1.4.1.",
+    "Bumped minor version from 1.3.3 to 1.4.0.",
+    "Bumped patch version from 1.3.2 to 1.3.3.",
+    "Bumped patch version from 1.3.1 to 1.3.2.",
+    "Bumped patch version from 1.3.0 to 1.3.1.",
+    "Bumped minor version from 1.2.8 to 1.3.0.",
+    "Bumped patch version from 1.2.7 to 1.2.8.",
+    "Bumped patch version from 1.2.6 to 1.2.7.",
+    "Bumped patch version from 1.2.5 to 1.2.6.",
+    "Bumped patch version from 1.2.4 to 1.2.5.",
+    "Bumped patch version from 1.2.3 to 1.2.4.",
+    "Bumped patch version from 1.2.2 to 1.2.3.",
+    "Bumped patch version from 1.2.1 to 1.2.2.",
+    "Bumped patch version from 1.2.0 to 1.2.1.",
+    "Bumped minor version from 1.1.1 to 1.2.0.",
+    "Bumped patch version from 1.1.0 to 1.1.1.",
+    "Bumped minor version from 1.0.39 to 1.1.0.",
+    "Bumped patch version from 1.0.38 to 1.0.39.",
+    "Bumped patch version from 1.0.37 to 1.0.38.",
+    "Bumped patch version from 1.0.36 to 1.0.37.",
+    "Bumped patch version from 1.0.35 to 1.0.36.",
+    "Bumped patch version from 1.0.34 to 1.0.35.",
+    "Bumped patch version from 1.0.33 to 1.0.34.",
+    "Bumped patch version from 1.0.32 to 1.0.33.",
+    "Bumped patch version from 1.0.31 to 1.0.32.",
+    "Bumped patch version from 1.0.30 to 1.0.31.",
+    "Bumped patch version from 1.0.29 to 1.0.30.",
+    "Bumped patch version from 1.0.28 to 1.0.29.",
+    "Bumped patch version from 1.0.27 to 1.0.28.",
+    "Bumped patch version from 1.0.26 to 1.0.27.",
+    "Bumped patch version from 1.0.25 to 1.0.26.",
+    "Bumped patch version from 1.0.24 to 1.0.25.",
+    "Bumped patch version from 1.0.23 to 1.0.24.",
+    "Bumped patch version from 1.0.22 to 1.0.23.",
+    "Bumped patch version from 1.0.21 to 1.0.22.",
+    "Bumped patch version from 1.0.20 to 1.0.21.",
+    "Bumped patch version from 1.0.19 to 1.0.20.",
+    "Bumped patch version from 1.0.18 to 1.0.19.",
+    "Bumped patch version from 1.0.17 to 1.0.18.",
+    "Bumped patch version from 1.0.16 to 1.0.17.",
+    "Bumped patch version from 1.0.15 to 1.0.16.",
+    "Bumped patch version from 1.0.14 to 1.0.15.",
+    "Bumped patch version from 1.0.13 to 1.0.14.",
+    "Bumped patch version from 1.0.12 to 1.0.13.",
+    "Bumped patch version from 1.0.11 to 1.0.12.",
+    "Bumped patch version from 1.0.10 to 1.0.11.",
+    "Bumped patch version from 1.0.9 to 1.0.10.",
+    "Version moved into VERSION.json.",
+    "config.py reads VERSION from the version helper.",
+    "settings.html can be updated from the central version.",
+    "Patch version bumped after runtime and testability work."
+  ],
+  "history": [
+    {
+      "version": "1.0.1",
+      "summary": "Первая версия с базой данных SQLite."
+    },
+    {
+      "version": "1.0.2",
+      "summary": "Раздельные таблицы, журнал замеров, CSV-экспорт, дублирование команд."
+    },
+    {
+      "version": "1.0.3",
+      "summary": "Шаг ручки, округление, памятка формул, аббревиатуры."
+    },
+    {
+      "version": "1.0.4",
+      "summary": "Конфигурация по умолчанию, приветствие новичка, анонимность, /whoami, webapp_url из .env."
+    },
+    {
+      "version": "1.0.5",
+      "summary": "Динамический пример, единые аббревиатуры, русские расшифровки, улучшенная памятка."
+    },
+    {
+      "version": "1.0.6",
+      "summary": "Уколы, HI/LOW, умная реакция."
+    },
+    {
+      "version": "1.0.7",
+      "summary": "Глобальный HI/LOW, уточнение чисел, поле имени в веб-форме, улучшенная реакция."
+    },
+    {
+      "version": "1.0.8",
+      "summary": "Приоритет FSM, фильтр имени, 911, мульти-числа, модульность."
+    },
+    {
+      "version": "1.0.9",
+      "summary": "Managed runtime scripts, process screenshots, testable dose logic, and version file."
+    },
+    {
+      "version": "1.0.10",
+      "summary": "Health check recognizes managed runtime and version sync script."
+    },
+    {
+      "version": "1.0.11",
+      "summary": "Add Telegram /health command."
+    },
+    {
+      "version": "1.0.12",
+      "summary": "Add Telegram /backup export."
+    },
+    {
+      "version": "1.0.13",
+      "summary": "Extract formula reference builder."
+    },
+    {
+      "version": "1.0.14",
+      "summary": "Fix command handling while dialogs are active."
+    },
+    {
+      "version": "1.0.15",
+      "summary": "Show bot version in diagnostic command responses."
+    },
+    {
+      "version": "1.0.16",
+      "summary": "Reply to unknown Telegram commands."
+    },
+    {
+      "version": "1.0.17",
+      "summary": "Add safe OCR photo intake."
+    },
+    {
+      "version": "1.0.18",
+      "summary": "Add OCR result aggregation rules."
+    },
+    {
+      "version": "1.0.19",
+      "summary": "Store OCR attempt metadata."
+    },
+    {
+      "version": "1.0.20",
+      "summary": "Add OCR intake log command."
+    },
+    {
+      "version": "1.0.21",
+      "summary": "Include OCR metadata in backups."
+    },
+    {
+      "version": "1.0.22",
+      "summary": "Add OCR photo confirmation workflow."
+    },
+    {
+      "version": "1.0.23",
+      "summary": "Add Tesseract OCR image variant pipeline"
+    },
+    {
+      "version": "1.0.24",
+      "summary": "Add Libre2 computer vision OCR fallback"
+    },
+    {
+      "version": "1.0.25",
+      "summary": "Speed up Libre2 OCR by disabling unstable EasyOCR by default"
+    },
+    {
+      "version": "1.0.26",
+      "summary": "Keep bot alive across Telegram network outages"
+    },
+    {
+      "version": "1.0.27",
+      "summary": "Use inline OCR confirmation and configurable OCR engine timeout"
+    },
+    {
+      "version": "1.0.28",
+      "summary": "Extract Libre2 trend arrow and graph metadata"
+    },
+    {
+      "version": "1.0.29",
+      "summary": "Add first glucose reaction brain"
+    },
+    {
+      "version": "1.0.30",
+      "summary": "Add measurement reminder state engine"
+    },
+    {
+      "version": "1.0.31",
+      "summary": "Send background measurement reminders once"
+    },
+    {
+      "version": "1.0.32",
+      "summary": "Synchronize command help and documentation"
+    },
+    {
+      "version": "1.0.33",
+      "summary": "Add basal insulin reminder checks"
+    },
+    {
+      "version": "1.0.34",
+      "summary": "Move reminder settings into WebApp protocol"
+    },
+    {
+      "version": "1.0.35",
+      "summary": "Add trusted contact alert delivery"
+    },
+    {
+      "version": "1.0.36",
+      "summary": "Add stable archive workflow"
+    },
+    {
+      "version": "1.0.37",
+      "summary": "Add post-bolus follow-up reminders"
+    },
+    {
+      "version": "1.0.38",
+      "summary": "Compact mobile settings and document data sources"
+    },
+    {
+      "version": "1.0.39",
+      "summary": "Add interactive project story landing"
+    },
+    {
+      "version": "1.1.0",
+      "summary": "Stabilize daily family use"
+    },
+    {
+      "version": "1.1.1",
+      "summary": "UX cleanup release"
+    },
+    {
+      "version": "1.2.0",
+      "summary": "Phase 1 bot.py system handlers refactor"
+    },
+    {
+      "version": "1.2.1",
+      "summary": "Phase 2 bot.py profile and info handlers refactor"
+    },
+    {
+      "version": "1.2.2",
+      "summary": "Phase 3 bot.py basic glucose handlers refactor"
+    },
+    {
+      "version": "1.2.3",
+      "summary": "Phase 4 bot.py glucose text flow refactor"
+    },
+    {
+      "version": "1.2.4",
+      "summary": "Phase 5 bot.py settings handlers refactor"
+    },
+    {
+      "version": "1.2.5",
+      "summary": "Phase 6 bot.py logs handlers refactor"
+    },
+    {
+      "version": "1.2.6",
+      "summary": "Phase 7 bot.py therapy handlers refactor"
+    },
+    {
+      "version": "1.2.7",
+      "summary": "Phase 8 bot.py OCR handlers refactor"
+    },
+    {
+      "version": "1.2.8",
+      "summary": "Phase 9 bot.py reminders runtime refactor"
+    },
+    {
+      "version": "1.3.0",
+      "summary": "Finalize bot composition root"
+    },
+    {
+      "version": "1.3.1",
+      "summary": "Audit large files after bot refactor"
+    },
+    {
+      "version": "1.3.2",
+      "summary": "Verify full runtime and enable OCR locally"
+    },
+    {
+      "version": "1.3.3",
+      "summary": "Capture product requirements before 1.4.0"
+    },
+    {
+      "version": "1.4.0",
+      "summary": "Improve settings prefill and smart food flow"
+    },
+    {
+      "version": "1.4.1",
+      "summary": "Add text fallbacks for safety actions"
+    },
+    {
+      "version": "1.4.2",
+      "summary": "Prepare Telegram family mode"
+    },
+    {
+      "version": "1.4.3",
+      "summary": "Document current state and patch notification workflow"
+    },
+    {
+      "version": "1.4.4",
+      "summary": "Map open work and require uNews patch publishing"
+    },
+    {
+      "version": "1.5.0",
+      "summary": "Add OCR support for new glucose image sources"
+    },
+    {
+      "version": "1.5.1",
+      "summary": "OCR safety hotfix after live sample smoke"
+    },
+    {
+      "version": "1.5.2",
+      "summary": "Audit OCR reality and uNews publishing"
+    },
+    {
+      "version": "1.5.3",
+      "summary": "Improve narrow Libre2 OCR detection"
+    },
+    {
+      "version": "1.5.4",
+      "summary": "Improve glucometer photo OCR detection"
+    },
+    {
+      "version": "1.5.5",
+      "summary": "OCR mode selector and smart text input"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-21
-Version: 1.5.4
+Version: 1.5.5
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -18,6 +18,7 @@ Status values:
 | Old Libre2 CV path | partial | high | 1.5.x | Exists and remains the best current source, but `OCR_REALITY_REPORT.md` measured only partial stability on `img/simple`; more tuning is needed before it can be called fully reliable. |
 | Updated narrow Libre screenshot | partial | high | 1.5.x | `1.5.3` added a landscape right-side ROI for real 1280x576 updated Libre screenshots and reduced `img/simple_new` no-result frames from 14/18 to 9/18. Still manual-confirmation by default. |
 | Manual glucometer photo recognition | partial | high | 1.5.x | `1.5.4` added display ROI/preprocess fallback search for real `img/simple_gluk` samples, improving no-result frames from 19/27 to 9/27. Accepted remains 0 by design; candidates are manual only. |
+| User-selectable OCR mode | done | high | 1.5.5 | Users can prefer auto, old Libre2, new Libre2, or glucometer through `/ocr`, typed phrases, and Settings WebApp. The selected source is prioritized, not autosaved. |
 | Multiple OCR engine comparison | partial | high | 1.5.x | Source-aware aggregation exists; 1.5.1 improved disagreement safety, but production-grade multi-engine coverage is not complete. 1.5.2 added repeatable smoke reporting. |
 | Before-crop / after-crop comparison | partial | medium | 1.5.0 | Existing variants are logged by source/variant; disagreement reporting still can become clearer. |
 | Protection from mistaken OCR save | done | high | 1.4.1 | OCR requires explicit confirmation before saving. |
@@ -44,8 +45,8 @@ Status values:
 | Glucose entry | done | high | 1.0.x | Manual glucose input and `/sugar` are implemented. |
 | Food calculation | partial | high | 1.4.0 | Carb sums calculate dose, but full food logging is not complete. |
 | Insulin entry | done | high | 1.0.x | Short and long insulin logging exists. |
-| Smart dialog for numeric input | partial | high | 1.5.3 | Carb sums and multi-number choices exist; broader dialog remains future work. |
-| Friendly fallback | partial | medium | 1.5.3 | Basic fallback exists, needs more consistent smart-dialog routing. |
+| Smart dialog for numeric input | partial | high | 1.5.5 | Explicit text such as `8.4 сахар`, `50 40 еда`, `3 укол`, and typo variants is routed; broader natural dialogue remains future work. |
+| Friendly fallback | partial | medium | 1.5.5 | Basic fallback exists, and common daily words are now parsed before random replies. |
 | Text confirmations when buttons are hidden | done | high | 1.4.1 | `/undo`, OCR, and food confirmation fallbacks exist. |
 | Old-record editing | not started | medium | 1.5.3 | `/undo` only handles the latest selected record type. |
 | Daily UX smoke plan | done | medium | 1.4.3 | Manual Telegram smoke plan is documented. |
@@ -54,7 +55,7 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.5.5 | Required before food confirmations can save real meal records. Deferred because 1.5.2-1.5.4 were used for OCR/uNews audit and OCR tuning. |
+| `food_log` table and journal | not started | high | 1.5.6 | Required before food confirmations can save real meal records. Deferred because 1.5.2-1.5.5 were used for OCR/uNews audit, OCR tuning, OCR mode, and smart text input. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |

@@ -21,6 +21,7 @@
 - Audit real OCR behavior and uNews publication failure before continuing OCR feature work. (Done in `1.5.2` with `OCR_REALITY_REPORT.md`, `scripts/ocr_smoke.py`, `TEXT_INTEGRITY_REPORT.md`, and `UNEWS_PUBLISHING_AUDIT.md`.)
 - Tune the updated Libre2 landscape screenshot path before expanding into other OCR sources. (Done in `1.5.3`; `img/simple_new` no-result frames dropped from 14/18 to 9/18, and new candidates remain manual.)
 - Tune manual glucometer photo OCR without increasing trust. (Done in `1.5.4`; `img/simple_gluk` no-result frames dropped from 19/27 to 9/27, accepted stayed 0, and all candidates remain manual.)
+- Add a user-selectable OCR mode and smart text shortcuts for daily input. (Done in `1.5.5`; modes are `auto`, `libre2_old`, `libre2_new`, and `glucometer`; text examples include `8.4 сахар`, `50 40 еда`, and `3 укол`.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -50,12 +51,12 @@
 - Compare OCR outputs and ask for manual confirmation on disagreement. (Done for current aggregator/confirmation flow.)
 - Add safety copy: the bot helps calculate, but does not replace medical advice.
 - Log confidence, source image metadata, and manual overrides.
-- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; `1.5.1` added safety guards after live smoke showed disagreement and false-source risks; `1.5.2` measured the current reality; `1.5.3` tuned real 1280x576 updated Libre2 screenshots; `1.5.4` tuned real glucometer photos while keeping all glucometer candidates manual.)
+- Add future OCR source types for updated long/narrow Libre screenshots and blurred manual glucometer photos. (Initial source-aware support added in `1.5.0` with `libre2_narrow_updated` and `glucometer_photo`; `1.5.1` added safety guards after live smoke showed disagreement and false-source risks; `1.5.2` measured the current reality; `1.5.3` tuned real 1280x576 updated Libre2 screenshots; `1.5.4` tuned real glucometer photos while keeping all glucometer candidates manual; `1.5.5` added user-selectable OCR mode priority.)
 
 ## Phase 3.1 - Smart Daily Dialog
 
 - Keep the main Telegram keyboard minimal.
-- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; carb sums now calculate directly, single numbers still use clarification.)
+- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; `1.5.5` understands explicit text like `8.4 сахар`, `50 40 еда`, `3 укол`, and typo variants, while bare single numbers still use clarification.)
 - Treat `50+40` and `50 40` as carbohydrate totals when food context is clear. (Done in `1.4.0`.)
 - Ask for a fresh glucose measurement if the last value is older than 60 minutes before using it for correction. (Done in `1.4.0`; configurable as `glucose_fresh_minutes`.)
 - Move rounding and dose-reduction rules into protocol parameters. (Partially done in `1.4.0`; `pen_step` and `dose_reduction_percent` are protocol fields.)
