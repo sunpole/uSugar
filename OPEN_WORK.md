@@ -1,7 +1,7 @@
 # Open Work
 
-Date: 2026-06-21
-Version: 1.5.5
+Date: 2026-06-22
+Version: 1.5.7
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -45,7 +45,7 @@ Status values:
 | Glucose entry | done | high | 1.0.x | Manual glucose input and `/sugar` are implemented. |
 | Food calculation | partial | high | 1.4.0 | Carb sums calculate dose, but full food logging is not complete. |
 | Insulin entry | done | high | 1.0.x | Short and long insulin logging exists. |
-| Smart dialog for numeric input | partial | high | 1.5.5 | Explicit text such as `8.4 сахар`, `50 40 еда`, `3 укол`, and typo variants is routed; broader natural dialogue remains future work. |
+| Smart dialog for numeric input | partial | high | 1.5.5 | Explicit sugar, food, and insulin phrases plus typo variants are routed; broader natural dialogue remains future work. `1.5.7` simplified the main keyboard so this smart input path is clearer. |
 | Friendly fallback | partial | medium | 1.5.5 | Basic fallback exists, and common daily words are now parsed before random replies. |
 | Text confirmations when buttons are hidden | done | high | 1.4.1 | `/undo`, OCR, and food confirmation fallbacks exist. |
 | Old-record editing | not started | medium | 1.5.3 | `/undo` only handles the latest selected record type. |
@@ -55,7 +55,7 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.5.6 | Required before food confirmations can save real meal records. Deferred because 1.5.2-1.5.5 were used for OCR/uNews audit, OCR tuning, OCR mode, and smart text input. |
+| `food_log` table and journal | not started | high | 1.5.8 | Required before food confirmations can save real meal records. Deferred because `1.5.6` was a runtime hotfix and `1.5.7` closed Settings/Menu UX issues found in live smoke. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |

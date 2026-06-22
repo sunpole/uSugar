@@ -1,9 +1,10 @@
 {
-  "version": "1.5.6",
+  "version": "1.5.7",
   "date": "2026-06-22",
   "stage": "local-mvp",
-  "summary": "Runtime hotfix for Python 3.9 bot startup",
+  "summary": "Settings confirmation and compact smart input menu",
   "notes": [
+    "Bumped patch version from 1.5.6 to 1.5.7.",
     "Bumped patch version from 1.5.5 to 1.5.6.",
     "Bumped patch version from 1.5.4 to 1.5.5.",
     "Bumped patch version from 1.5.3 to 1.5.4.",
@@ -330,6 +331,10 @@
     {
       "version": "1.5.6",
       "summary": "Runtime hotfix for Python 3.9 bot startup"
+    },
+    {
+      "version": "1.5.7",
+      "summary": "Settings confirmation and compact smart input menu"
     }
   ]
 }

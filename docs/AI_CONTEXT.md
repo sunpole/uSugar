@@ -2,7 +2,9 @@
 
 ## Current Update For Agents - 2026-06-22
 
-Current runtime/documentation version: `1.5.6`.
+Current runtime/documentation version: `1.5.7`.
+
+uSugar `1.5.7` is a Settings/Menu UX cleanup after live Telegram testing: Settings WebApp now asks for confirmation before applying data, the bot explicitly confirms that settings were applied, the trusted contact `chat_id` is shown even when alerts are disabled, and the main keyboard is simplified around smart text input. The old Sugar/Food/Insulin/Name buttons are removed from the main keyboard, but commands remain available for compatibility. Food Log is still not implemented and should be planned as the next feature release.
 
 uSugar `1.5.6` is a runtime hotfix after `1.5.5`: it fixes a Python 3.9 startup crash in the insulin text fallback. The fix replaces a Python 3.10-only type hint with a Python 3.9-compatible `Optional[str]`. No medical formula, OCR algorithm, database schema, Telegram token, or production setting changed.
 

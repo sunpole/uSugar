@@ -21,7 +21,8 @@
 - Audit real OCR behavior and uNews publication failure before continuing OCR feature work. (Done in `1.5.2` with `OCR_REALITY_REPORT.md`, `scripts/ocr_smoke.py`, `TEXT_INTEGRITY_REPORT.md`, and `UNEWS_PUBLISHING_AUDIT.md`.)
 - Tune the updated Libre2 landscape screenshot path before expanding into other OCR sources. (Done in `1.5.3`; `img/simple_new` no-result frames dropped from 14/18 to 9/18, and new candidates remain manual.)
 - Tune manual glucometer photo OCR without increasing trust. (Done in `1.5.4`; `img/simple_gluk` no-result frames dropped from 19/27 to 9/27, accepted stayed 0, and all candidates remain manual.)
-- Add a user-selectable OCR mode and smart text shortcuts for daily input. (Done in `1.5.5`; modes are `auto`, `libre2_old`, `libre2_new`, and `glucometer`; text examples include `8.4 сахар`, `50 40 еда`, and `3 укол`.)
+- Add a user-selectable OCR mode and smart text shortcuts for daily input. (Done in `1.5.5`; modes are `auto`, `libre2_old`, `libre2_new`, and `glucometer`; text examples include explicit sugar, food, and insulin phrases.)
+- Make Settings WebApp and the main keyboard match smart-input daily use. (Done in `1.5.7`; settings now ask for confirmation before applying, trusted contact state is shown after save, and the main keyboard is compact navigation rather than old Sugar/Food/Insulin entry buttons.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -34,9 +35,10 @@
 
 - Connect `settings.html` to Telegram WebApp data flow.
 - Prefill `settings.html` from the current saved user protocol before editing. (Done in `1.1.0` through a signed-by-context local URL payload and localStorage fallback.)
-- Move user display-name editing into the Settings WebApp as the preferred path, while keeping `/setname` as a compatibility command until the WebApp flow is complete. (Implemented in `1.4.0`; `/setname` remains legacy/fallback.)
+- Move user display-name editing into the Settings WebApp as the preferred path, while keeping `/setname` as a compatibility command until the WebApp flow is complete. (Implemented in `1.4.0`; main keyboard name editing was removed in `1.5.7`, while `/setname` remains a hidden compatibility command.)
 - Re-check name and protocol prefill against the current database before changing the settings UX. (Implemented in `1.4.0` with stronger payload/localStorage/Telegram fallback.)
 - Validate user protocol values before saving.
+- Confirm Settings WebApp saves before sending data back to Telegram. (Done in `1.5.7` with a WebApp confirmation dialog and clearer bot-side saved summary.)
 - Add a clear version display and compatibility note.
 - Make the settings form compact enough for mobile-first use. (Started in `1.0.38` with compact grid and collapsible advanced sections.)
 - Decide whether the static settings page stays standalone or moves to a tiny dedicated web server.
@@ -56,7 +58,7 @@
 ## Phase 3.1 - Smart Daily Dialog
 
 - Keep the main Telegram keyboard minimal.
-- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; `1.5.5` understands explicit text like `8.4 сахар`, `50 40 еда`, `3 укол`, and typo variants, while bare single numbers still use clarification.)
+- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; `1.5.5` understands explicit sugar, food, and insulin phrases with typo variants, while bare single numbers still use clarification. `1.5.7` made this clearer by reducing the main keyboard to navigation.)
 - Treat `50+40` and `50 40` as carbohydrate totals when food context is clear. (Done in `1.4.0`.)
 - Ask for a fresh glucose measurement if the last value is older than 60 minutes before using it for correction. (Done in `1.4.0`; configurable as `glucose_fresh_minutes`.)
 - Move rounding and dose-reduction rules into protocol parameters. (Partially done in `1.4.0`; `pen_step` and `dose_reduction_percent` are protocol fields.)

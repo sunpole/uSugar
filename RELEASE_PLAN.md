@@ -1,7 +1,7 @@
 # Release Plan
 
 Date: 2026-06-22
-Version: 1.5.5
+Version: 1.5.7
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -126,7 +126,44 @@ Exit criteria:
 - OCR smoke does not write to SQLite.
 - uNews patch note passes local check only; real publication is GitHub-first.
 
-## 1.5.6 - Food Log
+## 1.5.6 - Runtime Startup Hotfix
+
+Goal: restore the bot after the 1.5.5 smart-text release exposed a Python runtime compatibility issue.
+
+Status: implemented. Version `1.5.6` replaces the too-new type hint in the insulin text fallback with a runtime-compatible annotation and confirms the managed runtime starts again.
+
+Completed work:
+
+- Fix bot startup on the current Windows Python runtime.
+- Keep OCR modes and smart text input behavior intact.
+- Publish a small uNews hotfix note through GitHub-first workflow.
+
+Exit criteria:
+
+- Managed runtime starts and logs `uSugarBot v1.5.6`.
+- Full unit tests pass.
+- No formula, database, OCR algorithm, or token changes.
+
+## 1.5.7 - Settings Confirmation + Compact Menu
+
+Goal: make Settings WebApp and the Telegram main keyboard match smart-input daily use.
+
+Status: implemented. Version `1.5.7` adds an apply-confirmation step in Settings WebApp, shows trusted-contact state after save, and removes the old Sugar/Food/Insulin/Name buttons from the main keyboard surface while keeping commands available.
+
+Completed work:
+
+- Add WebApp confirmation before sending settings to Telegram.
+- Show trusted contact `chat_id` and enabled/disabled state in the saved-settings reply.
+- Simplify the main keyboard around Settings, Status, Log, OCR, Reminders, Formula, and Help.
+- Keep daily data entry available through smart text input and compatibility commands.
+
+Exit criteria:
+
+- Unit tests and text-integrity checks pass.
+- Settings WebApp still sends current protocol data.
+- Food Log remains a separate planned feature.
+
+## 1.5.8 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -144,7 +181,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.5.6 - Smart Daily Dialog
+## 1.5.9 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 

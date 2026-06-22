@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.5.7 - 2026-06-22
+
+- Added an explicit confirmation dialog in Settings WebApp before sending settings back to Telegram.
+- Settings save response now clearly says that settings were applied and always shows the trusted contact value and enabled/disabled state.
+- Trusted contact field now accepts personal or group `chat_id` values, including negative group IDs.
+- Simplified the main keyboard around smart text input: Settings, Status, Log, OCR, Reminders, Formula, Help.
+- Removed the old Sugar/Food/Insulin/Name buttons from the main keyboard surface; commands remain available for compatibility.
+- No food_log database table, OCR algorithm, medical formula, Telegram token, or production deployment work was added.
+
 ## 1.5.6 - 2026-06-22
 
 - Fixed a Python 3.9 runtime startup crash introduced in the 1.5.5 smart text input fallback.

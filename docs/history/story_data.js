@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 43,
+  "count": 44,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -346,6 +346,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Safe public release card showing the before/after smoke counts for `img/simple_gluk` after adding display ROI fallback, photo preprocessing, upscaling, and small rotation tolerance. It avoids readable medical-photo crops, Telegram IDs, secrets, and autosave claims.",
       "caption": "uSugarBot 1.5.4 makes real glucometer photos less silent: no-result frames drop from 19 to 9, but every candidate still asks for human confirmation.",
       "version": "1.5.4"
+    },
+    {
+      "file": "2026-06-22_settings_menu_ux_v1_5_7_working.png",
+      "image": "docs/history/2026-06-22_settings_menu_ux_v1_5_7_working.png",
+      "role": "Settings and smart-input UX cleanup",
+      "description": "Safe public release card showing the 1.5.7 product decision: Settings WebApp asks before applying changes, trusted-contact state is visible after save, and the main menu becomes navigation instead of old data-entry buttons.",
+      "caption": "uSugarBot 1.5.7 turns the smart-input idea into the visible product surface: settings confirm before saving, trusted contact is shown, and the main keyboard stops competing with typed daily messages.",
+      "version": "1.5.7"
     }
   ]
 };
