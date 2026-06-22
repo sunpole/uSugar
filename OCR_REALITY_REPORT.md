@@ -1,5 +1,34 @@
 # OCR Reality Report
 
+## 1.6.0 QA - New Libre2 Mode Priority
+
+Date: 2026-06-23
+
+Version `1.6.0` did not add a large OCR algorithm change. It rechecked the current source behavior after the OCR mode selector and alias fixes.
+
+Smoke commands:
+
+```powershell
+venv\Scripts\python.exe scripts\ocr_smoke.py --folder img/simple_new --format csv
+venv\Scripts\python.exe scripts\ocr_smoke.py --folder img/simple --format csv
+venv\Scripts\python.exe scripts\ocr_smoke.py --folder img/simple_gluk --format csv
+```
+
+Measured counts:
+
+| Folder | accepted | needs_confirmation/manual | no_result | Notes |
+|---|---:|---:|---:|---|
+| `img/simple_new` | 1 | 9 | 8 | Current new Libre2 landscape path is useful but still partial. Most recognized values are manual-confirmation candidates. |
+| `img/simple` | 4 | 7 | 0 | Old Libre2 path remains the best current source for classic Libre screenshots. |
+| `img/simple_gluk` | 0 | 18 | 9 | Glucometer photos remain low-confidence/manual only; Libre2 branches correctly stay out of these photos. |
+
+QA conclusion:
+
+- `libre2_narrow_updated` is correctly present as the source for many new Libre2 samples.
+- Selecting `новый либре` should prioritize `libre2_narrow_updated`, but it must not autosave.
+- The remaining `img/simple_new` no-result images need a separate OCR tuning patch if we want better coverage.
+- No medical record is created by the OCR smoke script.
+
 Date: 2026-06-22
 Release: uSugar 1.5.5
 

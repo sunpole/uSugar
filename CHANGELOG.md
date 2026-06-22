@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.6.0 - 2026-06-23
+
+- Fixed Russian text aliases so `настройки`, `журнал`, `статус`, `OCR`, `оцр`, `напоминания`, `формула`, `версия`, `здоровье`, `кто я`, `бэкап`, and `история` are handled before the friendly fallback replies.
+- Fixed `/ocr` behavior: opening the OCR screen no longer also sends an “OCR-режим выбран” message unless the user actually typed a mode word such as `новый либре`, `глюкометр`, `старый либре`, or `авто`.
+- Prepared family group launch: `/start`, `/help`, `/whoami`, and `/trustedtest` now have safe group behavior, while medical entries and OCR saves stay private-only.
+- Added `message_thread_id` to `/whoami` when Telegram provides it, useful for future family group topics.
+- Ran new Libre2 QA through `scripts/ocr_smoke.py`; larger OCR algorithm work remains deferred to a later OCR patch.
+- No Food Log, DeepSeek, BJU/product database, A4 doctor diary, medical formula change, OCR autosave, token change, or local Telegram publication was added.
+
 ## 1.5.9 - 2026-06-22
 
 - Added Russian text aliases for common commands: help, settings, status, journal, OCR, OCR log, reminders, formula, version, health, whoami, backup, and story.

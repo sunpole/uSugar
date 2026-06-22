@@ -1,7 +1,7 @@
 # Release Plan
 
-Date: 2026-06-22
-Version: 1.5.9
+Date: 2026-06-23
+Version: 1.6.0
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -201,7 +201,29 @@ Exit criteria:
 - Main keyboard still contains no Name/Sugar/Food/Insulin legacy daily buttons.
 - Manual Telegram smoke can verify `/version`, `помощь`, `команды`, `настройки`, `журнал`, `версия`, `OCR`, OCR mode selection, and smart-food cancel flow.
 
-## 1.6.0 - Food Log
+## 1.6.0 - Family Group Launch + Alias Fix
+
+Goal: make the bot safe enough to add to a family group while fixing the navigation aliases discovered in live smoke.
+
+Status: implemented. Version `1.6.0` keeps private chat as the medical-record surface, adds safe group behavior for `/start`, `/help`, `/whoami`, and `/trustedtest`, fixes Russian aliases before fallback replies, and records a new Libre2 QA pass.
+
+Completed work:
+
+- Route Russian aliases through an early handler before the smart/friendly fallback.
+- Keep `/ocr` as a status screen and change OCR mode only from explicit mode words.
+- Allow safe family group commands while blocking medical records and OCR saves in groups.
+- Show `message_thread_id` in `/whoami` when Telegram provides it.
+- Add family group setup documentation and Runbook notes.
+- Run OCR smoke QA for the new Libre2 folder and keep larger OCR tuning as a separate future patch.
+
+Exit criteria:
+
+- Unit tests, text integrity, and OCR smoke pass.
+- Private Telegram smoke confirms aliases and `/ocr` behavior.
+- Group Telegram smoke confirms safe commands and private-only medical entry behavior.
+- uNews patch note passes local check only; real publication is GitHub-first.
+
+## 1.6.1 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -219,7 +241,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.6.1 - Smart Daily Dialog
+## 1.6.2 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 
@@ -236,7 +258,7 @@ Exit criteria:
 - Wrong-context input is handled safely.
 - Telegram smoke covers text-only alternatives.
 
-## 1.6.0 - Trusted Contact MVP
+## 1.6.3 - Trusted Contact MVP
 
 Goal: make family alerts understandable and consent-based.
 
@@ -254,7 +276,7 @@ Exit criteria:
 - User can disable or change the contact.
 - Quiet hours are respected.
 
-## 1.6.1 - A4 Doctor Diary
+## 1.6.4 - A4 Doctor Diary
 
 Goal: produce a practical printable report for doctor visits.
 

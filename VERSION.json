@@ -1,9 +1,12 @@
 {
-  "version": "1.5.7",
-  "date": "2026-06-22",
+  "version": "1.6.0",
+  "date": "2026-06-23",
   "stage": "local-mvp",
-  "summary": "Settings confirmation and compact smart input menu",
+  "summary": "Family group launch, alias routing fix, and new Libre2 QA",
   "notes": [
+    "Bumped minor version from 1.5.9 to 1.6.0.",
+    "Bumped patch version from 1.5.8 to 1.5.9.",
+    "Bumped patch version from 1.5.7 to 1.5.8.",
     "Bumped patch version from 1.5.6 to 1.5.7.",
     "Bumped patch version from 1.5.5 to 1.5.6.",
     "Bumped patch version from 1.5.4 to 1.5.5.",
@@ -335,6 +338,18 @@
     {
       "version": "1.5.7",
       "summary": "Settings confirmation and compact smart input menu"
+    },
+    {
+      "version": "1.5.8",
+      "summary": "Remove legacy daily buttons from main menu"
+    },
+    {
+      "version": "1.5.9",
+      "summary": "Russian command aliases and split help"
+    },
+    {
+      "version": "1.6.0",
+      "summary": "Family group launch, alias routing fix, and new Libre2 QA"
     }
   ]
 }

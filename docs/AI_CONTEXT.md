@@ -2,7 +2,9 @@
 
 ## Current Update For Agents - 2026-06-22
 
-Current runtime/documentation version: `1.5.9`.
+Current runtime/documentation version: `1.6.0`.
+
+uSugar `1.6.0` is a safe family-group launch and alias-fix release. It moves Russian navigation aliases into an early router so `настройки`, `журнал`, and other navigation words are handled before friendly fallback replies; `/ocr` now only opens the OCR status screen unless the user explicitly types a mode word; group `/start`, `/help`, `/whoami`, and `/trustedtest` are safe while medical entries and OCR saves stay private-only. No Food Log, DeepSeek, BJU/product database, A4 diary, medical formula change, OCR autosave, token change, or local Telegram publication was added.
 
 uSugar `1.5.9` is a small Telegram UX release after the legacy daily buttons were removed. It adds Russian text aliases for common navigation (`помощь`, `команды`, `настройки`, `статус`, `журнал`, `оцр`, `напоминания`, `формула`, `версия`, `здоровье`, `кто я`, `бэкап`, `история`), keeps `/help` short for daily use, moves the full technical/legacy list to `/commands` and `/devhelp`, and shows the current OCR mode next to the bot version in key surfaces. No medical formula, OCR algorithm, database schema, food_log, DeepSeek, or trusted-contact policy changed.
 

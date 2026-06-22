@@ -22,7 +22,7 @@
 - Tune the updated Libre2 landscape screenshot path before expanding into other OCR sources. (Done in `1.5.3`; `img/simple_new` no-result frames dropped from 14/18 to 9/18, and new candidates remain manual.)
 - Tune manual glucometer photo OCR without increasing trust. (Done in `1.5.4`; `img/simple_gluk` no-result frames dropped from 19/27 to 9/27, accepted stayed 0, and all candidates remain manual.)
 - Add a user-selectable OCR mode and smart text shortcuts for daily input. (Done in `1.5.5`; modes are `auto`, `libre2_old`, `libre2_new`, and `glucometer`; text examples include explicit sugar, food, and insulin phrases.)
-- Make Settings WebApp and the main keyboard match smart-input daily use. (Done across `1.5.7`, `1.5.8`, and `1.5.9`; settings now ask for confirmation before applying, trusted contact state is shown after save, the main keyboard is compact navigation, Russian aliases are available, `/help` is short, and `/commands` holds the full technical list.)
+- Make Settings WebApp and the main keyboard match smart-input daily use. (Done across `1.5.7`, `1.5.8`, `1.5.9`, and `1.6.0`; settings now ask for confirmation before applying, trusted contact state is shown after save, the main keyboard is compact navigation, Russian aliases are available through an early router, `/help` is short, and `/commands` holds the full technical list.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -58,7 +58,7 @@
 ## Phase 3.1 - Smart Daily Dialog
 
 - Keep the main Telegram keyboard minimal.
-- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; `1.5.5` understands explicit sugar, food, and insulin phrases with typo variants, while bare single numbers still use clarification. `1.5.8` made this clearer by confirming the main keyboard exposes only navigation buttons, and `1.5.9` added Russian text aliases plus a short daily `/help`.)
+- Route ordinary daily input through a smart dialog that understands numbers and asks whether the user means glucose, food, or insulin. (Partially done; `1.5.5` understands explicit sugar, food, and insulin phrases with typo variants, while bare single numbers still use clarification. `1.5.8` made this clearer by confirming the main keyboard exposes only navigation buttons, `1.5.9` added Russian text aliases plus a short daily `/help`, and `1.6.0` fixed alias order before fallback replies.)
 - Treat `50+40` and `50 40` as carbohydrate totals when food context is clear. (Done in `1.4.0`.)
 - Ask for a fresh glucose measurement if the last value is older than 60 minutes before using it for correction. (Done in `1.4.0`; configurable as `glucose_fresh_minutes`.)
 - Move rounding and dose-reduction rules into protocol parameters. (Partially done in `1.4.0`; `pen_step` and `dose_reduction_percent` are protocol fields.)
@@ -80,10 +80,11 @@
 ## Phase 3.6 - Telegram Family Mode
 
 - Keep private chat as the default place for daily medical records. (Done in `1.4.2`.)
-- Allow only safe commands in groups/supergroups: `/version`, `/help`, `/health`, `/whoami`, and `/reminders`. (Done in `1.4.2`.)
-- Show `user_id`, `chat_id`, and `chat_type` through `/whoami` for family setup. (Done in `1.4.2`.)
+- Allow only safe commands in groups/supergroups: `/start`, `/version`, `/help`, `/health`, `/whoami`, `/reminders`, and `/trustedtest`. (Expanded in `1.6.0`; medical entries and OCR saves still stay private-only.)
+- Show `user_id`, `chat_id`, `chat_type`, and `message_thread_id` through `/whoami` for family setup. (Expanded in `1.6.0`.)
 - Document BotFather identity, command list, privacy mode, channel positioning, and token-rotation policy. (Done in `1.4.2` with `TELEGRAM_BOT_SETUP.md`.)
 - Treat channels as future notification/announcement surfaces, not daily input surfaces. (Started in `1.4.2` with a neutral channel command notice.)
+- Document how to add the bot to a family group and verify the group `chat_id`. (Done in `1.6.0` with `TELEGRAM_FAMILY_GROUP_SETUP.md` and Runbook links.)
 - Later: design explicit consent, quiet hours, revocation, and alert routing before sending real medical notifications to groups.
 
 ## Phase 4 - Production Shape

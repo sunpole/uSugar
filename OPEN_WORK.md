@@ -1,7 +1,7 @@
 # Open Work
 
-Date: 2026-06-22
-Version: 1.5.9
+Date: 2026-06-23
+Version: 1.6.0
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -30,13 +30,13 @@ Status values:
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
 | Private chat daily use | done | high | 1.4.2 | Private chat remains the main medical-entry surface. |
-| Group safe-command mode | partial | high | 1.4.2 | Safe commands exist; deeper group smoke still depends on a test group. |
-| Channel behavior | partial | medium | 1.6.0 | Channel is documented as announcement-oriented, not a primary dialog. |
-| Trusted contact base | partial | high | 1.4.2 | `/whoami` IDs and `/trustedtest` exist. |
-| Trusted contact consent | not started | high | 1.6.0 | Must be explicit before alerts are treated as family-ready. |
-| Trusted contact revocation | not started | high | 1.6.0 | Needed for safe long-term use. |
-| Quiet hours | not started | medium | 1.6.0 | Avoids noisy alerts during sleep or family rest windows. |
-| Alert escalation rules | partial | high | 1.6.0 | Technical alert engine exists, but product policy is unfinished. |
+| Group safe-command mode | done | high | 1.6.0 | `/start`, `/help`, `/whoami`, `/reminders`, `/trustedtest`, `/version`, and `/health` are group-safe; medical entries remain private-only. |
+| Channel behavior | partial | medium | 1.6.x | Channel is documented as announcement-oriented, not a primary dialog. |
+| Trusted contact base | partial | high | 1.6.0 | `/whoami` now includes `message_thread_id` when present, and `/trustedtest` can test group connection without medical data. |
+| Trusted contact consent | not started | high | 1.6.2 | Must be explicit before alerts are treated as family-ready. |
+| Trusted contact revocation | not started | high | 1.6.2 | Needed for safe long-term use. |
+| Quiet hours | not started | medium | 1.6.2 | Avoids noisy alerts during sleep or family rest windows. |
+| Alert escalation rules | partial | high | 1.6.2 | Technical alert engine exists, but product policy is unfinished. |
 
 ## Daily Flow
 
@@ -45,7 +45,7 @@ Status values:
 | Glucose entry | done | high | 1.0.x | Manual glucose input and `/sugar` are implemented. |
 | Food calculation | partial | high | 1.4.0 | Carb sums calculate dose, but full food logging is not complete. |
 | Insulin entry | done | high | 1.0.x | Short and long insulin logging exists. |
-| Smart dialog for numeric input | partial | high | 1.5.x | Explicit sugar, food, and insulin phrases plus typo variants are routed; broader natural dialogue remains future work. `1.5.8` removed legacy daily-entry buttons, and `1.5.9` added Russian navigation aliases plus a short user help screen. |
+| Smart dialog for numeric input | partial | high | 1.5.x | Explicit sugar, food, and insulin phrases plus typo variants are routed; broader natural dialogue remains future work. `1.5.8` removed legacy daily-entry buttons, `1.5.9` added Russian navigation aliases, and `1.6.0` fixed alias routing before fallback replies. |
 | Friendly fallback | partial | medium | 1.5.5 | Basic fallback exists, and common daily words are now parsed before random replies. |
 | Text confirmations when buttons are hidden | done | high | 1.4.1 | `/undo`, OCR, and food confirmation fallbacks exist. |
 | Old-record editing | not started | medium | 1.5.3 | `/undo` only handles the latest selected record type. |
@@ -55,7 +55,7 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.6.0 | Required before food confirmations can save real meal records. Deferred because `1.5.9` only improved command/help UX and did not change the database schema. |
+| `food_log` table and journal | not started | high | 1.6.1 | Required before food confirmations can save real meal records. Deferred because `1.6.0` focused on aliases, group launch, and OCR QA without changing the database schema. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |

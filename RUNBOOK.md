@@ -331,6 +331,37 @@ Daily text shortcuts are intentionally explicit. Examples:
 
 If a message mixes meanings, the bot should ask whether it is sugar, food, or insulin. OCR still requires explicit confirmation before saving.
 
+Version 1.6.0 prepares safe family group use and fixes Russian alias routing. Smoke checklist:
+
+Private chat:
+
+- `/version`
+- `настройки`
+- `журнал`
+- `OCR`
+- `новый либре`
+- `/ocr`
+- `50 40 еда`
+- `отмена`
+
+Family test group:
+
+- `/start`
+- `/help`
+- `/whoami`
+- `/trustedtest`
+- `8.4 сахар`
+- optional OCR test image with a clear OCR/sugar caption
+
+Expected group behavior:
+
+- `/start` explains that the group is for safe coordination and diagnostics.
+- `/whoami` shows `user_id`, `chat_id`, `chat_type`, and `message_thread_id` if Telegram provides it.
+- `/trustedtest` replies in the group without medical data.
+- Medical text input and OCR photo handling ask the user to continue in private chat and do not save records.
+
+See `TELEGRAM_FAMILY_GROUP_SETUP.md` for setup steps.
+
 ## Important Caution
 
 Do not use archived setup scripts as launch scripts. They are kept only for history. One legacy script contained a real Telegram token, so regenerate the token before publishing or pushing code.

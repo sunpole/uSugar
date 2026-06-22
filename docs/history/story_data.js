@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 45,
+  "count": 46,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -362,6 +362,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Safe public release card showing the 1.5.8 cleanup: old Name/Sugar/Food/Insulin buttons are removed from the visible main menu while smart text input and compatibility commands remain.",
       "caption": "uSugarBot 1.5.8 makes the daily direction unmistakable: the keyboard is for navigation, and everyday records start from typed smart input.",
       "version": "1.5.8"
+    },
+    {
+      "file": "2026-06-23_family_group_alias_fix_v1_6_0_working.png",
+      "image": "docs/history/2026-06-23_family_group_alias_fix_v1_6_0_working.png",
+      "role": "Family group launch and alias fix",
+      "description": "Safe public release card showing the 1.6.0 family-group launch, fixed Russian aliases, OCR status without duplicate mode selection, and private-only medical record policy.",
+      "caption": "uSugarBot 1.6.0 prepares for family group use: commands become reliable, OCR stops repeating itself, and medical records stay in private chat.",
+      "version": "1.6.0"
     }
   ]
 };

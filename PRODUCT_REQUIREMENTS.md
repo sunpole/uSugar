@@ -1,7 +1,7 @@
 # Product Requirements
 
 Date: 2026-06-21
-Version: 1.5.9
+Version: 1.6.0
 
 This document captures current product requirements and implementation status. Items marked done are implemented in the local runtime; future items still need separate work.
 
@@ -30,6 +30,8 @@ Status in `1.4.0`: partially implemented. Carb-sum inputs like `50+40` and `50 4
 Status in `1.5.8`: the main reply keyboard is navigation-only and no longer exposes the old Name/Sugar/Food/Insulin daily buttons. Daily entry should use smart text input, `/help`, and compatibility commands instead of reintroducing those buttons.
 
 Status in `1.5.9`: common navigation can be typed in Russian (`помощь`, `команды`, `настройки`, `статус`, `журнал`, `оцр`, `напоминания`, `формула`, `версия`, `здоровье`, `кто я`, `бэкап`, `история`). `/help` is intentionally short for daily use; `/commands` and `/devhelp` hold the full technical and legacy command list. The current OCR mode is visible in the main status/version surfaces.
+
+Status in `1.6.0`: navigation aliases are routed before friendly fallback replies, so `настройки` and `журнал` no longer fall through to random text. `/ocr` is a status screen; only explicit mode words change OCR mode.
 
 Status in `1.4.1`: safety text fallbacks were added for collapsed Telegram buttons. The user can type `сохранить еду`, `не сохранять`, or `отмена` after a smart-food calculation; food saving remains disabled until a real food journal exists.
 
@@ -71,6 +73,8 @@ Status in `1.4.1`: OCR confirmation accepts typed actions (`сохранить`,
 
 Status in `1.4.2`: foundation improved. `/whoami` now shows `user_id`, `chat_id`, and `chat_type`; `trusted_contact_id` may point to a private chat or family group; `/trustedtest` sends only a safe connection-check message without medical data. Full consent, verification, revocation, quiet hours, and alert policy remain future work.
 
+Status in `1.6.0`: `/whoami` also shows `message_thread_id` when Telegram provides it, and `/trustedtest` can confirm group connectivity without sending medical data.
+
 ## Telegram Family Mode
 
 - Private chat should remain the main place for glucose, food, insulin, OCR, settings, journal, backup, and deletion.
@@ -82,6 +86,15 @@ Status in `1.4.2`: foundation improved. `/whoami` now shows `user_id`, `chat_id`
 - Token rotation should wait until final production/public launch.
 
 Status in `1.4.2`: implemented as the first family-mode foundation with `TELEGRAM_BOT_SETUP.md`, chat type detection, group/private safety guards, `/whoami` IDs, `/trustedtest`, and a neutral channel command notice.
+
+Status in `1.6.0`: group `/start` explains family mode, group `/help` lists safe commands, and group medical entries or OCR saves remain blocked with a private-chat explanation.
+
+## Status in 1.6.0
+
+- Russian navigation aliases are handled before random/friendly fallback replies.
+- `/ocr` no longer duplicates a mode-selected message when the user only opens OCR status.
+- Family group launch is safe for setup and diagnostics, while real medical records stay private.
+- Food Log, DeepSeek, product database, A4 doctor diary, full trusted-contact consent, and production token rotation remain future work.
 
 ## Future
 
