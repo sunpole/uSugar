@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-23
-Version: 1.6.0
+Version: 1.6.1
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -30,9 +30,9 @@ Status values:
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
 | Private chat daily use | done | high | 1.4.2 | Private chat remains the main medical-entry surface. |
-| Group safe-command mode | done | high | 1.6.0 | `/start`, `/help`, `/whoami`, `/reminders`, `/trustedtest`, `/version`, and `/health` are group-safe; medical entries remain private-only. |
+| Group safe-command mode | done | high | 1.6.1 | `/start`, `/help`, `/whoami`, `/reminders`, `/trustedtest`, `/version`, and `/health` are group-safe; medical entries remain private-only. Version `1.6.1` fixes the group `/whoami` WebApp-keyboard crash. |
 | Channel behavior | partial | medium | 1.6.x | Channel is documented as announcement-oriented, not a primary dialog. |
-| Trusted contact base | partial | high | 1.6.0 | `/whoami` now includes `message_thread_id` when present, and `/trustedtest` can test group connection without medical data. |
+| Trusted contact base | partial | high | 1.6.1 | `/whoami` now includes `message_thread_id` when present, `/trustedtest` can test group connection without medical data, and `trusted_contact_thread_id` can route future alerts into a group topic. |
 | Trusted contact consent | not started | high | 1.6.2 | Must be explicit before alerts are treated as family-ready. |
 | Trusted contact revocation | not started | high | 1.6.2 | Needed for safe long-term use. |
 | Quiet hours | not started | medium | 1.6.2 | Avoids noisy alerts during sleep or family rest windows. |
@@ -55,7 +55,7 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.6.1 | Required before food confirmations can save real meal records. Deferred because `1.6.0` focused on aliases, group launch, and OCR QA without changing the database schema. |
+| `food_log` table and journal | not started | high | 1.6.2 | Required before food confirmations can save real meal records. Deferred because `1.6.0` focused on aliases/group launch and `1.6.1` fixed group safety before changing database schema. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |

@@ -81,10 +81,10 @@
 
 - Keep private chat as the default place for daily medical records. (Done in `1.4.2`.)
 - Allow only safe commands in groups/supergroups: `/start`, `/version`, `/help`, `/health`, `/whoami`, `/reminders`, and `/trustedtest`. (Expanded in `1.6.0`; medical entries and OCR saves still stay private-only.)
-- Show `user_id`, `chat_id`, `chat_type`, and `message_thread_id` through `/whoami` for family setup. (Expanded in `1.6.0`.)
+- Show `user_id`, `chat_id`, `chat_type`, and `message_thread_id` through `/whoami` for family setup. (Expanded in `1.6.0`; group WebApp keyboard crash fixed in `1.6.1`.)
 - Document BotFather identity, command list, privacy mode, channel positioning, and token-rotation policy. (Done in `1.4.2` with `TELEGRAM_BOT_SETUP.md`.)
 - Treat channels as future notification/announcement surfaces, not daily input surfaces. (Started in `1.4.2` with a neutral channel command notice.)
-- Document how to add the bot to a family group and verify the group `chat_id`. (Done in `1.6.0` with `TELEGRAM_FAMILY_GROUP_SETUP.md` and Runbook links.)
+- Document how to add the bot to a family group and verify the group `chat_id`. (Done in `1.6.0` with `TELEGRAM_FAMILY_GROUP_SETUP.md` and Runbook links; `1.6.1` adds optional `trusted_contact_thread_id` for topic routing.)
 - Later: design explicit consent, quiet hours, revocation, and alert routing before sending real medical notifications to groups.
 
 ## Phase 4 - Production Shape

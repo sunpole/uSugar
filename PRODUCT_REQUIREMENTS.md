@@ -75,6 +75,8 @@ Status in `1.4.2`: foundation improved. `/whoami` now shows `user_id`, `chat_id`
 
 Status in `1.6.0`: `/whoami` also shows `message_thread_id` when Telegram provides it, and `/trustedtest` can confirm group connectivity without sending medical data.
 
+Status in `1.6.1`: group `/whoami` no longer sends private WebApp keyboard markup, and `trusted_contact_thread_id` can optionally route trusted-contact messages into a specific group topic. Consent, revocation, quiet hours, and escalation policy remain future work.
+
 ## Telegram Family Mode
 
 - Private chat should remain the main place for glucose, food, insulin, OCR, settings, journal, backup, and deletion.
@@ -88,6 +90,8 @@ Status in `1.6.0`: `/whoami` also shows `message_thread_id` when Telegram provid
 Status in `1.4.2`: implemented as the first family-mode foundation with `TELEGRAM_BOT_SETUP.md`, chat type detection, group/private safety guards, `/whoami` IDs, `/trustedtest`, and a neutral channel command notice.
 
 Status in `1.6.0`: group `/start` explains family mode, group `/help` lists safe commands, and group medical entries or OCR saves remain blocked with a private-chat explanation.
+
+Status in `1.6.1`: live group smoke found and fixed the Telegram WebApp-keyboard restriction for `/whoami`; group topic routing is now represented as optional `message_thread_id` configuration.
 
 ## Status in 1.6.0
 

@@ -1,9 +1,10 @@
 {
-  "version": "1.6.0",
+  "version": "1.6.1",
   "date": "2026-06-23",
   "stage": "local-mvp",
-  "summary": "Family group launch, alias routing fix, and new Libre2 QA",
+  "summary": "Group /whoami hotfix and trusted topic support",
   "notes": [
+    "Bumped patch version from 1.6.0 to 1.6.1.",
     "Bumped minor version from 1.5.9 to 1.6.0.",
     "Bumped patch version from 1.5.8 to 1.5.9.",
     "Bumped patch version from 1.5.7 to 1.5.8.",
@@ -350,6 +351,10 @@
     {
       "version": "1.6.0",
       "summary": "Family group launch, alias routing fix, and new Libre2 QA"
+    },
+    {
+      "version": "1.6.1",
+      "summary": "Group /whoami hotfix and trusted topic support"
     }
   ]
 }

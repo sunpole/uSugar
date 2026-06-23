@@ -331,7 +331,7 @@ Daily text shortcuts are intentionally explicit. Examples:
 
 If a message mixes meanings, the bot should ask whether it is sugar, food, or insulin. OCR still requires explicit confirmation before saving.
 
-Version 1.6.0 prepares safe family group use and fixes Russian alias routing. Smoke checklist:
+Version 1.6.1 fixes the family group `/whoami` hotfix and adds optional trusted topic routing. Smoke checklist:
 
 Private chat:
 
@@ -359,6 +359,7 @@ Expected group behavior:
 - `/whoami` shows `user_id`, `chat_id`, `chat_type`, and `message_thread_id` if Telegram provides it.
 - `/trustedtest` replies in the group without medical data.
 - Medical text input and OCR photo handling ask the user to continue in private chat and do not save records.
+- If a group uses topics, copy `message_thread_id` from `/whoami` into Settings WebApp only when trusted alerts should go to that exact topic.
 
 See `TELEGRAM_FAMILY_GROUP_SETUP.md` for setup steps.
 

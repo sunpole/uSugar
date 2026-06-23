@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.6.1 - 2026-06-23
+
+- Исправлен `/whoami` в группах и супергруппах: ответ больше не отправляет основную WebApp-клавиатуру, которую Telegram разрешает только в личных чатах.
+- `/whoami` в группе показывает `user_id`, `chat_id`, `chat_type` и `message_thread_id`, если Telegram передал ID ветки/топика.
+- Добавлена настройка `trusted_contact_thread_id` в существующий JSON-протокол без миграции БД.
+- Settings WebApp получил optional поле `message_thread_id ветки/топика группы`.
+- Trusted contact test и фоновые trusted alerts передают `message_thread_id`, если он задан; без него отправка работает по-старому.
+- Медицинские записи в группе по-прежнему не сохраняются; Food Log, OCR, DeepSeek, БЖУК и медицинские формулы не менялись.
+
 ## 1.6.0 - 2026-06-23
 
 - Fixed Russian text aliases so `настройки`, `журнал`, `статус`, `OCR`, `оцр`, `напоминания`, `формула`, `версия`, `здоровье`, `кто я`, `бэкап`, and `история` are handled before the friendly fallback replies.

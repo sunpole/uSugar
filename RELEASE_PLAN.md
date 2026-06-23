@@ -1,9 +1,29 @@
 # Release Plan
 
 Date: 2026-06-23
-Version: 1.6.0
+Version: 1.6.1
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
+
+## 1.6.1 - Group Whoami + Trusted Topic Hotfix
+
+Goal: close the live family-group smoke issue before starting Food Log.
+
+Status: implemented as a small hotfix. `/whoami` no longer sends the private-chat WebApp keyboard in groups, Settings WebApp can store an optional `trusted_contact_thread_id`, and trusted-contact test/background alerts pass `message_thread_id` when configured.
+
+Completed work:
+
+- Fix group `/whoami` so Telegram does not reject WebApp reply buttons.
+- Keep the main WebApp menu unchanged in private chat.
+- Add optional group topic routing for trusted-contact alerts.
+- Document where to put group `chat_id` and `message_thread_id`.
+
+Exit criteria:
+
+- `/whoami` works in the family group.
+- `/trustedtest` works in the group.
+- `8.4 сахар` remains blocked in the group and is not saved.
+- Full unit tests pass.
 
 ## 1.5.0 - OCR New Sources
 
