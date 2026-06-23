@@ -227,7 +227,19 @@ Before preparing a public patch note, read `PATCH_NOTIFICATION_RULES.md`. Since 
 
 Use `/settings` in Telegram before changing the protocol. Since `1.1.0`, the bot replies with the current saved protocol and a WebApp URL that includes the current values for prefill. Since `1.1.1`, the message explicitly asks the user to review current values before editing. `settings.html` also keeps the last submitted protocol in local browser storage as a fallback for local testing.
 
-The main keyboard WebApp button still uses the static `WEBAPP_URL` from `.env`; for the most reliable prefill during testing, open settings through `/settings`.
+Since `1.6.3`, the main Telegram “Настройки” button is a plain text navigation button. It triggers the same handler as `/settings`, and that handler sends a fresh Telegram Mini App button with the current protocol embedded in the URL. This avoids stale WebApp URLs that Telegram can keep in old reply keyboards.
+
+Settings smoke:
+
+1. In private chat, send `/settings` or press `Настройки`.
+2. Tap `⚙️ Открыть настройки`.
+3. Confirm the form is prefilled with the current name/protocol.
+4. Fill or edit trusted-contact and family-group fields.
+5. Tap `Сохранить протокол`.
+6. Wait for the bot reply `Настройки применены и сохранены`.
+7. Confirm the reply shows trusted-contact state and family-group state.
+
+If the page says it was opened outside Telegram Mini App, reopen it from the button in the `/settings` message. A normal browser page cannot send `Telegram.WebApp.sendData` back to the bot.
 
 ## Undo Mistaken Records
 

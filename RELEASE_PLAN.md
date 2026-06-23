@@ -1,7 +1,7 @@
 ﻿# Release Plan
 
 Date: 2026-06-23
-Version: 1.6.2
+Version: 1.6.3
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -28,6 +28,26 @@ Exit criteria:
 - Trusted family thread can resolve the patient profile.
 - Untrusted groups and wrong topics remain blocked.
 - Full unit tests pass.
+
+## 1.6.3 - Settings WebApp Hotfix
+
+Goal: make the family-thread setup usable from private chat before continuing to Food Log.
+
+Status: implemented. The main reply keyboard no longer stores a stale WebApp URL. The “Настройки” button and `/settings` now share one route: the bot sends a fresh Telegram Mini App button with the current protocol prefill, then confirms trusted-contact and family-group settings after saving.
+
+Completed work:
+
+- Replace the static WebApp reply-keyboard settings button with a text navigation button.
+- Add a dedicated dynamic Mini App button in the `/settings` response.
+- Keep group `/settings` safe and instruction-only.
+- Add visible WebApp send feedback and an outside-Telegram warning.
+- Mask private IDs in the confirmation message while saving full values locally.
+
+Exit criteria:
+
+- `/settings` and the main “Настройки” button open the same settings flow.
+- Family group and trusted-contact fields are included in the WebApp payload.
+- The bot replies with a clear confirmation after settings are received.
 
 ## 1.5.0 - OCR New Sources
 
@@ -247,7 +267,7 @@ Exit criteria:
 - Group Telegram smoke confirms safe commands and private-only medical entry behavior.
 - uNews patch note passes local check only; real publication is GitHub-first.
 
-## 1.6.3 - Food Log
+## 1.6.4 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -265,7 +285,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.6.4 - Smart Daily Dialog
+## 1.6.5 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 
@@ -282,7 +302,7 @@ Exit criteria:
 - Wrong-context input is handled safely.
 - Telegram smoke covers text-only alternatives.
 
-## 1.6.5 - Trusted Contact MVP
+## 1.6.6 - Trusted Contact MVP
 
 Goal: make family alerts understandable and consent-based.
 

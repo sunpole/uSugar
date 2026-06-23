@@ -2,6 +2,15 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.6.3 - 2026-06-23
+
+- Fixed Settings WebApp entry points: the main reply-keyboard “Настройки” button now routes through the same `/settings` handler instead of carrying a stale static WebApp URL.
+- `/settings` now sends a fresh Telegram Mini App button with current saved protocol prefill, so command and button open the same settings flow.
+- Settings WebApp now shows a visible “sending settings to bot” status and warns if opened in a normal browser where Telegram `sendData` cannot return changes to the bot.
+- Save confirmation now clearly reports trusted-contact and family-group state after the bot receives the WebApp payload.
+- Trusted contact IDs and family group/thread IDs are masked in the confirmation reply while still being saved fully in the private local database.
+- No Food Log, OCR algorithm change, DeepSeek, BJU/product database, A4 diary, medical formula change, token change, or local Telegram publication was added.
+
 ## 1.6.2 - 2026-06-23
 
 - Added Trusted Family Thread Mode: a configured group/topic can accept daily family records while ordinary groups remain blocked.

@@ -4,6 +4,8 @@
 
 Current runtime/documentation version: `1.6.1`.
 
+uSugar `1.6.3` is a Settings WebApp hotfix after Trusted Family Thread Mode. The main “Настройки” reply-keyboard button no longer embeds a stale static WebApp URL; it routes through the same `/settings` handler as the command. `/settings` sends a fresh Telegram Mini App button with current protocol prefill, and the bot confirms trusted-contact and family-group settings after save. IDs are masked in chat confirmations but stored fully in the local protocol JSON.
+
 uSugar `1.6.2` adds Trusted Family Thread Mode after the 1.6.1 group hotfix. A configured `family_group` chat/topic can accept daily family records for one patient profile, while ordinary groups remain blocked. `trusted_contact_*` is still the alert destination; `family_group_*` is the allowed source for family entries. OCR still requires confirmation, and Food Log, OCR algorithms, DeepSeek, BJU/product database, and medical formulas did not change.
 
 uSugar `1.6.0` is a safe family-group launch and alias-fix release. It moves Russian navigation aliases into an early router so `настройки`, `журнал`, and other navigation words are handled before friendly fallback replies; `/ocr` now only opens the OCR status screen unless the user explicitly types a mode word; group `/start`, `/help`, `/whoami`, and `/trustedtest` are safe while medical entries and OCR saves stay private-only. No Food Log, DeepSeek, BJU/product database, A4 diary, medical formula change, OCR autosave, token change, or local Telegram publication was added.

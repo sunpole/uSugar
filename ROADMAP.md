@@ -22,7 +22,7 @@
 - Tune the updated Libre2 landscape screenshot path before expanding into other OCR sources. (Done in `1.5.3`; `img/simple_new` no-result frames dropped from 14/18 to 9/18, and new candidates remain manual.)
 - Tune manual glucometer photo OCR without increasing trust. (Done in `1.5.4`; `img/simple_gluk` no-result frames dropped from 19/27 to 9/27, accepted stayed 0, and all candidates remain manual.)
 - Add a user-selectable OCR mode and smart text shortcuts for daily input. (Done in `1.5.5`; modes are `auto`, `libre2_old`, `libre2_new`, and `glucometer`; text examples include explicit sugar, food, and insulin phrases.)
-- Make Settings WebApp and the main keyboard match smart-input daily use. (Done across `1.5.7`, `1.5.8`, `1.5.9`, and `1.6.0`; settings now ask for confirmation before applying, trusted contact state is shown after save, the main keyboard is compact navigation, Russian aliases are available through an early router, `/help` is short, and `/commands` holds the full technical list.)
+- Make Settings WebApp and the main keyboard match smart-input daily use. (Done across `1.5.7`, `1.5.8`, `1.5.9`, `1.6.0`, and the `1.6.3` settings hotfix; settings now ask for confirmation before applying, trusted contact and family-group state are shown after save, the main keyboard is compact navigation, Russian aliases are available through an early router, `/help` is short, and `/commands` holds the full technical list.)
 - Split remaining large files only as small follow-up releases: start with `settings.html` CSS extraction or `/undo` extraction from `handlers/therapy.py`, not with OCR or database schema.
 - Add tests for dose calculation, phrase parsing, and database reads/writes.
 - Make database path and web settings URL fully configurable. (Done.)
@@ -38,7 +38,7 @@
 - Move user display-name editing into the Settings WebApp as the preferred path, while keeping `/setname` as a compatibility command until the WebApp flow is complete. (Implemented in `1.4.0`; main keyboard name editing was removed in `1.5.7`, while `/setname` remains a hidden compatibility command.)
 - Re-check name and protocol prefill against the current database before changing the settings UX. (Implemented in `1.4.0` with stronger payload/localStorage/Telegram fallback.)
 - Validate user protocol values before saving.
-- Confirm Settings WebApp saves before sending data back to Telegram. (Done in `1.5.7` with a WebApp confirmation dialog and clearer bot-side saved summary.)
+- Confirm Settings WebApp saves before sending data back to Telegram. (Done in `1.5.7` with a WebApp confirmation dialog and clearer bot-side saved summary; `1.6.3` adds a fresh Mini App button from `/settings`, visible send status, and a warning when the page is opened outside Telegram.)
 - Add a clear version display and compatibility note.
 - Make the settings form compact enough for mobile-first use. (Started in `1.0.38` with compact grid and collapsible advanced sections.)
 - Decide whether the static settings page stays standalone or moves to a tiny dedicated web server.
@@ -82,6 +82,7 @@
 - Keep private chat as the default place for daily medical records. (Done in `1.4.2`.)
 - Allow only safe commands in groups/supergroups: `/start`, `/version`, `/help`, `/health`, `/whoami`, `/reminders`, and `/trustedtest`. (Expanded in `1.6.0`; medical entries and OCR saves still stay private-only.)
 - Allow one explicitly configured trusted family group/topic to accept daily family records. (Done in `1.6.2`; ordinary groups remain blocked, and OCR still requires confirmation.)
+- Make the family group setup actually usable from private chat settings. (Done in `1.6.3`; the stale reply-keyboard WebApp URL was removed, and `/settings` now provides the current Mini App payload.)
 - Show `user_id`, `chat_id`, `chat_type`, and `message_thread_id` through `/whoami` for family setup. (Expanded in `1.6.0`; group WebApp keyboard crash fixed in `1.6.1`.)
 - Document BotFather identity, command list, privacy mode, channel positioning, and token-rotation policy. (Done in `1.4.2` with `TELEGRAM_BOT_SETUP.md`.)
 - Treat channels as future notification/announcement surfaces, not daily input surfaces. (Started in `1.4.2` with a neutral channel command notice.)

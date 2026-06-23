@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-23
-Version: 1.6.2
+Version: 1.6.3
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -34,6 +34,7 @@ Status values:
 | Channel behavior | partial | medium | 1.6.x | Channel is documented as announcement-oriented, not a primary dialog. |
 | Trusted contact base | partial | high | 1.6.1 | `/whoami` now includes `message_thread_id` when present, `/trustedtest` can test group connection without medical data, and `trusted_contact_thread_id` can route future alerts into a group topic. |
 | Trusted family thread intake | done | high | 1.6.2 | A configured `family_group` chat/topic can accept daily records for one patient profile; ordinary groups remain blocked. |
+| Settings WebApp family setup | done | high | 1.6.3 | The main settings button and `/settings` now share one fresh Mini App flow; trusted-contact and family-group fields save through the protocol JSON and confirm back to the user. |
 | Source metadata for family entries | not started | medium | 1.6.3+ | Add schema-backed `saved_by/source_chat/source_thread` metadata to glucose/insulin rows after the family-thread path is stable. |
 | Trusted contact consent | not started | high | 1.6.4 | Must be explicit before alerts are treated as family-ready. |
 | Trusted contact revocation | not started | high | 1.6.4 | Needed for safe long-term use. |
@@ -57,7 +58,7 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.6.3 | Required before food confirmations can save real meal records. Deferred until the trusted family-thread path is stable. |
+| `food_log` table and journal | not started | high | 1.6.4 | Required before food confirmations can save real meal records. Deferred until the trusted family-thread and settings setup path is stable. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |

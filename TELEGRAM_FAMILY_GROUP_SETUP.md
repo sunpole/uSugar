@@ -58,13 +58,14 @@ Notes:
 
 ## Configure Trusted Family Thread
 
-In the private chat with the bot, open `/settings` and fill the **Семейная группа** block:
+In the private chat with the bot, open `/settings`, press the fresh **Открыть настройки** Mini App button, and fill the **Семейная группа** block. Do not use an old settings WebApp button from Telegram history; Telegram can keep stale URLs in old reply keyboards.
 
 1. Enable **Включить семейную группу**.
 2. Put the group `chat_id` into **chat_id группы**.
 3. If the group uses topics and only one topic should accept diary entries, put `message_thread_id` into **message_thread_id ветки/топика**.
 4. Put the patient/child name into **Имя пациента/ребёнка**.
 5. Leave **Принимать записи от любого участника группы** enabled for normal family use.
+6. Save the form and wait for the bot confirmation **Настройки применены и сохранены**. The confirmation should mention the trusted-contact and family-group state.
 
 Important distinction:
 

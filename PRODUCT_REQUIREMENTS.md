@@ -17,6 +17,8 @@ Status in `1.4.0`: implemented for the current WebApp path. `/setname` remains a
 
 Status in `1.5.5`: Settings WebApp also includes the preferred OCR mode selector. It stores `ocr_mode` in the existing protocol JSON without a schema migration.
 
+Status in `1.6.3`: the visible “Настройки” menu button no longer stores a stale WebApp URL. It routes through `/settings`, which sends a fresh Telegram Mini App button with the current saved protocol, trusted-contact fields, and family-group fields. The WebApp shows send feedback, and the bot confirms saved trusted/family state after receiving the payload.
+
 ## Smart Dialog
 
 - The main Telegram keyboard should stay minimal.

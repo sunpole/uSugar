@@ -6,7 +6,15 @@ Date: 2026-06-23
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.6.2` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, source-aware Libre2/glucometer OCR metadata, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.x Settings/WebApp/safety/family-mode releases, the 1.5.x OCR and smart-input releases, the 1.6.0 Family Group Launch + Alias Fix release, the 1.6.1 Group Whoami + Trusted Topic hotfix, and the 1.6.2 Trusted Family Thread Mode are now implemented and tested.
+The current working code identifies itself as version `1.6.3` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, source-aware Libre2/glucometer OCR metadata, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.x Settings/WebApp/safety/family-mode releases, the 1.5.x OCR and smart-input releases, the 1.6.0 Family Group Launch + Alias Fix release, the 1.6.1 Group Whoami + Trusted Topic hotfix, the 1.6.2 Trusted Family Thread Mode, and the 1.6.3 Settings WebApp hotfix are now implemented and tested.
+
+## 1.6.3 Settings WebApp Hotfix
+
+- The visible main-menu “Настройки” button no longer embeds a static WebApp URL that can go stale inside Telegram.
+- Tapping “Настройки” now routes through the same settings handler as `/settings`, which sends a fresh Mini App button with current saved protocol data.
+- The WebApp shows a visible send-status message and warns if opened outside Telegram Mini App, because ordinary browser pages cannot call `Telegram.WebApp.sendData`.
+- Trusted-contact and trusted-family-group settings are saved through the existing protocol JSON and confirmed back to the user after the bot receives the payload.
+- Confirmation masks private IDs in chat output while preserving full local values for runtime matching.
 
 ## 1.6.2 Trusted Family Thread Mode
 
