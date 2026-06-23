@@ -1,9 +1,10 @@
 {
-  "version": "1.6.1",
+  "version": "1.6.2",
   "date": "2026-06-23",
   "stage": "local-mvp",
-  "summary": "Group /whoami hotfix and trusted topic support",
+  "summary": "Trusted family thread mode",
   "notes": [
+    "Bumped patch version from 1.6.1 to 1.6.2.",
     "Bumped patch version from 1.6.0 to 1.6.1.",
     "Bumped minor version from 1.5.9 to 1.6.0.",
     "Bumped patch version from 1.5.8 to 1.5.9.",
@@ -355,6 +356,10 @@
     {
       "version": "1.6.1",
       "summary": "Group /whoami hotfix and trusted topic support"
+    },
+    {
+      "version": "1.6.2",
+      "summary": "Trusted family thread mode"
     }
   ]
 }

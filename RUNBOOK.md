@@ -166,6 +166,36 @@ OCR
 
 Expected behavior: `/help` is short, `команды` shows the full technical/legacy list, OCR mode appears near the version/status footer, and old Name/Sugar/Food/Insulin buttons do not return.
 
+Trusted family thread smoke after `1.6.2`:
+
+```text
+Private chat:
+/version
+/settings
+enable family_group
+set family_group_chat_id
+set family_group_thread_id if the group uses topics
+set family_group_patient_name
+
+Configured family thread:
+/version
+/help
+/whoami
+настройки
+статус
+журнал
+8.4 сахар
+/undo
+3 укол
+отмена
+50 40 еда
+отмена
+```
+
+Expected behavior: the configured thread accepts family entries for the selected patient profile; another group/topic remains blocked; `/settings` in a group shows safe setup instructions and never sends the WebApp keyboard; OCR still requires confirmation before saving.
+
+Do not publish real group `chat_id`, `message_thread_id`, Telegram user IDs, `.env`, tokens, screenshots with IDs, or medical values in public docs/news/history.
+
 Process:
 
 1. Codex runs `py_compile` and unit tests.

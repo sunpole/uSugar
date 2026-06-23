@@ -1,7 +1,7 @@
 # Open Work
 
 Date: 2026-06-23
-Version: 1.6.1
+Version: 1.6.2
 
 This document is the working inventory of unfinished uSugar tasks. It complements `ROADMAP.md` and `RELEASE_PLAN.md`: this file tracks what is open, while `RELEASE_PLAN.md` groups the next release milestones.
 
@@ -33,10 +33,12 @@ Status values:
 | Group safe-command mode | done | high | 1.6.1 | `/start`, `/help`, `/whoami`, `/reminders`, `/trustedtest`, `/version`, and `/health` are group-safe; medical entries remain private-only. Version `1.6.1` fixes the group `/whoami` WebApp-keyboard crash. |
 | Channel behavior | partial | medium | 1.6.x | Channel is documented as announcement-oriented, not a primary dialog. |
 | Trusted contact base | partial | high | 1.6.1 | `/whoami` now includes `message_thread_id` when present, `/trustedtest` can test group connection without medical data, and `trusted_contact_thread_id` can route future alerts into a group topic. |
-| Trusted contact consent | not started | high | 1.6.2 | Must be explicit before alerts are treated as family-ready. |
-| Trusted contact revocation | not started | high | 1.6.2 | Needed for safe long-term use. |
-| Quiet hours | not started | medium | 1.6.2 | Avoids noisy alerts during sleep or family rest windows. |
-| Alert escalation rules | partial | high | 1.6.2 | Technical alert engine exists, but product policy is unfinished. |
+| Trusted family thread intake | done | high | 1.6.2 | A configured `family_group` chat/topic can accept daily records for one patient profile; ordinary groups remain blocked. |
+| Source metadata for family entries | not started | medium | 1.6.3+ | Add schema-backed `saved_by/source_chat/source_thread` metadata to glucose/insulin rows after the family-thread path is stable. |
+| Trusted contact consent | not started | high | 1.6.4 | Must be explicit before alerts are treated as family-ready. |
+| Trusted contact revocation | not started | high | 1.6.4 | Needed for safe long-term use. |
+| Quiet hours | not started | medium | 1.6.4 | Avoids noisy alerts during sleep or family rest windows. |
+| Alert escalation rules | partial | high | 1.6.4 | Technical alert engine exists, but product policy is unfinished. |
 
 ## Daily Flow
 
@@ -55,12 +57,12 @@ Status values:
 
 | Task | Status | Priority | Target release | Notes |
 |---|---|---:|---|---|
-| `food_log` table and journal | not started | high | 1.6.2 | Required before food confirmations can save real meal records. Deferred because `1.6.0` focused on aliases/group launch and `1.6.1` fixed group safety before changing database schema. |
+| `food_log` table and journal | not started | high | 1.6.3 | Required before food confirmations can save real meal records. Deferred until the trusted family-thread path is stable. |
 | Carb sum calculation | done | high | 1.4.0 | `50+40` and `50 40` are interpreted as carbohydrate sums. |
 | XE conversion | done | high | 1.4.0 | Uses the saved `BU` protocol value. |
 | Dose calculation with fresh glucose | done | high | 1.4.0 | Uses recent glucose only inside the freshness window. |
 | Product database | not started | medium | 1.7.0 | Deferred until daily food flow is stable. |
-| Printed doctor diary A4 | not started | medium | 1.6.1 | Depends on logs, filters, and export shape. |
+| Printed doctor diary A4 | not started | medium | 1.7.x | Depends on logs, filters, and export shape. |
 
 ## Exports
 
@@ -69,8 +71,8 @@ Status values:
 | CSV export | partial | medium | 1.5.3 | `/log` can export long glucose/insulin logs; food export depends on `food_log`. |
 | Backup ZIP | done | high | 1.0.x | `/backup` exports safe user data without secrets. |
 | Backup restore | not started | high | 1.5.4 | Needed before backup can be considered a complete data lifecycle. |
-| Filtered exports | not started | medium | 1.6.1 | Depends on search/filtering. |
-| A4 doctor diary | not started | medium | 1.6.1 | Should be printable and understandable to a doctor. |
+| Filtered exports | not started | medium | 1.7.x | Depends on search/filtering. |
+| A4 doctor diary | not started | medium | 1.7.x | Should be printable and understandable to a doctor. |
 
 ## Future
 

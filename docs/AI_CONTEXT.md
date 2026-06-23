@@ -4,7 +4,7 @@
 
 Current runtime/documentation version: `1.6.1`.
 
-uSugar `1.6.1` is a small group hotfix after live family-group smoke. It fixes `/whoami` in groups by avoiding the private WebApp reply keyboard, keeps the private main menu unchanged, adds optional `trusted_contact_thread_id` in the existing protocol/settings JSON, and lets trusted-contact test/background messages use `message_thread_id` for Telegram group topics. Medical records still stay private-only; Food Log, OCR algorithms, DeepSeek, BJU/product database, and medical formulas did not change.
+uSugar `1.6.2` adds Trusted Family Thread Mode after the 1.6.1 group hotfix. A configured `family_group` chat/topic can accept daily family records for one patient profile, while ordinary groups remain blocked. `trusted_contact_*` is still the alert destination; `family_group_*` is the allowed source for family entries. OCR still requires confirmation, and Food Log, OCR algorithms, DeepSeek, BJU/product database, and medical formulas did not change.
 
 uSugar `1.6.0` is a safe family-group launch and alias-fix release. It moves Russian navigation aliases into an early router so `настройки`, `журнал`, and other navigation words are handled before friendly fallback replies; `/ocr` now only opens the OCR status screen unless the user explicitly types a mode word; group `/start`, `/help`, `/whoami`, and `/trustedtest` are safe while medical entries and OCR saves stay private-only. No Food Log, DeepSeek, BJU/product database, A4 diary, medical formula change, OCR autosave, token change, or local Telegram publication was added.
 
@@ -67,6 +67,8 @@ uSugar - локальный Telegram-бот для семейной поддер
 - Telegram family mode: в группах безопасными считаются `/version`, `/help`, `/health`, `/whoami`, `/reminders`, а медицинский ввод по умолчанию уводится в личный чат;
 - `/whoami` показывает `user_id`, `chat_id`, `chat_type` и `message_thread_id` для семейной настройки и доверенного контакта;
 - `trusted_contact_thread_id` хранится в protocol/settings JSON и используется для отправки trusted-сообщений в конкретную ветку/топик группы;
+- `family_group` хранится в protocol/settings JSON и разрешает принимать записи только из явно настроенного group `chat_id` и optional `message_thread_id`;
+- записи из доверенной семейной ветки должны использовать patient profile owner, найденный по `family_group`, а не Telegram `from_user.id` автора сообщения;
 - `/trustedtest` проверяет доставку доверенному контакту без медицинских данных;
 - `TELEGRAM_BOT_SETUP.md` описывает BotFather identity, команды, privacy mode, канал и политику смены token;
 - `CURRENT_STATE.md` даёт короткую карту текущего состояния после паузы;

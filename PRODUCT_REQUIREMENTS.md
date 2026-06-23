@@ -77,6 +77,8 @@ Status in `1.6.0`: `/whoami` also shows `message_thread_id` when Telegram provid
 
 Status in `1.6.1`: group `/whoami` no longer sends private WebApp keyboard markup, and `trusted_contact_thread_id` can optionally route trusted-contact messages into a specific group topic. Consent, revocation, quiet hours, and escalation policy remain future work.
 
+Status in `1.6.2`: a separate trusted family thread mode was added. `family_group` settings define where daily family entries may be accepted from, while `trusted_contact_*` still defines where alerts are sent. Ordinary groups remain blocked. Records from the trusted thread map to the configured patient profile instead of the sender. Persisted `saved_by/source` metadata for glucose/insulin rows remains future work because it needs a careful schema change.
+
 ## Telegram Family Mode
 
 - Private chat should remain the main place for glucose, food, insulin, OCR, settings, journal, backup, and deletion.

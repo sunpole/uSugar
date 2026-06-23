@@ -1,7 +1,7 @@
-# Release Plan
+﻿# Release Plan
 
 Date: 2026-06-23
-Version: 1.6.1
+Version: 1.6.2
 
 This document turns the open work inventory into a practical release sequence. It is intentionally product-focused: each milestone should stay small enough to verify with local tests, manual Telegram smoke, and a uNews patch note.
 
@@ -11,18 +11,22 @@ Goal: close the live family-group smoke issue before starting Food Log.
 
 Status: implemented as a small hotfix. `/whoami` no longer sends the private-chat WebApp keyboard in groups, Settings WebApp can store an optional `trusted_contact_thread_id`, and trusted-contact test/background alerts pass `message_thread_id` when configured.
 
+## 1.6.2 - Trusted Family Thread Mode
+
+Status: implemented. A configured family group/topic can accept sugar, insulin, food calculations, OCR intake, status, log, reminders, formula, and help for one patient profile. Untrusted groups remain blocked. `trusted_contact_*` continues to mean alert destination; `family_group_*` means allowed source for family entries. Source metadata columns are deferred to a later schema-safe patch.
+
 Completed work:
 
-- Fix group `/whoami` so Telegram does not reject WebApp reply buttons.
-- Keep the main WebApp menu unchanged in private chat.
-- Add optional group topic routing for trusted-contact alerts.
-- Document where to put group `chat_id` and `message_thread_id`.
+- Add `family_group` settings in the existing protocol JSON.
+- Let one configured group/topic accept family records for the selected patient profile.
+- Keep ordinary groups blocked for medical entries.
+- Keep group `/settings` safe by showing IDs/instructions instead of opening a WebApp button.
+- Keep OCR confirmation mandatory.
 
 Exit criteria:
 
-- `/whoami` works in the family group.
-- `/trustedtest` works in the group.
-- `8.4 сахар` remains blocked in the group and is not saved.
+- Trusted family thread can resolve the patient profile.
+- Untrusted groups and wrong topics remain blocked.
 - Full unit tests pass.
 
 ## 1.5.0 - OCR New Sources
@@ -243,7 +247,7 @@ Exit criteria:
 - Group Telegram smoke confirms safe commands and private-only medical entry behavior.
 - uNews patch note passes local check only; real publication is GitHub-first.
 
-## 1.6.1 - Food Log
+## 1.6.3 - Food Log
 
 Goal: make food calculations recordable and exportable.
 
@@ -261,7 +265,7 @@ Exit criteria:
 - No calculated meal is saved without explicit confirmation.
 - Backup does not include secrets or unrelated users.
 
-## 1.6.2 - Smart Daily Dialog
+## 1.6.4 - Smart Daily Dialog
 
 Goal: reduce command burden while keeping medical actions explicit.
 
@@ -278,7 +282,7 @@ Exit criteria:
 - Wrong-context input is handled safely.
 - Telegram smoke covers text-only alternatives.
 
-## 1.6.3 - Trusted Contact MVP
+## 1.6.5 - Trusted Contact MVP
 
 Goal: make family alerts understandable and consent-based.
 
@@ -296,7 +300,7 @@ Exit criteria:
 - User can disable or change the contact.
 - Quiet hours are respected.
 
-## 1.6.4 - A4 Doctor Diary
+## 1.7.0 - A4 Doctor Diary
 
 Goal: produce a practical printable report for doctor visits.
 

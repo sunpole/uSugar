@@ -2,6 +2,17 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.6.2 - 2026-06-23
+
+- Added Trusted Family Thread Mode: a configured group/topic can accept daily family records while ordinary groups remain blocked.
+- Added `family_group` settings to the existing protocol JSON: `enabled`, `chat_id`, `thread_id`, `patient_name`, and `accept_any_member`.
+- Settings WebApp now has a separate “Семейная группа” block for enabling the family group, entering group/topic IDs, and selecting the patient name.
+- Group `/settings` and the Russian alias `настройки` now show safe setup instructions with the current `chat_id`/`message_thread_id` instead of sending a WebApp button to a group.
+- Trusted family thread input is resolved to the configured patient profile, so group members do not create separate diaries by sender.
+- `/help` in a trusted family thread shows daily family commands; `/help` in untrusted groups stays safe and non-medical.
+- OCR in trusted family threads still requires explicit confirmation before saving.
+- No Food Log, DeepSeek, BJU/product database, A4 diary, medical formula change, or OCR autosave was added.
+
 ## 1.6.1 - 2026-06-23
 
 - Исправлен `/whoami` в группах и супергруппах: ответ больше не отправляет основную WebApp-клавиатуру, которую Telegram разрешает только в личных чатах.
