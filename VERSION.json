@@ -1,9 +1,10 @@
 {
-  "version": "1.6.3",
+  "version": "1.6.4",
   "date": "2026-06-23",
   "stage": "local-mvp",
-  "summary": "Settings WebApp save hotfix",
+  "summary": "Command routing and settings button stability hotfix",
   "notes": [
+    "Bumped patch version from 1.6.3 to 1.6.4.",
     "Bumped patch version from 1.6.2 to 1.6.3.",
     "Bumped patch version from 1.6.1 to 1.6.2.",
     "Bumped patch version from 1.6.0 to 1.6.1.",
@@ -365,6 +366,10 @@
     {
       "version": "1.6.3",
       "summary": "Settings WebApp save hotfix"
+    },
+    {
+      "version": "1.6.4",
+      "summary": "Command routing and settings button stability hotfix"
     }
   ]
 }

@@ -229,6 +229,8 @@ Use `/settings` in Telegram before changing the protocol. Since `1.1.0`, the bot
 
 Since `1.6.3`, the main Telegram “Настройки” button is a plain text navigation button. It triggers the same handler as `/settings`, and that handler sends a fresh Telegram Mini App button with the current protocol embedded in the URL. This avoids stale WebApp URLs that Telegram can keep in old reply keyboards.
 
+Since `1.6.4`, menu labels with emoji are normalized before alias lookup. If a visible reply-keyboard button such as `⚙️ Настройки`, `📒 Журнал`, or `📊 Статус` starts falling through to a random friendly reply, check `usugar_aliases.normalize_alias_text()` and `BOT_STABILITY_AUDIT_1_6_4.md` first.
+
 Settings smoke:
 
 1. In private chat, send `/settings` or press `Настройки`.

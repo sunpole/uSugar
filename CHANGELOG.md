@@ -2,6 +2,14 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.6.4 - 2026-06-23
+
+- Added `BOT_STABILITY_AUDIT_1_6_4.md` with runtime facts, handler order, settings-button root cause, and routing expectations.
+- Fixed emoji menu aliases: `⚙️ Настройки`, `📊 Статус`, `📒 Журнал`, `📷 OCR`, `⏰ Напоминания`, `📐 Формула`, and `❓ Помощь` now normalize to the same commands as their plain text labels.
+- Kept alias routing ahead of the general glucose/text fallback so navigation words do not fall into random friendly replies.
+- Preserved the `1.6.3` settings flow: private `/settings` and settings aliases send a fresh Mini App button, while group settings stays instruction-only without WebApp markup.
+- No Food Log, OCR tuning, DeepSeek, BJU/product database, A4 diary, token change, medical formula change, or local Telegram publication was added.
+
 ## 1.6.3 - 2026-06-23
 
 - Fixed Settings WebApp entry points: the main reply-keyboard “Настройки” button now routes through the same `/settings` handler instead of carrying a stale static WebApp URL.

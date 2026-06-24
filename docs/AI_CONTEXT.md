@@ -2,7 +2,9 @@
 
 ## Current Update For Agents - 2026-06-22
 
-Current runtime/documentation version: `1.6.1`.
+Current runtime/documentation version: `1.6.4`.
+
+uSugar `1.6.4` is a stop-the-line command-routing stability hotfix after the Settings WebApp fix. It documents the runtime/handler audit in `BOT_STABILITY_AUDIT_1_6_4.md` and fixes emoji menu aliases so `⚙️ Настройки`, `📊 Статус`, `📒 Журнал`, `📷 OCR`, `⏰ Напоминания`, `📐 Формула`, and `❓ Помощь` resolve before the random/friendly fallback. No Food Log, OCR tuning, DeepSeek, BJU/product database, A4 diary, token change, or medical formula change was added.
 
 uSugar `1.6.3` is a Settings WebApp hotfix after Trusted Family Thread Mode. The main “Настройки” reply-keyboard button no longer embeds a stale static WebApp URL; it routes through the same `/settings` handler as the command. `/settings` sends a fresh Telegram Mini App button with current protocol prefill, and the bot confirms trusted-contact and family-group settings after save. IDs are masked in chat confirmations but stored fully in the local protocol JSON.
 
