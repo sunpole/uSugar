@@ -2,6 +2,13 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.6.6 - 2026-06-24
+
+- Added a configured-family-group thread lock: when a group is already connected to one family topic, uSugar handles messages only inside that allowed topic.
+- Messages in other topics of the same configured group are intercepted before system/help/glucose/OCR/fallback handlers. Ordinary text is ignored silently; explicit slash commands receive one short safety notice.
+- This prevents accidental bot noise, wrong-topic medical input, and trusted-family actions outside the approved family thread.
+- No Food Log, OCR tuning, DeepSeek, BJU/product database, A4 diary, token change, medical formula change, or local Telegram publication was added.
+
 ## 1.6.5 - 2026-06-24
 
 - Fixed Settings WebApp save delivery: private `/settings` and `⚙️ Настройки` now send a fresh reply-keyboard WebApp button instead of an inline WebApp button, so `Telegram.WebApp.sendData()` returns protocol changes to the bot.

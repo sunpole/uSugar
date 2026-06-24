@@ -2,7 +2,9 @@
 
 ## Current Update For Agents - 2026-06-22
 
-Current runtime/documentation version: `1.6.5`.
+Current runtime/documentation version: `1.6.6`.
+
+uSugar `1.6.6` is a family-thread lock hotfix after the Settings WebApp save fix. If a group is configured as a family group with a specific topic/thread, the bot now handles messages only inside that allowed thread. Messages in other topics of the same configured group are intercepted before normal handlers; ordinary text is ignored silently, while explicit slash commands receive one short safety notice. This prevents accidental spam, wrong-topic medical input, and trusted-family behavior outside the approved family thread. No Food Log, OCR tuning, DeepSeek, BJU/product database, A4 diary, token change, or medical formula change was added.
 
 uSugar `1.6.5` is a Settings WebApp save-delivery hotfix after the 1.6.4 command routing fix. The live issue was that settings could open but not save because the Mini App was launched from an inline WebApp button; `Telegram.WebApp.sendData()` must be used from a reply-keyboard `KeyboardButton(web_app=...)` for this bot flow. Private `/settings`, `Настройки`, and `⚙️ Настройки` now send a fresh reply WebApp button, then restore the main menu after the bot confirms `Настройки применены и сохранены`. Group settings remain instruction-only and never receive WebApp buttons. No Food Log, OCR tuning, DeepSeek, BJU/product database, A4 diary, token change, or medical formula change was added.
 

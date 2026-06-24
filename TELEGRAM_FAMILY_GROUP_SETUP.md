@@ -74,6 +74,16 @@ Important distinction:
 
 Do not publish real `chat_id`, `message_thread_id`, Telegram user IDs, screenshots with IDs, or medical values in public docs/news/history.
 
+## Topic Lock
+
+Since `1.6.6`, after a family group is enabled with a specific `message_thread_id`, uSugar works only inside that allowed topic.
+
+- The allowed topic can handle family-mode commands and configured daily input.
+- Other topics in the same group are blocked before normal handlers.
+- Ordinary messages outside the allowed topic are ignored silently.
+- Slash commands outside the allowed topic get one short safety notice.
+- To move the bot to another topic, open `/settings` in private chat and update the family group `message_thread_id`.
+
 ## Safe Group Commands
 
 These commands are safe in a group:

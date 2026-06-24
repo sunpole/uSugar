@@ -247,6 +247,15 @@ If the page says it was opened outside Telegram Mini App, reopen it from the but
 
 If Telegram Web shows the free ngrok warning page, click `Visit Site` once or use Telegram Desktop/mobile for the save smoke. The warning is an ngrok interstitial and does not mean the settings server or SQLite save failed.
 
+## Family Group Thread Lock
+
+Since `1.6.6`, if a group is configured in Settings as a family group, uSugar works only in the configured `message_thread_id`.
+
+- Messages in other topics of the same configured group are intercepted before normal command handlers.
+- Ordinary non-command messages outside the allowed topic are ignored silently to avoid spam.
+- Explicit slash commands outside the allowed topic get one short safety notice telling the user to move to the configured family topic or change Settings in private chat.
+- Use `/whoami` inside the intended topic to confirm `chat_id`, `chat_type`, and `message_thread_id`.
+
 ## Undo Mistaken Records
 
 Use `/undo` to delete the latest mistaken entry. The bot shows the last glucose record and the last insulin record for the current Telegram user, asks which one to delete, and requires explicit confirmation before deletion. Since `1.1.1`, the confirmation text repeats the exact type, value, time, and consequence before the user presses delete.
