@@ -1,7 +1,7 @@
 window.USUGAR_STORY_DATA = {
   "title": "uSugar Project Story",
   "source": "docs/history/SCREENSHOT_STORY.md",
-  "count": 46,
+  "count": 47,
   "items": [
     {
       "file": "2026-06-04_initial_state.png",
@@ -370,6 +370,14 @@ window.USUGAR_STORY_DATA = {
       "description": "Safe public release card showing the 1.6.0 family-group launch, fixed Russian aliases, OCR status without duplicate mode selection, and private-only medical record policy.",
       "caption": "uSugarBot 1.6.0 prepares for family group use: commands become reliable, OCR stops repeating itself, and medical records stay in private chat.",
       "version": "1.6.0"
+    },
+    {
+      "file": "2026-06-24_usugar_1_6_4_group_help_smoke.png",
+      "image": "docs/history/2026-06-24_usugar_1_6_4_group_help_smoke.png",
+      "role": "Group command routing hotfix",
+      "description": "Cropped real Telegram Web group smoke after the 1.6.4 stability hotfix. The frame shows `/version` and `/help` answering as uSugarBot `1.6.4`, with the group name and private IDs kept out of the crop.",
+      "caption": "uSugarBot 1.6.4 proves the settings-button routing fix in the family group: safe commands answer at the current version while medical entries stay guarded.",
+      "version": ""
     }
   ]
 };
