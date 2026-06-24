@@ -1,9 +1,10 @@
 {
-  "version": "1.6.4",
-  "date": "2026-06-23",
+  "version": "1.6.5",
+  "date": "2026-06-24",
   "stage": "local-mvp",
-  "summary": "Command routing and settings button stability hotfix",
+  "summary": "Settings WebApp reply button save hotfix",
   "notes": [
+    "Bumped patch version from 1.6.4 to 1.6.5.",
     "Bumped patch version from 1.6.3 to 1.6.4.",
     "Bumped patch version from 1.6.2 to 1.6.3.",
     "Bumped patch version from 1.6.1 to 1.6.2.",
@@ -370,6 +371,10 @@
     {
       "version": "1.6.4",
       "summary": "Command routing and settings button stability hotfix"
+    },
+    {
+      "version": "1.6.5",
+      "summary": "Settings WebApp reply button save hotfix"
     }
   ]
 }

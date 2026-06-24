@@ -58,7 +58,7 @@ Notes:
 
 ## Configure Trusted Family Thread
 
-In the private chat with the bot, open `/settings` or press the visible **Настройки** menu button, then press the fresh **Открыть настройки** Mini App button and fill the **Семейная группа** block. Do not use an old settings WebApp button from Telegram history; Telegram can keep stale URLs in old reply keyboards. Version `1.6.4` also normalizes the emoji menu label `⚙️ Настройки`, so it routes to the same settings flow as plain `настройки`.
+In the private chat with the bot, open `/settings` or press the visible **Настройки** menu button, then press the fresh reply-keyboard **⚙️ Открыть настройки** Mini App button and fill the **Семейная группа** block. Do not use an old settings WebApp button from Telegram history; Telegram can keep stale URLs in old reply keyboards. Version `1.6.4` normalizes the emoji menu label `⚙️ Настройки`, so it routes to the same settings flow as plain `настройки`. Version `1.6.5` uses a reply WebApp button for saving, because direct browser/ngrok links and inline WebApp buttons may open the form but not return `sendData` to the bot.
 
 1. Enable **Включить семейную группу**.
 2. Put the group `chat_id` into **chat_id группы**.

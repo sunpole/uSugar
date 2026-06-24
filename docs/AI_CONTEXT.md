@@ -2,7 +2,9 @@
 
 ## Current Update For Agents - 2026-06-22
 
-Current runtime/documentation version: `1.6.4`.
+Current runtime/documentation version: `1.6.5`.
+
+uSugar `1.6.5` is a Settings WebApp save-delivery hotfix after the 1.6.4 command routing fix. The live issue was that settings could open but not save because the Mini App was launched from an inline WebApp button; `Telegram.WebApp.sendData()` must be used from a reply-keyboard `KeyboardButton(web_app=...)` for this bot flow. Private `/settings`, `Настройки`, and `⚙️ Настройки` now send a fresh reply WebApp button, then restore the main menu after the bot confirms `Настройки применены и сохранены`. Group settings remain instruction-only and never receive WebApp buttons. No Food Log, OCR tuning, DeepSeek, BJU/product database, A4 diary, token change, or medical formula change was added.
 
 uSugar `1.6.4` is a stop-the-line command-routing stability hotfix after the Settings WebApp fix. It documents the runtime/handler audit in `BOT_STABILITY_AUDIT_1_6_4.md` and fixes emoji menu aliases so `⚙️ Настройки`, `📊 Статус`, `📒 Журнал`, `📷 OCR`, `⏰ Напоминания`, `📐 Формула`, and `❓ Помощь` resolve before the random/friendly fallback. No Food Log, OCR tuning, DeepSeek, BJU/product database, A4 diary, token change, or medical formula change was added.
 

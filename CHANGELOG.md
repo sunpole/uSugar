@@ -2,6 +2,14 @@
 
 Version history was originally kept as comments in `config.py`. It is now preserved here and in `VERSION.json`.
 
+## 1.6.5 - 2026-06-24
+
+- Fixed Settings WebApp save delivery: private `/settings` and `⚙️ Настройки` now send a fresh reply-keyboard WebApp button instead of an inline WebApp button, so `Telegram.WebApp.sendData()` returns protocol changes to the bot.
+- The Settings page now changes its save status to “Настройки отправлены” after `sendData()` and asks the user to check the bot confirmation in chat.
+- Trusted contact and trusted family group fields continue to save through the existing protocol JSON; the bot restores the main menu after confirming the saved settings.
+- Group settings still do not send WebApp buttons and remain instruction-only with `chat_id`/`message_thread_id` guidance.
+- No Food Log, OCR tuning, DeepSeek, BJU/product database, A4 diary, token change, medical formula change, or local Telegram publication was added.
+
 ## 1.6.4 - 2026-06-23
 
 - Added `BOT_STABILITY_AUDIT_1_6_4.md` with runtime facts, handler order, settings-button root cause, and routing expectations.

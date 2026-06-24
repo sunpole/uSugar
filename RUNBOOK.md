@@ -231,10 +231,12 @@ Since `1.6.3`, the main Telegram “Настройки” button is a plain text
 
 Since `1.6.4`, menu labels with emoji are normalized before alias lookup. If a visible reply-keyboard button such as `⚙️ Настройки`, `📒 Журнал`, or `📊 Статус` starts falling through to a random friendly reply, check `usugar_aliases.normalize_alias_text()` and `BOT_STABILITY_AUDIT_1_6_4.md` first.
 
+Since `1.6.5`, the saveable Settings WebApp is opened from a fresh reply-keyboard `KeyboardButton(web_app=...)`, not from an inline WebApp button. This matters because `Telegram.WebApp.sendData()` returns settings to the bot through the reply WebApp button flow. An inline WebApp button or direct ngrok/browser URL can open the page, but may not deliver saved settings back to the bot.
+
 Settings smoke:
 
 1. In private chat, send `/settings` or press `Настройки`.
-2. Tap `⚙️ Открыть настройки`.
+2. Tap the freshly sent reply-keyboard button `⚙️ Открыть настройки`.
 3. Confirm the form is prefilled with the current name/protocol.
 4. Fill or edit trusted-contact and family-group fields.
 5. Tap `Сохранить протокол`.
@@ -242,6 +244,8 @@ Settings smoke:
 7. Confirm the reply shows trusted-contact state and family-group state.
 
 If the page says it was opened outside Telegram Mini App, reopen it from the button in the `/settings` message. A normal browser page cannot send `Telegram.WebApp.sendData` back to the bot.
+
+If Telegram Web shows the free ngrok warning page, click `Visit Site` once or use Telegram Desktop/mobile for the save smoke. The warning is an ngrok interstitial and does not mean the settings server or SQLite save failed.
 
 ## Undo Mistaken Records
 

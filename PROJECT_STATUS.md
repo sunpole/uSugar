@@ -1,12 +1,19 @@
 # uSugar Project Status
 
-Date: 2026-06-23
+Date: 2026-06-24
 
 ## Current State
 
 uSugar is an early-stage Telegram bot project for family diabetes support. The local computer version is currently more advanced than GitHub for code: it contains the active Telegram bot, local OCR helpers, reminder logic, tests, `settings.html`, and a local SQLite database. The GitHub snapshot is still valuable as public documentation and project story, but the local working copy is now the implementation source of truth.
 
-The current working code identifies itself as version `1.6.4` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, source-aware Libre2/glucometer OCR metadata, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.x Settings/WebApp/safety/family-mode releases, the 1.5.x OCR and smart-input releases, the 1.6.0 Family Group Launch + Alias Fix release, the 1.6.1 Group Whoami + Trusted Topic hotfix, the 1.6.2 Trusted Family Thread Mode, the 1.6.3 Settings WebApp hotfix, and the 1.6.4 command-routing stability hotfix are now implemented and tested.
+The current working code identifies itself as version `1.6.5` through `VERSION.json` and `version_info.py`. The bot has moved beyond the initial cleanup stage into a stable daily family-use MVP: OCR intake, source-aware Libre2/glucometer OCR metadata, glucose feedback, measurement reminders, basal insulin reminder checks, trusted-contact alerts, post-short-insulin follow-up reminders, mobile settings cleanup, project audit documentation, an interactive project-story page, confirmed `/undo`, WebApp settings prefill, the first UX cleanup pass, the full 1.2.x `bot.py` handler/runtime split, the 1.3.0 composition-root cleanup, the 1.3.1 large-file audit, the 1.3.2 local runtime/OCR verification pass, the 1.3.3 product requirements capture, the 1.4.x Settings/WebApp/safety/family-mode releases, the 1.5.x OCR and smart-input releases, the 1.6.0 Family Group Launch + Alias Fix release, the 1.6.1 Group Whoami + Trusted Topic hotfix, the 1.6.2 Trusted Family Thread Mode, the 1.6.3 Settings WebApp hotfix, the 1.6.4 command-routing stability hotfix, and the 1.6.5 Settings WebApp save-delivery hotfix are now implemented and tested.
+
+## 1.6.5 Settings WebApp Save Delivery Hotfix
+
+- The live issue after `1.6.4` was that Settings could open, but save did not reach the bot: the page was launched from an inline WebApp button, while `Telegram.WebApp.sendData()` is intended for WebApps launched from a reply-keyboard `KeyboardButton(web_app=...)`.
+- Private `/settings`, `Настройки`, and `⚙️ Настройки` now send a fresh reply WebApp button named `⚙️ Открыть настройки`.
+- After a successful WebApp payload, the bot replies `Настройки применены и сохранены`, restores the main menu, and includes masked trusted contact/family group state in the confirmation.
+- Telegram Web may still show the free ngrok warning page when opening the external URL directly; this is a Telegram Web/ngrok browser-warning limitation, not a database save problem.
 
 ## 1.6.4 Command Routing Stability Hotfix
 
